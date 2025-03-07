@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhnms44nr6egu"]
+
+[ext_resource type="PackedScene" uid="uid://vgmnk2ppdy54" path="res://Scenes/Player.tscn" id="1_48i0q"]
+[ext_resource type="Texture2D" uid="uid://bft4wwtbk8ic8" path="res://Images/Lava.jpg" id="2_4rvc0"]
+[ext_resource type="PackedScene" uid="uid://dqtwxjpluxr2r" path="res://mushroom.tscn" id="3_51u67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qexxr"]
+albedo_texture = ExtResource("2_4rvc0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_48i0q"]
+material = SubResource("StandardMaterial3D_qexxr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rvc0"]
+size = Vector2(1150, 646)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48i0q"]
+size = Vector2(1153, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51u67"]
+size = Vector2(20755, 4133)
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(578, 889)
+scale = Vector2(1, 0.359999)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+modulate = Color(0.319873, 0.319873, 0.319873, 1)
+position = Vector2(0.125, 227.5)
+scale = Vector2(1152.25, 617)
+mesh = SubResource("QuadMesh_48i0q")
+
+[node name="Lava" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.25, 241)
+shape = SubResource("RectangleShape2D_4rvc0")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1830, 918)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2"]
+modulate = Color(0.319873, 0.319873, 0.319873, 1)
+position = Vector2(0.125, -35)
+scale = Vector2(1152.25, 92)
+mesh = SubResource("QuadMesh_48i0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(2.5, -35)
+shape = SubResource("RectangleShape2D_48i0q")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(3090, 730)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D3"]
+modulate = Color(0.319873, 0.319873, 0.319873, 1)
+position = Vector2(0.125, -35)
+scale = Vector2(1152.25, 92)
+mesh = SubResource("QuadMesh_48i0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(2.5, -35)
+shape = SubResource("RectangleShape2D_48i0q")
+
+[node name="Sky" type="MeshInstance2D" parent="."]
+modulate = Color(0.47566, 0.843871, 0.939378, 1)
+z_index = -100
+position = Vector2(1452, -288)
+scale = Vector2(20441, 11722)
+mesh = SubResource("QuadMesh_48i0q")
+
+[node name="Lava" type="StaticBody2D" parent="."]
+position = Vector2(1365, 1211)
+
+[node name="LavaText" type="Sprite2D" parent="Lava"]
+texture_repeat = 2
+position = Vector2(29, 1910)
+rotation = 1.5722
+scale = Vector2(0.833116, 1.11452)
+texture = ExtResource("2_4rvc0")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 20000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lava"]
+position = Vector2(234.5, 1893.5)
+shape = SubResource("RectangleShape2D_51u67")
+
+[node name="Player" parent="." instance=ExtResource("1_48i0q")]
+position = Vector2(190, 818)
+scale = Vector2(2, 2)
+
+[node name="Mushroom" parent="." instance=ExtResource("3_51u67")]
+position = Vector2(916, 819)
+scale = Vector2(2, 2)
