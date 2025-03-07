@@ -30,6 +30,8 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 			$CollisionShape2D2.set_deferred("disabled", true)
 			$Area2D/CollisionShape2D.set_deferred("disabled", true)
 			attackbox.set_deferred("disabled", true)
+			await get_tree().create_timer(2).timeout
+			queue_free()
 		else:
 			sprite2d.play("hurt")
 			dead = true
