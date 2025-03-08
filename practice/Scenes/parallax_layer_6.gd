@@ -1,0 +1,18 @@
+extends ParallaxLayer
+func _ready() -> void:
+	$Sprite.play("Water")
+	$Sprite2.play("Water")
+	$Sprite3.play("Water")
+	$Sprite4.play("Water")
+	$Sprite5.play("Water")
+	$Sprite6.play("Water")
+	$Sprite7.play("Water")
+	$Sprite8.play("Water")
+	$Sprite9.play("Water")
+	$Sprite10.play("Water")
+	$Sprite11.play("Water")
+	$Sprite12.play("Water")
+	$Sprite13.play("Water")
+	$Sprite14.play("Water")
+	$Sprite15.play("Water")
+	$Sprite16.play("Water")

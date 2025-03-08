@@ -476,7 +476,6 @@ shape = SubResource("CapsuleShape2D_nn08x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -83)
-zoom = Vector2(1.5, 1.5)
 
 [node name="OuchBox" type="Area2D" parent="."]
 priority = 10

@@ -40,7 +40,6 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 		else:
 			sprite2d.play("hurt")
 			stunned = true
-			visionbox.set_deferred("disabled", true)
 		await get_tree().create_timer(0.5).timeout
 		if health > 0:
 			sprite2d.play("idle")
@@ -76,11 +75,12 @@ func _on_vision_area_entered(body: Area2D) -> void:
 			
 		
 func _on_vision_area_exited(body: Area2D) -> void:
-	await get_tree().create_timer(0.9).timeout
 	hit = body.name
+
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
 		movementnum = 0
+		await get_tree().create_timer(0.9).timeout
 		attacking = false
 		
 func _ready():

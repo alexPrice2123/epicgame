@@ -30,20 +30,7 @@ func _ready():
 func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name
 	if hit == "HitBox":
-		stunned = true
-		health -= 1
-		hud.damaged()
-		if health > 0:
-			sprite2d.play("player_hurt")
-			await get_tree().create_timer(0.5).timeout
-			stunned = false
-		else:
-			sprite2d.play("player_hurt")
-			$CollisionShape2D2.set_deferred("disabled", true)
-			$OuchBox/CollisionShape2D.set_deferred("disabled", true)
-			attackbox.set_deferred("disabled", true)
-			await get_tree().create_timer(0.2).timeout
-			death()
+		damaged()
 		
 
 func _input(_event: InputEvent) -> void:
@@ -102,6 +89,21 @@ func movement():
 	else:
 		sprite2d.play("player_idle")
 		
+func damaged():
+	stunned = true
+	health -= 1
+	hud.damaged()
+	if health > 0:
+		sprite2d.play("player_hurt")
+		await get_tree().create_timer(0.5).timeout
+		stunned = false
+	else:
+		sprite2d.play("player_hurt")
+		$CollisionShape2D2.set_deferred("disabled", true)
+		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
+		attackbox.set_deferred("disabled", true)
+		await get_tree().create_timer(0.2).timeout
+		death()
 func death():
 	stunned = true
 	$CollisionShape2D2.set_deferred("disabled", true)
