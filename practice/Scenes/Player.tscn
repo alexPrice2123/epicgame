@@ -1,10 +1,11 @@
-[gd_scene load_steps=64 format=3 uid="uid://vgmnk2ppdy54"]
+[gd_scene load_steps=70 format=3 uid="uid://vgmnk2ppdy54"]
 
 [ext_resource type="Script" uid="uid://003008emwrnm" path="res://scripts/player.gd" id="1_gntrk"]
 [ext_resource type="Texture2D" uid="uid://cwys50o7bdw2g" path="res://Images/SpritSheet/Skeleton_02_Yellow_Attack1.png" id="2_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://q84keh4aibt5" path="res://Images/SpritSheet/Skeleton_02_Yellow_Attack2.png" id="3_nn08x"]
 [ext_resource type="Texture2D" uid="uid://brr216phagtoc" path="res://Images/SpritSheet/Skeleton_02_Yellow_Die.png" id="4_52ee3"]
 [ext_resource type="Texture2D" uid="uid://csd1sqpfqa32i" path="res://Images/SpritSheet/Skeleton_02_Yellow_Idle.png" id="4_dewec"]
+[ext_resource type="Texture2D" uid="uid://c0iixciducrbk" path="res://Images/SpritSheet/Skeleton_02_Yellow_Hurt.png" id="5_52ee3"]
 [ext_resource type="Texture2D" uid="uid://dg0t1qkdlrcof" path="res://Images/SpritSheet/Skeleton_02_Yellow_Walk.png" id="6_bhhdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
@@ -146,6 +147,26 @@ region = Rect2(1056, 0, 96, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_teras"]
 atlas = ExtResource("4_52ee3")
 region = Rect2(1152, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fayk8"]
+atlas = ExtResource("5_52ee3")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddly5"]
+atlas = ExtResource("5_52ee3")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omi2y"]
+atlas = ExtResource("5_52ee3")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75iyv"]
+atlas = ExtResource("5_52ee3")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrofn"]
+atlas = ExtResource("5_52ee3")
+region = Rect2(384, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3h8g"]
 atlas = ExtResource("4_dewec")
@@ -343,6 +364,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fayk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddly5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omi2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75iyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrofn")
+}],
+"loop": false,
+"name": &"player_hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o3h8g")
 }, {
 "duration": 1.0,
@@ -424,7 +465,9 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"player_walk"
+animation = &"player_hurt"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -433,12 +476,12 @@ shape = SubResource("CapsuleShape2D_nn08x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -83)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="OuchBox" type="Area2D" parent="."]
 priority = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuchBox"]
 position = Vector2(7.00002, -28)
 rotation = 3.14159
 scale = Vector2(1.2014, -7.323)
@@ -453,7 +496,8 @@ position = Vector2(57.5, -27.875)
 shape = SubResource("RectangleShape2D_dewec")
 disabled = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="OuchBox" to="." method="_on_ouch_box_area_entered"]
+[connection signal="area_entered" from="OuchBox" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="OuchBox" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="PlayerHitBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="PlayerHitBox" to="." method="_on_area_2d_body_entered"]

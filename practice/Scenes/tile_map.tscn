@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=4 uid="uid://cjex1joi43h51"]
+
+[ext_resource type="Texture2D" uid="uid://b5a06e0umquja" path="res://Images/tileset/Grass.png" id="1_1br53"]
+[ext_resource type="Texture2D" uid="uid://dthcmvcptsi86" path="res://Images/tileset/Cobblestone.png" id="2_drmie"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0v1hq"]
+texture = ExtResource("1_1br53")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlxc1"]
+texture = ExtResource("2_drmie")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6mpdi"]
+sources/1 = SubResource("TileSetAtlasSource_0v1hq")
+sources/2 = SubResource("TileSetAtlasSource_rlxc1")
+
+[node name="TileMapLayer" type="TileMapLayer"]
+position = Vector2(-14, -5)
+tile_map_data = PackedByteArray("AAD/////AQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAEAP//AQABAAAAAAD+////AQABAAEAAAD+/wAAAQAAAAAAAGD+/wEAAQAAAAAAAGD+/wIAAQAAAAAAAGAEAAAAAQAAAAAAAFAEAAEAAQAAAAAAAFD//wAAAgABAAIAAAD//wEAAgABAAEAAAAAAAAAAgABAAEAAAAAAAEAAgABAAEAAAABAAAAAgABAAEAAAABAAEAAgABAAEAAAACAAAAAgABAAEAAAACAAEAAgABAAEAAAADAAAAAgABAAEAAAADAAEAAgABAAIAAAD//wIAAgABAAIAAAAAAAIAAgABAAEAAAABAAIAAgABAAIAAAACAAIAAgABAAEAAAADAAIAAgABAAIAAAAEAAIAAQAAAAAAAFA=")
+tile_set = SubResource("TileSet_6mpdi")

@@ -2,31 +2,53 @@ extends CharacterBody2D
 @export var speed = 750
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 3
+@export var health = 5
+@onready var camera = $Camera2D
+@onready var hud = $HUD
 @onready var sprite2d = $Sprite2D2
 @onready var attackbox = $PlayerHitBox/PlayerCollisionBox
 var idle = 0
-var dead = false
+var stunned = false
 var attacking = false
 var attackanim = 1
+var zoomfactor = 0.15
+var hit = null
 
-func _physics_process(delta):
-	if dead == true:
+func _physics_process(_delta):
+	if sprite2d.animation == "death" or stunned == true:
 		return
 	movement()
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Lava"):
-		dead = true
-		sprite2d.play("player_death")
-		await get_tree().create_timer(2).timeout
-		get_tree().reload_current_scene()
+		death()
 	pass
 	
 func _ready():
 	sprite2d.play("player_idle")
 
-func _input(event: InputEvent) -> void:
+func _on_ouch_box_area_entered(body: Area2D) -> void:
+	hit = body.name
+	if hit == "HitBox":
+		stunned = true
+		health -= 1
+		hud.damaged()
+		if health > 0:
+			sprite2d.play("player_hurt")
+			await get_tree().create_timer(0.5).timeout
+			stunned = false
+		else:
+			sprite2d.play("player_hurt")
+			$CollisionShape2D2.set_deferred("disabled", true)
+			$OuchBox/CollisionShape2D.set_deferred("disabled", true)
+			attackbox.set_deferred("disabled", true)
+			await get_tree().create_timer(0.2).timeout
+			death()
+		
+
+func _input(_event: InputEvent) -> void:
+	if sprite2d.animation == "death" or stunned == true:
+		return
 	if Input.is_action_just_pressed("move_left"):
 		sprite2d.flip_h = true
 		sprite2d.offset.x = 0
@@ -47,10 +69,23 @@ func _input(event: InputEvent) -> void:
 			sprite2d.play("player_attack2")
 			attackanim = 1
 		await get_tree().create_timer(0.5).timeout
-		attackbox.disabled = false
+		if stunned == false:
+			attackbox.disabled = false
 		await get_tree().create_timer(0.5).timeout
-		attackbox.disabled = true
+		attackbox.set_deferred("disabled", true)
 		attacking = false
+	if Input.is_action_just_pressed("scroll_in"):
+		camera.zoom.x += zoomfactor
+		camera.zoom.y += zoomfactor
+		if camera.zoom.y >= 3:
+			camera.zoom.y = 3
+			camera.zoom.x = 3
+	if Input.is_action_just_pressed("scroll_out"):
+		camera.zoom.x -= zoomfactor
+		camera.zoom.y -= zoomfactor
+		if camera.zoom.y <= 0.75:
+			camera.zoom.y = 0.75
+			camera.zoom.x = 0.75
 		
 func movement():
 	var h_direction = Input.get_axis("move_left", "move_right")
@@ -66,3 +101,12 @@ func movement():
 		sprite2d.play("player_walk")
 	else:
 		sprite2d.play("player_idle")
+		
+func death():
+	stunned = true
+	$CollisionShape2D2.set_deferred("disabled", true)
+	$OuchBox/CollisionShape2D.set_deferred("disabled", true)
+	attackbox.set_deferred("disabled", true)
+	sprite2d.play("player_death")
+	await get_tree().create_timer(2).timeout
+	get_tree().reload_current_scene()
