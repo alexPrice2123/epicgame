@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5flt38cf2mhy"]
+
+[ext_resource type="Texture2D" uid="uid://crsr3q1088xyw" path="res://Images/Collectables/Gem/Diamond.png" id="1_bti4x"]
+[ext_resource type="Script" uid="uid://dccb7x43nhqks" path="res://Scenes/gem.gd" id="2_0xstn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xstn"]
+atlas = ExtResource("1_bti4x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7jy3"]
+atlas = ExtResource("1_bti4x")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78y5l"]
+atlas = ExtResource("1_bti4x")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sm5a"]
+atlas = ExtResource("1_bti4x")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4a3l"]
+atlas = ExtResource("1_bti4x")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4h28"]
+atlas = ExtResource("1_bti4x")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xax2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xstn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7jy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78y5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sm5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4a3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4h28")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bti4x"]
+radius = 5.0
+height = 14.0
+
+[node name="Gem" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_xax2o")
+animation = &"spin"
+frame = 2
+frame_progress = 0.873129
+script = ExtResource("2_0xstn")
+
+[node name="Gem" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gem"]
+shape = SubResource("CapsuleShape2D_bti4x")
+
+[connection signal="area_entered" from="Gem" to="." method="_on_area_2d_area_entered"]

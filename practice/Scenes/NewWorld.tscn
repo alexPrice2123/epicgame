@@ -1,18 +1,20 @@
-[gd_scene load_steps=38 format=4 uid="uid://dhnms44nr6egu"]
+[gd_scene load_steps=40 format=4 uid="uid://dhnms44nr6egu"]
 
 [ext_resource type="PackedScene" uid="uid://vgmnk2ppdy54" path="res://Scenes/Player.tscn" id="1_48i0q"]
 [ext_resource type="Texture2D" uid="uid://bglq6i6e16dxt" path="res://Images/paralax/j4.png" id="1_qwsj2"]
 [ext_resource type="Texture2D" uid="uid://bt22u711pcggr" path="res://Images/paralax/j3.png" id="2_5rrus"]
-[ext_resource type="PackedScene" uid="uid://dqtwxjpluxr2r" path="res://mushroom.tscn" id="3_51u67"]
 [ext_resource type="Texture2D" uid="uid://cu80rthfoox1k" path="res://Images/paralax/j2.png" id="3_m8w4l"]
 [ext_resource type="PackedScene" uid="uid://cc2v5cc53y7xh" path="res://Scenes/hud.tscn" id="4_e0np7"]
 [ext_resource type="Texture2D" uid="uid://bytmwirp4x5ja" path="res://Images/paralax/j1.png" id="4_p4clw"]
 [ext_resource type="Texture2D" uid="uid://bvfvbbvfav1kb" path="res://Images/tileset/Water.png" id="5_5rrus"]
-[ext_resource type="Script" uid="uid://cjuq1thy4g2k0" path="res://Scenes/parallax_layer_6.gd" id="5_m8w4l"]
+[ext_resource type="Script" uid="uid://cjuq1thy4g2k0" path="res://scripts/parallax_layer_6.gd" id="5_m8w4l"]
 [ext_resource type="Texture2D" uid="uid://dthcmvcptsi86" path="res://Images/tileset/Cobblestone.png" id="5_qptyk"]
 [ext_resource type="Texture2D" uid="uid://b5a06e0umquja" path="res://Images/tileset/Grass.png" id="6_s1hk5"]
+[ext_resource type="PackedScene" uid="uid://o3tyqvikm716" path="res://Scenes/slime.tscn" id="7_m8w4l"]
 [ext_resource type="Texture2D" uid="uid://biu118fueyvro" path="res://Images/tileset/Decorations.png" id="7_s1hk5"]
-[ext_resource type="Shader" uid="uid://dwan6wj5avvgw" path="res://Scenes/NewWorld.gdshader" id="9_5rrus"]
+[ext_resource type="Shader" uid="uid://dwan6wj5avvgw" path="res://scripts/Swamp.gdshader" id="9_5rrus"]
+[ext_resource type="PackedScene" uid="uid://datr2ph6tyb58" path="res://Scenes/mushroom.tscn" id="14_p4clw"]
+[ext_resource type="PackedScene" uid="uid://c5flt38cf2mhy" path="res://Scenes/gem.tscn" id="15_gjfyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51u67"]
 size = Vector2(20755, 4133)
@@ -40,8 +42,11 @@ texture = ExtResource("6_s1hk5")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qptyk"]
 texture = ExtResource("5_qptyk")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
@@ -64,6 +69,90 @@ texture = ExtResource("7_s1hk5")
 3:4/0/z_index = -100
 3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.01526, 8, 1.01526, 8, 8, -8, 8)
 3:4/0/physics_layer_0/polygon_0/one_way = true
+3:3/0 = 0
+1:2/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+1:5/0 = 0
+1:5/0/z_index = -100
+1:6/0 = 0
+1:6/0/z_index = -100
+2:6/0 = 0
+2:6/0/z_index = -100
+2:5/0 = 0
+2:5/0/z_index = -100
+1:7/0 = 0
+1:7/0/z_index = -100
+0:7/0 = 0
+0:7/0/z_index = -100
+0:8/0 = 0
+0:8/0/z_index = -100
+1:8/0 = 0
+1:8/0/z_index = -100
+0:9/0 = 0
+0:9/0/z_index = -100
+1:9/0 = 0
+1:9/0/z_index = -100
+1:10/0 = 0
+1:10/0/z_index = -100
+2:10/0 = 0
+2:10/0/z_index = -100
+2:11/0 = 0
+2:11/0/z_index = -100
+3:11/0 = 0
+3:11/0/z_index = -100
+3:12/0 = 0
+3:12/0/z_index = -100
+2:12/0 = 0
+2:12/0/z_index = -100
+1:12/0 = 0
+1:12/0/z_index = -100
+0:12/0 = 0
+0:12/0/z_index = -100
+0:11/0 = 0
+0:11/0/z_index = -100
+0:10/0 = 0
+0:10/0/z_index = -100
+1:11/0 = 0
+1:11/0/z_index = -100
+2:9/0 = 0
+2:9/0/z_index = -100
+3:9/0 = 0
+3:9/0/z_index = -100
+3:10/0 = 0
+3:10/0/z_index = -100
+0:13/0 = 0
+0:13/0/z_index = -100
+1:13/0 = 0
+1:13/0/z_index = -100
+2:13/0 = 0
+2:13/0/z_index = -100
+3:13/0 = 0
+3:13/0/z_index = -100
+3:14/0 = 0
+3:14/0/z_index = -100
+3:15/0 = 0
+3:15/0/z_index = -100
+2:16/0 = 0
+2:16/0/z_index = -100
+1:16/0 = 0
+1:16/0/z_index = -100
+0:16/0 = 0
+0:16/0/z_index = -100
+0:15/0 = 0
+0:15/0/z_index = -100
+1:15/0 = 0
+1:15/0/z_index = -100
+2:14/0 = 0
+2:14/0/z_index = -100
+1:14/0 = 0
+1:14/0/z_index = -100
+0:14/0 = 0
+0:14/0/z_index = -100
+2:15/0 = 0
+2:15/0/z_index = -100
+3:16/0 = 0
+3:16/0/z_index = -100
 
 [sub_resource type="TileSet" id="TileSet_qptyk"]
 physics_layer_0/collision_layer = 1
@@ -193,7 +282,7 @@ layer = -1
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1295, 451)
 motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("1_qwsj2")
@@ -201,7 +290,7 @@ texture = ExtResource("1_qwsj2")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1295, 451)
 motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("2_5rrus")
@@ -209,7 +298,7 @@ texture = ExtResource("2_5rrus")
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1295, 451)
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("3_m8w4l")
@@ -217,14 +306,14 @@ texture = ExtResource("3_m8w4l")
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1295, 451)
 motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("4_p4clw")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1295, 451)
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 texture = ExtResource("4_p4clw")
@@ -234,13 +323,13 @@ z_index = 1000
 position = Vector2(1464, 1173)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lava"]
-position = Vector2(234, 1898)
+position = Vector2(8025, 1898)
 shape = SubResource("RectangleShape2D_51u67")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Lava"]
 modulate = Color(0.27451, 0.494118, 0.47451, 1)
-position = Vector2(1258, 1979)
-scale = Vector2(11618, 4278)
+position = Vector2(8024.5, 1979)
+scale = Vector2(21267, 4278)
 mesh = SubResource("QuadMesh_m8w4l")
 
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
@@ -249,40 +338,24 @@ scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]
 
-[node name="Mushroom" parent="." instance=ExtResource("3_51u67")]
-position = Vector2(916, 819)
-scale = Vector2(2, 2)
-health = 1
-
-[node name="Mushroom2" parent="." instance=ExtResource("3_51u67")]
-position = Vector2(1712, 743)
+[node name="Slime" parent="." instance=ExtResource("7_m8w4l")]
+position = Vector2(2410, 824)
 scale = Vector2(2, 2)
 
-[node name="Mushroom3" parent="." instance=ExtResource("3_51u67")]
-position = Vector2(2372, 822)
+[node name="Slime2" parent="." instance=ExtResource("7_m8w4l")]
+position = Vector2(3659, 654)
+scale = Vector2(2, 2)
+
+[node name="Slime3" parent="." instance=ExtResource("7_m8w4l")]
+position = Vector2(8523, 723)
 scale = Vector2(2, 2)
 
 [node name="TurnAround" type="Area2D" parent="."]
 position = Vector2(42, 822)
 collision_mask = 3
 
-[node name="TurnAround" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(0, -45)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround2" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(1057, -45)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
 [node name="TurnAround3" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(1806, -64)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround5" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(1275, -131)
+position = Vector2(1831, -55)
 shape = SubResource("RectangleShape2D_e0np7")
 debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
@@ -291,25 +364,66 @@ position = Vector2(2484, -62)
 shape = SubResource("RectangleShape2D_e0np7")
 debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
+[node name="TurnAround5" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(2733, -225)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround6" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(3753, -237)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround7" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(7516, -141)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround8" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(8634, -148)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround9" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(9351, -157)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround11" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(8776, 12)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround12" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(9206, 9)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround10" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(9846, -155)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
 [node name="TileHolder" type="Node2D" parent="."]
 scale = Vector2(5, 5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileHolder"]
 material = SubResource("ShaderMaterial_m8w4l")
+position = Vector2(-0.800003, 4.8)
 rotation = -0.00450301
-tile_map_data = PackedByteArray("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AABGAAcAAQABAAEAAABGAAgAAQABAAEAAABGAAkAAQABAAEAAABGAAoAAQABAAEAAABGAAsAAQABAAEAAABGAAwAAQABAAEAAABHAAUAAQABAAEAAABHAAYAAQABAAEAAABHAAcAAQABAAEAAABHAAgAAQABAAEAAABHAAkAAQABAAEAAABHAAoAAQABAAEAAABHAAsAAQABAAEAAABHAAwAAQABAAEAAABIAAUAAQABAAEAAABIAAcAAQABAAEAAABIAAgAAQABAAEAAABIAAkAAQABAAEAAABIAAoAAQABAAEAAABIAAsAAQABAAEAAABIAAwAAQABAAEAAABJAAUAAQABAAEAAABJAAYAAQABAAEAAABJAAcAAQABAAEAAABJAAgAAQABAAEAAABJAAkAAQABAAEAAABJAAoAAQABAAEAAABJAAsAAQABAAEAAABJAAwAAQABAAEAAABKAAUAAQABAAEAAABKAAYAAQABAAEAAABKAAgAAQABAAEAAABKAAkAAQABAAEAAABKAAoAAQABAAEAAABKAAsAAQABAAEAAABKAAwAAQABAAEAAABLAAUAAQABAAEAAABLAAYAAQABAAEAAABLAAcAAQABAAEAAABLAAkAAQABAAEAAABLAAoAAQABAAEAAABLAAsAAQABAAEAAABLAAwAAQABAAEAAABMAAUAAQABAAEAAABMAAYAAQABAAEAAABMAAcAAQABAAEAAABMAAoAAQABAAEAAABMAAsAAQABAAEAAABMAAwAAQABAAEAAABNAAUAAQABAAEAAABNAAYAAQABAAEAAABNAAgAAQABAAEAAABNAAkAAQABAAEAAABNAAoAAQABAAEAAABNAAsAAQABAAEAAABNAAwAAQABAAEAAABOAAUAAQABAAEAAABOAAcAAQABAAEAAABOAAgAAQABAAEAAABOAAkAAQABAAEAAABOAAoAAQABAAEAAABOAAsAAQABAAEAAABOAAwAAQABAAEAAABFAAoAAQABAAIAAABIAAYAAQABAAIAAABKAAcAAQABAAIAAABLAAgAAQABAAIAAABMAAkAAQABAAIAAABNAAcAAQABAAIAAABMAAgAAQABAAIAAABOAAYAAQABAAIAAAAiAAoAAQABAAEAAAAiAAsAAQABAAEAAAAiAAwAAQABAAEAAAAjAAoAAQABAAEAAAAjAAsAAQABAAEAAAAjAAwAAQABAAEAAAAkAAoAAQABAAEAAAAkAAsAAQABAAEAAAAkAAwAAQABAAEAAAAlAAoAAQABAAEAAAAlAAsAAQABAAEAAAAlAAwAAQABAAEAAAAmAAoAAQABAAEAAAAmAAsAAQABAAEAAAAmAAwAAQABAAEAAAAnAAoAAQABAAEAAAAnAAsAAQABAAEAAAAnAAwAAQABAAEAAAAoAAoAAQABAAEAAAAoAAsAAQABAAEAAAAoAAwAAQABAAEAAAApAAoAAQABAAEAAAApAAsAAQABAAEAAAApAAwAAQABAAEAAAAqAAoAAQABAAEAAAAqAAsAAQABAAEAAAAqAAwAAQABAAEAAAArAAoAAQABAAEAAAArAAsAAQABAAEAAAArAAwAAQABAAEAAAAsAAoAAQABAAEAAAAsAAwAAQABAAEAAAAtAAoAAQABAAEAAAAtAAsAAQABAAEAAAAtAAwAAQABAAEAAAAuAAoAAQABAAEAAAAuAAsAAQABAAEAAAAuAAwAAQABAAEAAAAgAAsAAQABAAEAAAAgAAwAAQABAAEAAAAhAAsAAQABAAEAAAAhAAwAAQABAAEAAAARAAwAAQABAAEAAAASAAwAAQABAAEAAAATAAwAAQABAAEAAAAUAAwAAQABAAEAAAAVAAwAAQABAAEAAAAWAAwAAQABAAEAAAAXAAwAAQABAAEAAAAYAAwAAQABAAEAAAAZAAwAAQABAAEAAAAaAAwAAQABAAEAAAAbAAwAAQABAAEAAAAcAAwAAQABAAEAAAAdAAwAAQABAAEAAAAfAAwAAQABAAEAAAARAAsAAQABAAEAAAASAAsAAQABAAEAAAATAAsAAQABAAEAAAAUAAsAAQABAAEAAAAVAAsAAQABAAEAAAAWAAsAAQABAAEAAAAeAAwAAQABAAIAAAAsAAsAAQABAAIAAABPAAQAAAABAAAAAAAkAAAAAQAAAAMAAABBAAAAAQACAAMAAAAlAAAAAQABAAMAAAAmAAAAAQABAAMAAAAnAAAAAQABAAMAAAAoAAAAAQABAAMAAAApAAAAAQABAAMAAAAqAAAAAQABAAMAAAArAAAAAQABAAMAAAAtAAAAAQABAAMAAAAuAAAAAQABAAMAAAAvAAAAAQABAAMAAAAwAAAAAQABAAMAAAAxAAAAAQABAAMAAAAyAAAAAQABAAMAAAAzAAAAAQABAAMAAAA0AAAAAQABAAMAAAA1AAAAAQABAAMAAAA2AAAAAQABAAMAAAA3AAAAAQABAAMAAAA4AAAAAQABAAMAAAA5AAAAAQABAAMAAAA6AAAAAQABAAMAAAA7AAAAAQABAAMAAAA9AAAAAQABAAMAAAA+AAAAAQABAAMAAAA/AAAAAQABAAMAAABAAAAAAQABAAMAAAAsAAAAAQABAAMAAAA8AAAAAQABAAMAAABHAAEAAgADAAQAAABIAAEAAgADAAQAAABJAAEAAgADAAQAAABKAAEAAgADAAQAAABLAAEAAgADAAQAAABMAAEAAgADAAQAAABNAAEAAgABAAQAABBFAAEAAgABAAQAAABGAAEAAgADAAQAAAA=")
+tile_map_data = PackedByteArray("AAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAAAAsAAAABAAEAAAANAAsAAAABAAAAAAAAAAwAAQAAAAEAAAANAAwAAQACAAEAAAABAAwAAQABAAIAAAACAAwAAQABAAEAAAADAAwAAQABAAEAAAAEAAwAAQABAAEAAAAFAAwAAQABAAEAAAAGAAwAAQABAAIAAAAHAAwAAQABAAIAAAAIAAwAAQABAAIAAAAJAAwAAQABAAEAAAAKAAwAAQABAAIAAAALAAwAAQABAAEAAAAMAAwAAQABAAEAAAAQAAoAAAABAAEAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAABAAAAAAAXAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAdAAsAAAAAAAAAAAAeAAsAAAAAAAAAAAAfAAsAAAAAAAAAAAAgAAoAAAABAAEAAAAhAAoAAAAAAAAAAAAiAAkAAAABAAEAAAAjAAkAAAAAAAAAAAAkAAkAAAAAAAAAAAAlAAkAAAAAAAAAAAAmAAkAAAAAAAAAAAAnAAkAAAAAAAAAAAAoAAkAAAAAAAAAAAApAAkAAAAAAAAAAAAqAAkAAAAAAAAAAAArAAkAAAAAAAAAAAAsAAkAAAAAAAAAAAAtAAkAAAAAAAAAAAAuAAkAAAAAAAAAAAAvAAkAAAABAAAAAAAvAAoAAQACAAEAAAAvAAsAAQACAAEAAAAvAAwAAQACAAEAAAAQAAsAAQAAAAEAAAAQAAwAAQAAAAEAAAAiAAoAAQABAAEAAAAiAAsAAQABAAEAAAAiAAwAAQABAAEAAAAjAAoAAQABAAEAAAAjAAsAAQABAAEAAAAjAAwAAQABAAEAAAAkAAoAAQABAAEAAAAkAAsAAQABAAEAAAAkAAwAAQABAAEAAAAlAAoAAQABAAEAAAAlAAsAAQABAAEAAAAlAAwAAQABAAEAAAAmAAoAAQABAAEAAAAmAAsAAQABAAEAAAAmAAwAAQABAAEAAAAnAAoAAQABAAEAAAAnAAsAAQABAAEAAAAnAAwAAQABAAEAAAAoAAoAAQABAAEAAAAoAAsAAQABAAEAAAAoAAwAAQABAAEAAAApAAoAAQABAAEAAAApAAsAAQABAAEAAAApAAwAAQABAAEAAAAqAAoAAQABAAEAAAAqAAsAAQABAAEAAAAqAAwAAQABAAEAAAArAAoAAQABAAEAAAArAAsAAQABAAEAAAArAAwAAQABAAEAAAAsAAoAAQABAAEAAAAsAAwAAQABAAEAAAAtAAoAAQABAAEAAAAtAAsAAQABAAEAAAAtAAwAAQABAAEAAAAuAAoAAQABAAEAAAAuAAsAAQABAAEAAAAuAAwAAQABAAEAAAAgAAsAAQABAAEAAAAgAAwAAQABAAEAAAAhAAsAAQABAAEAAAAhAAwAAQABAAEAAAARAAwAAQABAAEAAAASAAwAAQABAAEAAAATAAwAAQABAAEAAAAUAAwAAQABAAEAAAAVAAwAAQABAAEAAAAWAAwAAQABAAEAAAAXAAwAAQABAAEAAAAYAAwAAQABAAEAAAAZAAwAAQABAAEAAAAaAAwAAQABAAEAAAAbAAwAAQABAAEAAAAcAAwAAQABAAEAAAAdAAwAAQABAAEAAAAfAAwAAQABAAEAAAARAAsAAQABAAEAAAASAAsAAQABAAEAAAATAAsAAQABAAEAAAAUAAsAAQABAAEAAAAVAAsAAQABAAEAAAAWAAsAAQABAAEAAAAeAAwAAQABAAIAAAAsAAsAAQABAAIAAAA4AAkAAAAAAAEAAAAyAAkAAAAAAAEAAAAyAAoAAAAAAAEAADA4AAoAAAAAAAEAADA+AAkAAAAAAAEAAAA+AAoAAAAAAAEAADBDAAoAAAAAAAAAAABDAAsAAQABAAEAAABDAAwAAQABAAEAAABEAAoAAAAAAAAAAABEAAsAAQABAAEAAABEAAwAAQABAAEAAABFAAoAAAAAAAAAAABFAAsAAQABAAEAAABFAAwAAQABAAEAAABGAAoAAAAAAAAAAABGAAsAAQABAAEAAABGAAwAAQABAAEAAABHAAoAAAAAAAAAAABHAAsAAQABAAEAAABHAAwAAQABAAIAAABIAAoAAAAAAAAAAABIAAsAAQABAAEAAABIAAwAAQABAAEAAABJAAoAAAAAAAAAAABJAAsAAQABAAEAAABJAAwAAQABAAEAAABKAAoAAAAAAAAAAABKAAsAAQABAAEAAABKAAwAAQABAAEAAABLAAoAAAAAAAAAAABLAAsAAQABAAEAAABLAAwAAQABAAEAAABMAAoAAAAAAAAAAABMAAsAAQABAAEAAABMAAwAAQABAAEAAABNAAoAAAAAAAAAAABNAAsAAQABAAEAAABNAAwAAQABAAIAAABOAAoAAAABAAAAAABOAAsAAQACAAEAAABOAAwAAQACAAEAAABCAAoAAAABAAEAAABCAAsAAQAAAAEAAABCAAwAAQAAAAEAAABCAA0AAQAAAAEAAABCAA4AAQAAAAEAAABCAA8AAQAAAAEAAABCABAAAQAAAAEAAABCABEAAQAAAAEAAABCABIAAQAAAAEAAABDAA0AAQABAAEAAABDAA4AAQABAAEAAABDAA8AAQABAAEAAABDABAAAQABAAEAAABDABEAAQABAAEAAABDABIAAQABAAEAAABEAA0AAQABAAEAAABEAA4AAQABAAEAAABEAA8AAQABAAEAAABEABAAAQABAAIAAABEABEAAQABAAEAAABEABIAAQABAAEAAABFAA0AAQABAAEAAABFAA4AAQABAAEAAABFAA8AAQABAAEAAABFABAAAQABAAEAAABFABEAAQABAAEAAABFABIAAQABAAEAAABGAA0AAQABAAEAAABGAA4AAQABAAEAAABGAA8AAQABAAEAAABGABAAAQABAAEAAABGABEAAQABAAEAAABGABIAAQABAAEAAABHAA0AAQABAAEAAABHAA4AAQABAAEAAABHAA8AAQABAAEAAABHABAAAQABAAEAAABHABEAAQABAAEAAABHABIAAQABAAEAAABIAA0AAQABAAEAAABIAA4AAQABAAEAAABIAA8AAQABAAEAAABIABAAAQABAAEAAABIABEAAQABAAEAAABIABIAAQABAAEAAABJAA0AAQABAAIAAABJAA4AAQABAAEAAABJAA8AAQABAAEAAABJABAAAQABAAEAAABJABEAAQABAAEAAABJABIAAQABAAEAAABKAA0AAQABAAEAAABKAA4AAQABAAIAAABKAA8AAQABAAEAAABKABAAAQABAAEAAABKABEAAQABAAEAAABKABIAAQABAAEAAABLAA0AAQABAAEAAABLAA4AAQABAAIAAABLAA8AAQABAAIAAABLABAAAQABAAEAAABLABEAAQABAAEAAABLABIAAQABAAEAAABMAA0AAQABAAIAAABMAA4AAQABAAEAAABMAA8AAQABAAEAAABMABAAAQABAAEAAABMABEAAQABAAEAAABMABIAAQABAAEAAABNAA0AAQABAAEAAABNAA4AAQABAAEAAABNAA8AAQABAAEAAABNABAAAQABAAEAAABNABEAAQABAAEAAABNABIAAQABAAEAAABOAA0AAQACAAEAAABOAA4AAQACAAEAAABOAA8AAQACAAEAAABOABAAAQACAAEAAABOABEAAQACAAEAAABOABIAAQACAAEAAABNAAYAAgABAAQAAABOAAYAAgADAAQAAABPAAYAAgADAAQAAABQAAYAAgADAAQAAABRAAYAAgADAAQAAABSAAYAAgADAAQAAABTAAYAAgADAAQAAABUAAYAAgADAAQAAABVAAYAAgABAAQAABBJAAcAAgABAAQAABBIAAcAAgABAAQAAABaAAgAAgABAAQAAABbAAgAAgABAAQAABAFAAoAAgADAAMAAAAMAAoAAgACAAEAAAAAAAoAAgADAAMAAAABAAoAAgABAAIAAAACAAoAAgABAAIAAAARAAkAAgACAAAAAAAjAAgAAgABAAYAAAAnAAgAAgACAAEAAAAqAAgAAgADAAMAAAArAAgAAgADAAMAAAAjAAcAAgABAAUAAAAkAAcAAgACAAUAAAAkAAgAAgACAAYAAABEAAgAAgAAAAcAAABEAAkAAgAAAAgAAABFAAgAAgABAAcAAABFAAkAAgABAAgAAAA+AAgAAgADAAMAAABeAAoAAAABAAEAAABfAAoAAAAAAAAAAABgAAoAAAAAAAAAAABhAAoAAAAAAAAAAABiAAoAAAAAAAAAAABjAAoAAAAAAAAAAABkAAoAAAAAAAAAAABlAAoAAAAAAAAAAABmAAoAAAAAAAAAAABnAAoAAAAAAAAAAABoAAoAAAAAAAAAAABpAAoAAAAAAAAAAABqAAoAAAAAAAAAAABrAAoAAAAAAAAAAABsAAoAAAABAAAAAAB2AAoAAAAAAAAAAAB3AAoAAAAAAAAAAAB4AAoAAAAAAAAAAAB5AAoAAAAAAAAAAAB6AAoAAAAAAAAAAAB7AAoAAAABAAAAAABeAAsAAQAAAAEAAABeAAwAAQAAAAEAAAB7AAsAAQACAAEAAAB7AAwAAQACAAEAAABfAAsAAQABAAEAAABfAAwAAQABAAEAAABfAA0AAQABAAEAAABgAAsAAQABAAEAAABgAAwAAQABAAEAAABgAA0AAQABAAEAAABhAAsAAQABAAEAAABhAAwAAQABAAEAAABhAA0AAQABAAEAAABiAAsAAQABAAEAAABiAAwAAQABAAEAAABiAA0AAQABAAEAAABjAAsAAQABAAEAAABjAAwAAQABAAEAAABjAA0AAQABAAEAAABkAAsAAQABAAEAAABkAAwAAQABAAEAAABkAA0AAQABAAEAAABlAAsAAQABAAEAAABlAAwAAQABAAEAAABmAAsAAQABAAEAAABmAAwAAQABAAEAAABmAA0AAQABAAEAAABnAAsAAQABAAEAAABnAAwAAQABAAEAAABoAAsAAQABAAEAAABoAAwAAQABAAEAAABoAA0AAQABAAEAAABpAAsAAQABAAEAAABpAAwAAQABAAEAAABpAA0AAQABAAEAAABqAAsAAQABAAEAAABqAAwAAQABAAEAAABqAA0AAQABAAEAAABrAAsAAQABAAEAAABrAAwAAQABAAEAAABrAA0AAQABAAEAAABsAAsAAQABAAEAAABsAAwAAQABAAEAAABsAA0AAQABAAEAAABtAAwAAQABAAEAAABtAA0AAQABAAEAAABuAAwAAQABAAAAAABuAA0AAQABAAEAAABvAAwAAQABAAAAAABvAA0AAQABAAEAAABwAAwAAQABAAAAAABwAA0AAQABAAEAAABxAAwAAQABAAAAAABxAA0AAQABAAEAAAByAAwAAQABAAAAAAByAA0AAQABAAEAAABzAAwAAQABAAAAAABzAA0AAQABAAEAAAB0AA0AAQABAAEAAAB1AAsAAQABAAEAAAB1AAwAAQABAAEAAAB1AA0AAQABAAEAAAB2AAsAAQABAAEAAAB2AAwAAQABAAEAAAB2AA0AAQABAAEAAAB3AAsAAQABAAEAAAB3AA0AAQABAAEAAAB4AAsAAQABAAEAAAB4AAwAAQABAAEAAAB4AA0AAQABAAEAAAB5AAsAAQABAAEAAAB5AAwAAQABAAEAAAB5AA0AAQABAAEAAAB6AAwAAQABAAEAAAB6AA0AAQABAAEAAAB0AAwAAQABAAIAAAB3AAwAAQABAAIAAAB6AAsAAQABAAIAAABtAAsAAQACAAAAAAB0AAsAAQAAAAAAAAB1AAoAAAABAAEAAABUAAwAAAAAAAAAAABVAAwAAAABAAAAAABRAAwAAAABAAEAAABSAAwAAAAAAAAAAABTAAwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_qptyk")
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+[node name="Water" type="ParallaxBackground" parent="."]
 layer = 1
 
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Water"]
 modulate = Color(0.517647, 0.662745, 0.545098, 1)
 position = Vector2(2290, 415)
 motion_scale = Vector2(1.1, 1.1)
 script = ExtResource("5_m8w4l")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(-3108, 601)
@@ -319,7 +433,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite2" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite2" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(-2432, 601)
 scale = Vector2(1.01488, 1)
@@ -328,7 +442,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite3" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite3" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(-4454, 601)
 scale = Vector2(1.01488, 1)
@@ -337,7 +451,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite4" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite4" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(-3778, 601)
 scale = Vector2(1.01488, 1)
@@ -346,7 +460,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite5" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite5" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(-410, 601)
 scale = Vector2(1.01488, 1)
@@ -355,7 +469,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite6" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite6" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(266, 601)
 scale = Vector2(1.01488, 1)
@@ -364,7 +478,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite7" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite7" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(-1756, 601)
 scale = Vector2(1.01488, 1)
@@ -373,7 +487,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite8" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite8" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(-1080, 601)
 scale = Vector2(1.01488, 1)
@@ -382,7 +496,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite9" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite9" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(2269, 604)
 scale = Vector2(1.01488, 1)
@@ -391,7 +505,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite10" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite10" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(2945, 604)
 scale = Vector2(1.01488, 1)
@@ -400,7 +514,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite11" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite11" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(923, 604)
 scale = Vector2(1.01488, 1)
@@ -409,7 +523,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite12" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite12" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(1599, 604)
 scale = Vector2(1.01488, 1)
@@ -418,7 +532,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite13" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite13" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(4967, 604)
 scale = Vector2(1.01488, 1)
@@ -427,7 +541,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite14" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite14" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(5643, 604)
 scale = Vector2(1.01488, 1)
@@ -436,7 +550,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite15" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite15" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(3621, 604)
 scale = Vector2(1.01488, 1)
@@ -445,7 +559,7 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[node name="Sprite16" type="AnimatedSprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+[node name="Sprite16" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
 texture_repeat = 2
 position = Vector2(4297, 604)
 scale = Vector2(1.01488, 1)
@@ -454,4 +568,156 @@ animation = &"Water"
 frame = 10
 frame_progress = 0.37689
 
-[connection signal="body_entered" from="TurnAround" to="Mushroom" method="_on_turn_around_body_entered"]
+[node name="Sprite17" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+use_parent_material = true
+position = Vector2(7664, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite18" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(8340, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite19" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(6318, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite20" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(6994, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite21" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(10362, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite22" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(11038, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite23" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(9016, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite24" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(9692, 601)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite25" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(13041, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite26" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(13717, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite27" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(11695, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite28" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(12371, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite29" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(15739, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite30" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(16415, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite31" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(14393, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Sprite32" type="AnimatedSprite2D" parent="Water/ParallaxLayer6"]
+texture_repeat = 2
+position = Vector2(15069, 604)
+scale = Vector2(1.01488, 1)
+sprite_frames = SubResource("SpriteFrames_70dgt")
+animation = &"Water"
+frame = 10
+frame_progress = 0.37689
+
+[node name="Mushroom" parent="." instance=ExtResource("14_p4clw")]
+position = Vector2(9772, 727)
+scale = Vector2(2, 2)
+
+[node name="Gem" parent="." instance=ExtResource("15_gjfyq")]
+position = Vector2(6679, 912)
+rotation = -0.00450301
+scale = Vector2(5, 5)

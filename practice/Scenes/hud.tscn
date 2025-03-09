@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc2v5cc53y7xh"]
+[gd_scene load_steps=13 format=3 uid="uid://cc2v5cc53y7xh"]
 
 [ext_resource type="Script" uid="uid://calpqk80k3vgb" path="res://scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://dp1xneg3x1txj" path="res://Images/HUD/05.png" id="1_e0onf"]
+[ext_resource type="FontFile" uid="uid://dsu8drq2spiv2" path="res://Images/HUD/Bitmgothic.otf" id="3_6fbih"]
+[ext_resource type="PackedScene" uid="uid://c5flt38cf2mhy" path="res://Scenes/gem.tscn" id="3_bjfho"]
+[ext_resource type="PackedScene" uid="uid://dcj6cfb63fukp" path="res://Scenes/coin.tscn" id="5_t1xeu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fccik"]
 atlas = ExtResource("1_e0onf")
@@ -56,8 +59,56 @@ animations = [{
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_bjfho")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Health" type="HBoxContainer" parent="."]
+offset_right = 374.0
+offset_bottom = 116.0
+
+[node name="BarSprite" type="AnimatedSprite2D" parent="Health"]
 position = Vector2(185, 69)
 scale = Vector2(6.25, 6.25)
 sprite_frames = SubResource("SpriteFrames_43w4t")
 animation = &"Health"
+
+[node name="GemBox" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.34
+offset_top = 40.855
+offset_right = -99.3401
+offset_bottom = 96.855
+grow_horizontal = 0
+
+[node name="GemAmount" type="Label" parent="GemBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Gem" parent="GemBox/GemAmount" instance=ExtResource("3_bjfho")]
+position = Vector2(75.3401, 20.585)
+scale = Vector2(5.875, 5.875)
+
+[node name="CoinBox" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.34
+offset_top = 141.07
+offset_right = -99.3401
+offset_bottom = 197.07
+grow_horizontal = 0
+
+[node name="CoinAmount" type="Label" parent="CoinBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Coin" parent="CoinBox/CoinAmount" instance=ExtResource("5_t1xeu")]
+position = Vector2(75.34, 20.145)
+scale = Vector2(5.875, 5.875)

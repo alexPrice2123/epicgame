@@ -1,7 +1,7 @@
 extends CharacterBody2D
-@export var speed = 750
+@export var speed = 650
 @export var gravity = 40
-@export var jump_force = 1000
+@export var jump_force = 950
 @export var health = 5
 @onready var camera = $Camera2D
 @onready var hud = $HUD
@@ -13,6 +13,8 @@ var attacking = false
 var attackanim = 1
 var zoomfactor = 0.15
 var hit = null
+var gems = 0
+var coins = 0
 
 func _physics_process(_delta):
 	if sprite2d.animation == "death" or stunned == true:
@@ -22,7 +24,6 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Lava"):
 		death()
-	pass
 	
 func _ready():
 	sprite2d.play("player_idle")
@@ -31,7 +32,12 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name
 	if hit == "HitBox":
 		damaged()
-		
+	elif body.name.begins_with("Gem"):
+		gems += 1
+		hud.gem()
+	elif body.name.begins_with("Coin"):
+		coins += 1
+		hud.coin()
 
 func _input(_event: InputEvent) -> void:
 	if sprite2d.animation == "death" or stunned == true:
