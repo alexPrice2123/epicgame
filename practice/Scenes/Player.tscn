@@ -465,9 +465,7 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"player_hurt"
-frame = 4
-frame_progress = 1.0
+animation = &"player_death"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -495,8 +493,8 @@ position = Vector2(57.5, -27.875)
 shape = SubResource("RectangleShape2D_dewec")
 disabled = true
 
-[connection signal="area_entered" from="OuchBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="OuchBox" to="." method="_on_ouch_box_area_entered"]
+[connection signal="area_entered" from="OuchBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="OuchBox" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="PlayerHitBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="PlayerHitBox" to="." method="_on_area_2d_body_entered"]

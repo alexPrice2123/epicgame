@@ -16,6 +16,7 @@ var hit = null
 var gems = 0
 var coins = 0
 var lives = 3
+var pos = null
 
 func _physics_process(_delta):
 	if sprite2d.animation == "death" or stunned == true:
@@ -24,15 +25,12 @@ func _physics_process(_delta):
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Lava"):
+		stunned = true
 		death()
 	
 func _ready():
 	sprite2d.play("player_idle")
 	await get_tree().create_timer(0.1).timeout
-	if lives <= -1:
-		lives = 3
-		get_tree().get_root().get_node("World").save()
-		get_tree().quit()
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name
@@ -98,6 +96,9 @@ func movement():
 		velocity.y += gravity
 		if velocity.y > 1500:
 			velocity.y = 1500
+	else:
+		if position.y < 900:
+			pos = position
 	if attacking == true:
 		return
 	if velocity.x != 0 && is_on_floor():
@@ -128,6 +129,34 @@ func death():
 	sprite2d.play("player_death")
 	lives -= 1
 	hud.lost_life()
-	get_tree().get_root().get_node("World").save()
-	await get_tree().create_timer(2).timeout
-	get_tree().reload_current_scene()
+	if lives <= -1:
+		lives = 3
+		get_tree().get_root().get_node("World").save()
+		await get_tree().create_timer(2).timeout
+		get_tree().reload_current_scene()
+	else:
+		get_tree().get_root().get_node("World").save()
+		await get_tree().create_timer(2).timeout
+		sprite2d.play_backwards("player_death")
+		position = pos
+		for i in 12:
+			await get_tree().create_timer(0.1).timeout
+			if i == 0 or i == 2 or i == 4 or i == 6 or i == 8 or i == 10 or i == 12:
+				$Sprite2D2.modulate = Color(255,255,255,255)
+			else:
+				$Sprite2D2.modulate = Color(1,1,1,1)
+		$CollisionShape2D2.set_deferred("disabled", false)
+		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
+		$HUD/Health/BarSprite.frame = 0
+		stunned = false
+		health = 5
+		sprite2d.play("player_idle")
+		for i in 12:
+			await get_tree().create_timer(0.1).timeout
+			if i == 0 or i == 2 or i == 4 or i == 6 or i == 8 or i == 10 or i == 12:
+				$Sprite2D2.modulate = Color(255,255,255,255)
+			else:
+				$Sprite2D2.modulate = Color(1,1,1,1)
+		$Sprite2D2.modulate = Color(1,1,1,1)
+		$OuchBox/CollisionShape2D.set_deferred("disabled", false)
+		
