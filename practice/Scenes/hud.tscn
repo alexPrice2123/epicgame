@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cc2v5cc53y7xh"]
+[gd_scene load_steps=16 format=3 uid="uid://cc2v5cc53y7xh"]
 
 [ext_resource type="Script" uid="uid://calpqk80k3vgb" path="res://scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://dp1xneg3x1txj" path="res://Images/HUD/05.png" id="1_e0onf"]
 [ext_resource type="FontFile" uid="uid://dsu8drq2spiv2" path="res://Images/HUD/Bitmgothic.otf" id="3_6fbih"]
+[ext_resource type="Texture2D" uid="uid://cre4tjyxm6hu" path="res://Images/HUD/Skull.png" id="3_8jye8"]
 [ext_resource type="PackedScene" uid="uid://c5flt38cf2mhy" path="res://Scenes/gem.tscn" id="3_bjfho"]
+[ext_resource type="Texture2D" uid="uid://cofpj8i4r4g2u" path="res://Images/HUD/DeadSkull.png" id="4_43w4t"]
 [ext_resource type="PackedScene" uid="uid://dcj6cfb63fukp" path="res://Scenes/coin.tscn" id="5_t1xeu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fccik"]
@@ -56,6 +58,20 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_7gr8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8jye8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_43w4t")
+}],
+"loop": false,
+"name": &"Health",
+"speed": 10.0
+}]
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_bjfho")
 
@@ -67,6 +83,24 @@ offset_bottom = 116.0
 position = Vector2(185, 69)
 scale = Vector2(6.25, 6.25)
 sprite_frames = SubResource("SpriteFrames_43w4t")
+animation = &"Health"
+
+[node name="Skull" type="AnimatedSprite2D" parent="Health"]
+position = Vector2(115.375, 137.375)
+scale = Vector2(0.1415, 0.1415)
+sprite_frames = SubResource("SpriteFrames_7gr8i")
+animation = &"Health"
+
+[node name="Skull2" type="AnimatedSprite2D" parent="Health"]
+position = Vector2(190.375, 137.375)
+scale = Vector2(0.1415, 0.1415)
+sprite_frames = SubResource("SpriteFrames_7gr8i")
+animation = &"Health"
+
+[node name="Skull3" type="AnimatedSprite2D" parent="Health"]
+position = Vector2(266.375, 137.375)
+scale = Vector2(0.1415, 0.1415)
+sprite_frames = SubResource("SpriteFrames_7gr8i")
 animation = &"Health"
 
 [node name="GemBox" type="HBoxContainer" parent="."]

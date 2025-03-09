@@ -30,7 +30,6 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 	if sprite2d.animation == "death":
 		return
 	hit = body.name
-	print(hit)
 	if hit.begins_with("PlayerHitBox") && stunned == false:
 		health -= 1
 		if health <= 0:
@@ -54,7 +53,6 @@ func _on_vision_area_entered(body: Area2D) -> void:
 	if sprite2d.animation == "death":
 		return
 	hit = body.name
-	print(hit)
 	if hit == "OuchBox" && stunned == false:
 		attacking = true
 		while attacking == true:

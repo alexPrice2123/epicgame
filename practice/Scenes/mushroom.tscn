@@ -329,17 +329,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jg55k"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aktc8"]
 radius = 31.0
 height = 64.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
-size = Vector2(60.7623, 10.9245)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g77dt"]
+size = Vector2(60.7623, 8.87615)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
-size = Vector2(59, 80.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qdqy"]
+size = Vector2(59, 65)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gvq0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i6dj"]
 size = Vector2(25, 98)
 
 [node name="Mushroom" type="CharacterBody2D"]
@@ -349,28 +349,27 @@ script = ExtResource("1_aktc8")
 position = Vector2(13, -47)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2r5i3")
-animation = &"walk"
+animation = &"idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(12, -14)
-rotation = -2.97634
-shape = SubResource("CapsuleShape2D_jg55k")
+position = Vector2(12, -15)
+shape = SubResource("CapsuleShape2D_aktc8")
 
 [node name="Area2D" type="Area2D" parent="."]
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(12.5, -18)
+position = Vector2(12.5, -10.5)
 rotation = 3.14159
 scale = Vector2(1.2014, -7.323)
-shape = SubResource("RectangleShape2D_gntrk")
+shape = SubResource("RectangleShape2D_g77dt")
 
 [node name="HitBox" type="Area2D" parent="."]
 priority = 10
 
 [node name="CollisionBox" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-30, -17.75)
-shape = SubResource("RectangleShape2D_dewec")
+position = Vector2(-30, -10.5)
+shape = SubResource("RectangleShape2D_4qdqy")
 disabled = true
 
 [node name="Vision" type="Area2D" parent="."]
@@ -378,7 +377,7 @@ priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
 position = Vector2(-31.5, -27)
-shape = SubResource("RectangleShape2D_4gvq0")
+shape = SubResource("RectangleShape2D_2i6dj")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

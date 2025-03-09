@@ -15,6 +15,7 @@ var zoomfactor = 0.15
 var hit = null
 var gems = 0
 var coins = 0
+var lives = 3
 
 func _physics_process(_delta):
 	if sprite2d.animation == "death" or stunned == true:
@@ -27,6 +28,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 func _ready():
 	sprite2d.play("player_idle")
+	await get_tree().create_timer(0.1).timeout
+	if lives <= -1:
+		lives = 3
+		get_tree().get_root().get_node("World").save()
+		get_tree().quit()
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name
@@ -79,6 +85,10 @@ func _input(_event: InputEvent) -> void:
 		if camera.zoom.y <= 0.75:
 			camera.zoom.y = 0.75
 			camera.zoom.x = 0.75
+	if Input.is_action_just_pressed("quit"):
+		lives = 3
+		get_tree().get_root().get_node("World").save()
+		get_tree().quit()
 		
 func movement():
 	var h_direction = Input.get_axis("move_left", "move_right")
@@ -116,5 +126,8 @@ func death():
 	$OuchBox/CollisionShape2D.set_deferred("disabled", true)
 	attackbox.set_deferred("disabled", true)
 	sprite2d.play("player_death")
+	lives -= 1
+	hud.lost_life()
+	get_tree().get_root().get_node("World").save()
 	await get_tree().create_timer(2).timeout
 	get_tree().reload_current_scene()

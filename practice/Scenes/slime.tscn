@@ -316,14 +316,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jg55k"]
-radius = 31.0
-height = 64.0
+radius = 18.0
+height = 36.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
-size = Vector2(60.7623, 10.9245)
+size = Vector2(60.7623, 6.82781)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
-size = Vector2(59, 80.5)
+size = Vector2(59, 50.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gvq0"]
 size = Vector2(25, 98)
@@ -340,15 +340,14 @@ animation = &"attack"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(12, -14)
-rotation = -2.97634
+position = Vector2(12, 0)
 shape = SubResource("CapsuleShape2D_jg55k")
 
 [node name="Area2D" type="Area2D" parent="."]
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(12.5, -18)
+position = Vector2(12.5, -2.99997)
 rotation = 3.14159
 scale = Vector2(1.2014, -7.323)
 shape = SubResource("RectangleShape2D_gntrk")
@@ -357,7 +356,7 @@ shape = SubResource("RectangleShape2D_gntrk")
 priority = 10
 
 [node name="CollisionBox" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-30, -17.75)
+position = Vector2(-30, -2.75)
 shape = SubResource("RectangleShape2D_dewec")
 disabled = true
 
