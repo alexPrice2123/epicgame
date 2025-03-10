@@ -26,6 +26,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if hit.begins_with("Lava"):
 		stunned = true
 		death()
+
 func _on_area_2d_area_entered(body: Node2D) -> void:
 	if sprite2d.animation == "death":
 		return
@@ -60,7 +61,7 @@ func _on_vision_area_entered(body: Area2D) -> void:
 				return
 			sprite2d.play("attack")
 			velocity.x = 0
-			movementnum = -1000
+			movementnum = 0
 			await get_tree().create_timer(0.4).timeout
 			if stunned == false:
 				attackbox.disabled = false
@@ -72,14 +73,13 @@ func _on_vision_area_entered(body: Area2D) -> void:
 			sprite2d.play("idle")
 			await get_tree().create_timer(attackspeed).timeout
 			
-		
 func _on_vision_area_exited(body: Area2D) -> void:
 	hit = body.name
-
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
 		movementnum = 0
 		await get_tree().create_timer(1.1).timeout
+		checkaround()
 		attacking = false
 		
 func _ready():
@@ -88,6 +88,9 @@ func _ready():
 func movement():
 	velocity.x = 0
 	movementnum +=1
+	print(movementnum)
+	if movementnum >= 350:
+		checkaround()
 	if movementnum >= 50:
 		velocity.x = -300*direction
 		if direction < 0:
@@ -129,3 +132,8 @@ func death():
 		sprite2d.modulate.a -= 0.1
 		await get_tree().create_timer(0.05).timeout
 	queue_free()
+
+func checkaround():
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	await get_tree().create_timer(0.1).timeout
+	$Area2D/CollisionShape2D.set_deferred("disabled", false)

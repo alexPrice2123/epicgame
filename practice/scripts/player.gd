@@ -43,6 +43,13 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 		coins += 1
 		hud.coin()
 
+func _on_ouch_box_area_exited(body: Area2D) -> void:
+	hit = body.name
+	if hit == "HitBox":
+		await get_tree().create_timer(0.5).timeout
+		if sprite2d.animation == "death" or health <= 0:
+			return
+		stunned = false
 func _input(_event: InputEvent) -> void:
 	if sprite2d.animation == "death" or stunned == true:
 		return
@@ -111,9 +118,8 @@ func damaged():
 	health -= 1
 	hud.damaged()
 	if health > 0:
+		sprite2d.frame = 0
 		sprite2d.play("player_hurt")
-		await get_tree().create_timer(0.5).timeout
-		stunned = false
 	else:
 		sprite2d.play("player_hurt")
 		$CollisionShape2D2.set_deferred("disabled", true)

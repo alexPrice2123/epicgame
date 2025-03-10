@@ -1,10 +1,10 @@
 extends CharacterBody2D
-@export var speed = 750
+@export var speed = 400
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 2
+@export var health = 3
 @export var spawn_coin = preload("res://Scenes/coin.tscn")
-@onready var sprite2d = $AnimatedSprite2D
+@onready var sprite2d = $Sprite2D2
 @onready var attackbox = $HitBox/CollisionBox
 @onready var visionbox = $Vision/CollisionShape2D
 var idle = 0
@@ -14,7 +14,7 @@ var attackanim = 1
 var hit = null
 var movementnum = 0
 var direction = 1
-var attackspeed = 0.4
+var attackspeed = 1.7
 
 func _physics_process(_delta):
 	if sprite2d.animation == "death" or stunned == true:
@@ -26,6 +26,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if hit.begins_with("Lava"):
 		stunned = true
 		death()
+
 func _on_area_2d_area_entered(body: Node2D) -> void:
 	if sprite2d.animation == "death":
 		return
@@ -35,7 +36,7 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 		if health <= 0:
 			stunned = true
 			sprite2d.play("hurt")
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(0.3).timeout
 			death()
 		else:
 			sprite2d.play("hurt")
@@ -60,26 +61,30 @@ func _on_vision_area_entered(body: Area2D) -> void:
 				return
 			sprite2d.play("attack")
 			velocity.x = 0
-			movementnum = -1000
-			await get_tree().create_timer(0.4).timeout
+			movementnum = 0
+			await get_tree().create_timer(0.5).timeout
 			if stunned == false:
-				attackbox.disabled = false
-			await get_tree().create_timer(0.4).timeout
+				attackbox.set_deferred("disabled", false)
+			for i in 4:
+				if i == 0 or i == 2 or i == 4:
+					attackbox.set_deferred("disabled", true)
+				else:
+					if sprite2d.animation == "attack":
+						attackbox.set_deferred("disabled", false)
+				await get_tree().create_timer(0.2).timeout
 			attackbox.set_deferred("disabled", true)
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.5).timeout
 			if sprite2d.animation == "death":
 				return
 			sprite2d.play("idle")
 			await get_tree().create_timer(attackspeed).timeout
 			
-		
 func _on_vision_area_exited(body: Area2D) -> void:
 	hit = body.name
-
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
 		movementnum = 0
-		await get_tree().create_timer(0.9).timeout
+		await get_tree().create_timer(1.1).timeout
 		checkaround()
 		attacking = false
 		
@@ -89,18 +94,15 @@ func _ready():
 func movement():
 	velocity.x = 0
 	movementnum +=1
+	print(movementnum)
 	if movementnum >= 350:
 		checkaround()
 	if movementnum >= 50:
 		velocity.x = -300*direction
 		if direction < 0:
 			sprite2d.flip_h = true
-			attackbox.position.x = 48
-			visionbox.position.x = 55
 		else:
 			sprite2d.flip_h = false
-			attackbox.position.x = -30
-			visionbox.position.x = -31.5
 	move_and_slide()
 	if !is_on_floor():
 		velocity.y += gravity
@@ -112,6 +114,7 @@ func movement():
 		sprite2d.play("walk")
 	else:
 		sprite2d.play("idle")
+		
 func coindrops():
 	var world = get_tree().get_root().get_node("World")
 	var obj = spawn_coin.instantiate()
