@@ -1,6 +1,6 @@
 [gd_scene load_steps=61 format=3 uid="uid://1b4yf4ut7syd"]
 
-[ext_resource type="Script" uid="uid://borr2ncrmxpdk" path="res://Scenes/bush.gd" id="1_5x1sn"]
+[ext_resource type="Script" uid="uid://borr2ncrmxpdk" path="res://scripts/bush.gd" id="1_5x1sn"]
 [ext_resource type="Texture2D" uid="uid://b4iht4ckusxaf" path="res://Images/Bush/Bush_Monster-Attack.png" id="2_r6it2"]
 [ext_resource type="Texture2D" uid="uid://cig0yuvm3ogfv" path="res://Images/Bush/Bush_Monster-Die.png" id="3_jyslo"]
 [ext_resource type="Texture2D" uid="uid://d10ddnlfjhu3a" path="res://Images/Bush/Bush_Monster-Hit.png" id="4_8vpta"]
@@ -386,10 +386,10 @@ height = 98.0
 size = Vector2(89.0627, 7.7837)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmnfg"]
-size = Vector2(173, 90.5)
+size = Vector2(131, 75.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdin6"]
-size = Vector2(131, 98)
+size = Vector2(120, 68)
 
 [node name="Bush" type="CharacterBody2D"]
 script = ExtResource("1_5x1sn")
@@ -400,6 +400,8 @@ position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_0h6n3")
 animation = &"attack"
+frame = 12
+frame_progress = 0.696428
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -420,7 +422,7 @@ shape = SubResource("RectangleShape2D_b2rql")
 priority = 10
 
 [node name="CollisionBox" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(11.5, -22.75)
+position = Vector2(8.5, -15.25)
 shape = SubResource("RectangleShape2D_dmnfg")
 disabled = true
 
@@ -428,7 +430,7 @@ disabled = true
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(8.5, -27)
+position = Vector2(8, -12)
 shape = SubResource("RectangleShape2D_qdin6")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
