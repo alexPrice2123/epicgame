@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://iostokmlvesd"]
+
+[ext_resource type="Texture2D" uid="uid://de6qfswsiyw08" path="res://Images/Skelibones/Skeleton_03_Yellow_Idle.png" id="1_c7r4w"]
+[ext_resource type="Script" uid="uid://cpoatww1u4i86" path="res://scripts/skelibones.gd" id="1_e06kh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e06kh"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7lfa"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhqqt"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pujoy"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2unb3"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkrdo"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwro5"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx6px"]
+atlas = ExtResource("1_c7r4w")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1q2ov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e06kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7lfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhqqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pujoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2unb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkrdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwro5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx6px")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw5cu"]
+radius = 39.0
+height = 78.0
+
+[node name="Skelibones" type="CharacterBody2D"]
+script = ExtResource("1_e06kh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1q2ov")
+animation = &"idle"
+frame_progress = 0.299096
+flip_h = true
+
+[node name="Bones" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bones"]
+position = Vector2(-1, 6)
+shape = SubResource("CapsuleShape2D_pw5cu")

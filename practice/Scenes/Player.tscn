@@ -277,7 +277,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_miouo")
 }],
 "loop": false,
-"name": &"player_attack",
+"name": &"brute_attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -315,7 +315,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_avx33")
 }],
 "loop": false,
-"name": &"player_attack2",
+"name": &"brute_attack2",
 "speed": 10.0
 }, {
 "frames": [{
@@ -359,7 +359,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_teras")
 }],
 "loop": false,
-"name": &"player_death",
+"name": &"brute_death",
 "speed": 10.0
 }, {
 "frames": [{
@@ -379,7 +379,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_yrofn")
 }],
 "loop": false,
-"name": &"player_hurt",
+"name": &"brute_hurt",
 "speed": 10.0
 }, {
 "frames": [{
@@ -408,7 +408,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5v66d")
 }],
 "loop": true,
-"name": &"player_idle",
+"name": &"brute_idle",
 "speed": 10.0
 }, {
 "frames": [{
@@ -443,7 +443,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vp15a")
 }],
 "loop": true,
-"name": &"player_walk",
+"name": &"brute_walk",
 "speed": 10.0
 }]
 
@@ -465,7 +465,7 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"player_death"
+animation = &"brute_attack"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

@@ -94,7 +94,6 @@ func _ready():
 func movement():
 	velocity.x = 0
 	movementnum +=1
-	print(movementnum)
 	if movementnum >= 350:
 		checkaround()
 	if movementnum >= 50:

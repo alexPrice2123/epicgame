@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var gravity = 40
 @export var jump_force = 950
 @export var health = 5
+@export var classe = "brute"
 @onready var camera = $Camera2D
 @onready var hud = $HUD
 @onready var sprite2d = $Sprite2D2
@@ -19,7 +20,7 @@ var lives = 3
 var pos = null
 
 func _physics_process(_delta):
-	if sprite2d.animation == "death" or stunned == true:
+	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
 		return
 	movement()
 	
@@ -29,7 +30,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		death()
 	
 func _ready():
-	sprite2d.play("player_idle")
+	sprite2d.play("%s_idle" % classe)
 	await get_tree().create_timer(0.1).timeout
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
@@ -42,16 +43,20 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 	elif body.name.begins_with("Coin"):
 		coins += 1
 		hud.coin()
+	elif body.name.begins_with("Bones"):
+		$HUD.openUI()
 
 func _on_ouch_box_area_exited(body: Area2D) -> void:
 	hit = body.name
 	if hit == "HitBox":
 		await get_tree().create_timer(0.5).timeout
-		if sprite2d.animation == "death" or health <= 0:
+		if sprite2d.animation == ("%s_death" % classe) or health <= 0:
 			return
 		stunned = false
+	elif body.name.begins_with("Bones"):
+		$HUD.closeUI()
 func _input(_event: InputEvent) -> void:
-	if sprite2d.animation == "death" or stunned == true:
+	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
 		return
 	if Input.is_action_just_pressed("move_left"):
 		sprite2d.flip_h = true
@@ -67,10 +72,10 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack") && attacking == false:
 		attacking = true
 		if attackanim == 1:
-			sprite2d.play("player_attack")
+			sprite2d.play("%s_attack" % classe)
 			attackanim = 2
 		else:
-			sprite2d.play("player_attack2")
+			sprite2d.play("%s_attack2" % classe)
 			attackanim = 1
 		await get_tree().create_timer(0.5).timeout
 		if stunned == false:
@@ -109,9 +114,9 @@ func movement():
 	if attacking == true:
 		return
 	if velocity.x != 0 && is_on_floor():
-		sprite2d.play("player_walk")
+		sprite2d.play("%s_walk" % classe)
 	else:
-		sprite2d.play("player_idle")
+		sprite2d.play("%s_idle" % classe)
 		
 func damaged():
 	stunned = true
@@ -119,9 +124,9 @@ func damaged():
 	hud.damaged()
 	if health > 0:
 		sprite2d.frame = 0
-		sprite2d.play("player_hurt")
+		sprite2d.play("%s_hurt" % classe)
 	else:
-		sprite2d.play("player_hurt")
+		sprite2d.play("%s_hurt" % classe)
 		$CollisionShape2D2.set_deferred("disabled", true)
 		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
 		attackbox.set_deferred("disabled", true)
@@ -132,7 +137,7 @@ func death():
 	$CollisionShape2D2.set_deferred("disabled", true)
 	$OuchBox/CollisionShape2D.set_deferred("disabled", true)
 	attackbox.set_deferred("disabled", true)
-	sprite2d.play("player_death")
+	sprite2d.play("%s_death" % classe)
 	lives -= 1
 	hud.lost_life()
 	if lives <= -1:
@@ -143,7 +148,7 @@ func death():
 	else:
 		get_tree().get_root().get_node("World").save()
 		await get_tree().create_timer(2).timeout
-		sprite2d.play_backwards("player_death")
+		sprite2d.play_backwards("%s_death" % classe)
 		position = pos
 		for i in 12:
 			await get_tree().create_timer(0.1).timeout
@@ -156,7 +161,7 @@ func death():
 		$HUD/Health/BarSprite.frame = 0
 		stunned = false
 		health = 5
-		sprite2d.play("player_idle")
+		sprite2d.play("%s_idle" % classe)
 		for i in 12:
 			await get_tree().create_timer(0.1).timeout
 			if i == 0 or i == 2 or i == 4 or i == 6 or i == 8 or i == 10 or i == 12:

@@ -1,17 +1,18 @@
 [gd_scene load_steps=6 format=4 uid="uid://cjex1joi43h51"]
 
-[ext_resource type="Texture2D" uid="uid://b5a06e0umquja" path="res://Images/tileset/Grass.png" id="1_1br53"]
-[ext_resource type="Texture2D" uid="uid://dthcmvcptsi86" path="res://Images/tileset/Cobblestone.png" id="2_drmie"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_thwq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0v1hq"]
-texture = ExtResource("1_1br53")
+texture = SubResource("CompressedTexture2D_thwq6")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yj5sm"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlxc1"]
-texture = ExtResource("2_drmie")
+texture = SubResource("CompressedTexture2D_yj5sm")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
