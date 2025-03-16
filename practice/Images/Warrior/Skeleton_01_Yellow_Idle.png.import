@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brr216phagtoc"
-path="res://.godot/imported/Skeleton_02_Yellow_Die.png-514ee234502099b42b9473cfc0bf7893.ctex"
+uid="uid://rjljxypv7725"
+path="res://.godot/imported/Skeleton_01_Yellow_Idle.png-49ceea592971af47bada4054dd9e2742.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/SpritSheet/Skeleton_02_Yellow_Die.png"
-dest_files=["res://.godot/imported/Skeleton_02_Yellow_Die.png-514ee234502099b42b9473cfc0bf7893.ctex"]
+source_file="res://Images/Warrior/Skeleton_01_Yellow_Idle.png"
+dest_files=["res://.godot/imported/Skeleton_01_Yellow_Idle.png-49ceea592971af47bada4054dd9e2742.ctex"]
 
 [params]
 

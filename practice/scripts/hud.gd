@@ -4,10 +4,12 @@ var gems = 0
 var coins = 0
 var lives = 3
 var open = false
+var plr = null
 
 func _ready() -> void:
 	$Talk/TalkBox.frame = 44
 	$Talk/TalkBox/OrgBox.modulate.a = 0
+	plr = get_tree().get_root().get_node("World").get_node("Player")
 	
 func damaged():
 	$Health/BarSprite.frame += 1
@@ -61,6 +63,10 @@ func _on_yes_button_down() -> void:
 func _on_yes_button_up() -> void:
 	var pressedbutton = load("res://Images/HUD/Button/NormalButton.png")
 	$Talk/TalkBox/OrgBox/Yes.icon = pressedbutton
+	if plr.classe == "brute":
+		plr.classe = "warrior"
+	else:
+		plr.classe = "brute"
 	closeUI()
 
 func _on_no_button_down() -> void:

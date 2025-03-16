@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0iixciducrbk"
-path="res://.godot/imported/Skeleton_02_Yellow_Hurt.png-dc83bc69b1862c1f2e974e2298e8c16e.ctex"
+uid="uid://dg0t1qkdlrcof"
+path="res://.godot/imported/Skeleton_02_Yellow_Walk.png-8a73179dccfe0806607a052424bd5992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/SpritSheet/Skeleton_02_Yellow_Hurt.png"
-dest_files=["res://.godot/imported/Skeleton_02_Yellow_Hurt.png-dc83bc69b1862c1f2e974e2298e8c16e.ctex"]
+source_file="res://Images/Brute/Skeleton_02_Yellow_Walk.png"
+dest_files=["res://.godot/imported/Skeleton_02_Yellow_Walk.png-8a73179dccfe0806607a052424bd5992.ctex"]
 
 [params]
 
