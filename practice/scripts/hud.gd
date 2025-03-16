@@ -8,13 +8,15 @@ var plr = null
 
 func _ready() -> void:
 	$Talk/TalkBox.frame = 44
+	$Talk/TalkBox/Header.frame = 27
 	$Talk/TalkBox/OrgBox.modulate.a = 0
+	$Talk/TalkBox/OrgBox/Yes.visible = false
+	$Talk/TalkBox/OrgBox/No.visible = false
 	plr = get_tree().get_root().get_node("World").get_node("Player")
 	
 func damaged():
-	$Health/BarSprite.frame += 1
-func healed(): 
-	$Health/BarSprite.frame -= 1
+	$Health/BarSprite.animation = ("%sHealth" % plr.classe)
+	$Health/BarSprite.frame = plr.health
 
 func gem():
 	gems +=1
@@ -41,8 +43,10 @@ func openUI():
 	if open == false:
 		open = true
 		$Talk/TalkBox.play_backwards("open")
+		$Talk/TalkBox/Header.play_backwards("open")
 		await get_tree().create_timer(1).timeout
-		$Talk/TalkBox.frame = 0
+		$Talk/TalkBox/OrgBox/Yes.visible = true
+		$Talk/TalkBox/OrgBox/No.visible = true
 		for i in 10:
 			$Talk/TalkBox/OrgBox.modulate.a += 0.1
 			await get_tree().create_timer(0.01).timeout
@@ -54,6 +58,9 @@ func closeUI():
 			$Talk/TalkBox/OrgBox.modulate.a -= 0.1
 			await get_tree().create_timer(0.01).timeout
 		$Talk/TalkBox.play("open")
+		$Talk/TalkBox/Header.play("open")
+		$Talk/TalkBox/OrgBox/Yes.visible = false
+		$Talk/TalkBox/OrgBox/No.visible = false
 
 
 func _on_yes_button_down() -> void:
@@ -64,10 +71,23 @@ func _on_yes_button_up() -> void:
 	var pressedbutton = load("res://Images/HUD/Button/NormalButton.png")
 	$Talk/TalkBox/OrgBox/Yes.icon = pressedbutton
 	if plr.classe == "brute":
+		if plr.health >= 5:
+			plr.health = 3
 		plr.classe = "warrior"
+		$Health/BarSprite.animation = ("%sHealth" % plr.classe)
+		$Health/BarSprite.frame = plr.health
+		closeUI()
+		await get_tree().create_timer(0.5).timeout
+		$Talk/TalkBox/OrgBox/Text.text = "Hey there fello travaler! Would you like to change your class to Brute?"
 	else:
+		if plr.health >= 3:
+			plr.health = 5
 		plr.classe = "brute"
-	closeUI()
+		$Health/BarSprite.animation = ("%sHealth" % plr.classe)
+		$Health/BarSprite.frame = plr.health
+		closeUI()
+		await get_tree().create_timer(0.5).timeout
+		$Talk/TalkBox/OrgBox/Text.text = "Hey there fello travaler! Would you like to change your class to Warrior?"
 
 func _on_no_button_down() -> void:
 	var pressedbutton = load("res://Images/HUD/Button/Pressed.png")

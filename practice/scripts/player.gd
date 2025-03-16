@@ -20,7 +20,7 @@ var lives = 3
 var pos = null
 
 func _physics_process(_delta):
-	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
+	if sprite2d.animation == ("%s_death" % classe):
 		return
 	movement()
 	
@@ -31,6 +31,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 func _ready():
 	sprite2d.play("%s_idle" % classe)
+	$HUD.damaged()
 	await get_tree().create_timer(0.1).timeout
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
@@ -56,8 +57,11 @@ func _on_ouch_box_area_exited(body: Area2D) -> void:
 	elif body.name.begins_with("Bones"):
 		$HUD.closeUI()
 func _input(_event: InputEvent) -> void:
-	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
+	if sprite2d.animation == ("%s_death" % classe):
 		return
+	if classe == "brute":
+		if stunned == true:
+			return
 	if Input.is_action_just_pressed("move_left"):
 		sprite2d.flip_h = true
 		sprite2d.offset.x = 0
@@ -80,7 +84,11 @@ func _input(_event: InputEvent) -> void:
 		await get_tree().create_timer(0.5).timeout
 		if stunned == false:
 			attackbox.disabled = false
-		await get_tree().create_timer(0.5).timeout
+
+		if classe == "brute":
+			await get_tree().create_timer(0.5).timeout
+		else:
+			await get_tree().create_timer(0.3).timeout
 		attackbox.set_deferred("disabled", true)
 		attacking = false
 	if Input.is_action_just_pressed("scroll_in"):
@@ -112,6 +120,8 @@ func movement():
 		if position.y < 900:
 			pos = position
 	if attacking == true:
+		return
+	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
 		return
 	if velocity.x != 0 && is_on_floor():
 		sprite2d.play("%s_walk" % classe)
@@ -158,9 +168,12 @@ func death():
 				$Sprite2D2.modulate = Color(1,1,1,1)
 		$CollisionShape2D2.set_deferred("disabled", false)
 		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
-		$HUD/Health/BarSprite.frame = 0
-		stunned = false
-		health = 5
+		stunned = false 
+		if classe == "brute":
+			health = 5
+		else:
+			health = 3
+		$HUD.damaged()
 		sprite2d.play("%s_idle" % classe)
 		for i in 12:
 			await get_tree().create_timer(0.1).timeout

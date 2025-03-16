@@ -886,8 +886,8 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"warrior_hurt"
-frame = 4
+animation = &"warrior_attack"
+frame = 9
 frame_progress = 1.0
 offset = Vector2(5, 0)
 
