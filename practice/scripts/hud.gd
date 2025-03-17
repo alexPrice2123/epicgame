@@ -70,6 +70,8 @@ func _on_yes_button_down() -> void:
 func _on_yes_button_up() -> void:
 	var pressedbutton = load("res://Images/HUD/Button/NormalButton.png")
 	$Talk/TalkBox/OrgBox/Yes.icon = pressedbutton
+	plr.get_node("Sound").stream = load("res://Sounds/Sounds/Confirm.wav")
+	plr.get_node("Sound").play()
 	if plr.classe == "brute":
 		if plr.health >= 5:
 			plr.health = 3
@@ -96,4 +98,6 @@ func _on_no_button_down() -> void:
 func _on_no_button_up() -> void:
 	var pressedbutton = load("res://Images/HUD/Button/NormalButton.png")
 	$Talk/TalkBox/OrgBox/No.icon = pressedbutton
+	plr.get_node("Sound").stream = load("res://Sounds/Sounds/Cancel.wav")
+	plr.get_node("Sound").play()
 	closeUI()

@@ -18,6 +18,8 @@ var gems = 0
 var coins = 0
 var lives = 3
 var pos = null
+var jumpex = 0.02
+var shouldland = false
 
 func _physics_process(_delta):
 	if sprite2d.animation == ("%s_death" % classe):
@@ -27,6 +29,8 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Lava"):
 		stunned = true
+		$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
+		$Sound.play()
 		death()
 	
 func _ready():
@@ -41,9 +45,13 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 	elif body.name.begins_with("Gem"):
 		gems += 1
 		hud.gem()
+		$Sound.stream = load("res://Sounds/Sounds/Get_Gem.wav")
+		$Sound.play()
 	elif body.name.begins_with("Coin"):
 		coins += 1
 		hud.coin()
+		$Sound.stream = load("res://Sounds/Sounds/Get_Coin.wav")
+		$Sound.play()
 	elif body.name.begins_with("Bones"):
 		$HUD.openUI()
 
@@ -73,6 +81,17 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = -jump_force
+			for i in 10:
+				$Sprite2D2.scale.y += jumpex*2
+				$Sprite2D2.scale.x -= jumpex
+				await get_tree().create_timer(0.01).timeout
+			for i in 10:
+				$Sprite2D2.scale.y -= jumpex*2
+				$Sprite2D2.scale.x += jumpex*2
+				await get_tree().create_timer(0.01).timeout
+			for i in 10:
+				$Sprite2D2.scale.x -= jumpex
+				await get_tree().create_timer(0.01).timeout
 	if Input.is_action_just_pressed("attack") && attacking == false:
 		attacking = true
 		if attackanim == 1:
@@ -113,10 +132,16 @@ func movement():
 	velocity.x = speed * h_direction
 	move_and_slide()
 	if !is_on_floor():
-		velocity.y += gravity
-		if velocity.y > 1500:
-			velocity.y = 1500
+		shouldland = true
+		if health > 0:
+			velocity.y += gravity
+			if velocity.y > 1500:
+				velocity.y = 1500
 	else:
+		if shouldland == true:
+			shouldland = false
+			$Sound.stream = load("res://Sounds/Sounds/step.wav")
+			$Sound.play()
 		if position.y < 900:
 			pos = position
 	if attacking == true:
@@ -135,11 +160,15 @@ func damaged():
 	if health > 0:
 		sprite2d.frame = 0
 		sprite2d.play("%s_hurt" % classe)
+		$Sound.stream = load("res://Sounds/Sounds/Damage.wav")
+		$Sound.play()
 	else:
 		sprite2d.play("%s_hurt" % classe)
 		$CollisionShape2D2.set_deferred("disabled", true)
 		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
 		attackbox.set_deferred("disabled", true)
+		$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
+		$Sound.play()
 		await get_tree().create_timer(0.2).timeout
 		death()
 func death():
@@ -158,6 +187,8 @@ func death():
 	else:
 		get_tree().get_root().get_node("World").save()
 		await get_tree().create_timer(2).timeout
+		$Sound.stream = load("res://Sounds/Sounds/Heal.wav")
+		$Sound.play()
 		sprite2d.play_backwards("%s_death" % classe)
 		position = pos
 		for i in 12:

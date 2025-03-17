@@ -34,11 +34,15 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 	if hit.begins_with("PlayerHitBox") && stunned == false:
 		health -= 1
 		if health <= 0:
+			$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
+			$Sound.play()
 			stunned = true
 			sprite2d.play("hurt")
 			await get_tree().create_timer(0.3).timeout
 			death()
 		else:
+			$Sound.stream = load("res://Sounds/Sounds/Damage.wav")
+			$Sound.play()
 			sprite2d.play("hurt")
 			stunned = true
 		await get_tree().create_timer(0.5).timeout

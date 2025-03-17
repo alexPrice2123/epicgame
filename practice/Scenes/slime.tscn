@@ -337,6 +337,8 @@ position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
 animation = &"attack"
+frame = 8
+frame_progress = 0.497874
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -367,6 +369,8 @@ priority = 10
 position = Vector2(-16.5, -27)
 shape = SubResource("RectangleShape2D_4gvq0")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

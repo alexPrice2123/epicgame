@@ -916,6 +916,8 @@ position = Vector2(57.5, -27.875)
 shape = SubResource("RectangleShape2D_dewec")
 disabled = true
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="area_entered" from="OuchBox" to="." method="_on_ouch_box_area_entered"]
 [connection signal="area_entered" from="OuchBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OuchBox" to="." method="_on_ouch_box_area_exited"]
