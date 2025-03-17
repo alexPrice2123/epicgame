@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=4 uid="uid://dhnms44nr6egu"]
+[gd_scene load_steps=146 format=4 uid="uid://dhnms44nr6egu"]
 
 [ext_resource type="PackedScene" uid="uid://vgmnk2ppdy54" path="res://Scenes/Player.tscn" id="1_48i0q"]
 [ext_resource type="Script" uid="uid://ods454e3epdi" path="res://scripts/new_world.gd" id="1_nhwle"]
@@ -74,6 +74,9 @@ size = Vector2(20, 214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1lm7"]
 size = Vector2(123.5, 126.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr7ga"]
+size = Vector2(72.75, 173.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8w4l"]
 shader = ExtResource("9_5rrus")
@@ -2430,7 +2433,7 @@ position = Vector2(20348, 753)
 scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
-position = Vector2(21311, 659)
+position = Vector2(26111, 475)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]
@@ -2596,6 +2599,16 @@ position = Vector2(24928, -301)
 shape = SubResource("RectangleShape2D_e0np7")
 debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
+[node name="TurnAround31" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(26521, -468)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround32" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(27852, -469)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
 [node name="TurnAround7" type="CollisionShape2D" parent="TurnAround"]
 position = Vector2(7516, -141)
 shape = SubResource("RectangleShape2D_e0np7")
@@ -2638,6 +2651,16 @@ debug_color = Color(0, 0, 0.12549, 0.419608)
 [node name="Object2" type="CollisionShape2D" parent="Object"]
 position = Vector2(24852, -247)
 shape = SubResource("RectangleShape2D_w1lm7")
+debug_color = Color(0, 0, 0.12549, 0.419608)
+
+[node name="Object3" type="CollisionShape2D" parent="Object"]
+position = Vector2(26579.4, -418)
+shape = SubResource("RectangleShape2D_qr7ga")
+debug_color = Color(0, 0, 0.12549, 0.419608)
+
+[node name="Object4" type="CollisionShape2D" parent="Object"]
+position = Vector2(27780, -448.625)
+shape = SubResource("RectangleShape2D_qr7ga")
 debug_color = Color(0, 0, 0.12549, 0.419608)
 
 [node name="TileHolder" type="Node2D" parent="."]
@@ -3452,3 +3475,6 @@ scale = Vector2(4, 4)
 
 [node name="Fly" parent="." instance=ExtResource("63_w1lm7")]
 position = Vector2(24713, 665)
+
+[node name="Fly2" parent="." instance=ExtResource("63_w1lm7")]
+position = Vector2(26924, 473)
