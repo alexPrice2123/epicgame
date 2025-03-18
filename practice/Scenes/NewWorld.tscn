@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cx54l7p152uye" path="res://Images/tileset/factory/FactoryTile.png" id="15_locyy"]
 [ext_resource type="Texture2D" uid="uid://bulkrvs6rc84e" path="res://Images/tileset/swamp/Boxes/3.png" id="15_scark"]
 [ext_resource type="Texture2D" uid="uid://djh4ly4gkprxr" path="res://Images/tileset/swamp/Boxes/6.png" id="15_t132n"]
-[ext_resource type="Shader" uid="uid://b6jud1rs2umow" path="res://Scenes/factoryenterback.gdshader" id="16_goscw"]
+[ext_resource type="Shader" uid="uid://b6jud1rs2umow" path="res://scripts/factoryenterback.gdshader" id="16_goscw"]
 [ext_resource type="Texture2D" uid="uid://tqnwctp87h5k" path="res://Images/tileset/swamp/Pointers/8.png" id="16_t132n"]
 [ext_resource type="Texture2D" uid="uid://mho3f7sek0cw" path="res://Images/tileset/swamp/Bushes/8.png" id="16_xmd8y"]
 [ext_resource type="Texture2D" uid="uid://20uaxu86m3ig" path="res://Images/tileset/swamp/Bushes/9.png" id="17_3bjdv"]
@@ -2433,7 +2433,7 @@ position = Vector2(20348, 753)
 scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
-position = Vector2(26111, 475)
+position = Vector2(143, 870)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]

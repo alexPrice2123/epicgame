@@ -342,8 +342,6 @@ animations = [{
 
 [node name="Skull" type="AnimatedSprite2D"]
 z_index = -2
-position = Vector2(569, 290)
-scale = Vector2(3.96875, 3.96875)
 sprite_frames = SubResource("SpriteFrames_mgtk3")
 animation = &"Talking"
 
@@ -363,7 +361,7 @@ z_index = 2
 sprite_frames = SubResource("SpriteFrames_cfqbt")
 animation = &"eyeopen"
 frame = 4
-frame_progress = 1.0
+frame_progress = 0.50273
 
 [node name="EyeL2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cfqbt")

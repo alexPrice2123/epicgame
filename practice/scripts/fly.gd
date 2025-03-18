@@ -87,7 +87,8 @@ func _on_vision_area_entered(body: Area2D) -> void:
 		return
 	hit = body.name
 	if hit == "OuchBox" && stunned == false:
-		if (body.get_parent().position.y - position.y) < 0:	
+		print(body.get_parent().position.y - position.y)
+		if (body.get_parent().position.y - position.y) < 0 && (body.get_parent().position.y - position.y) > -100 :
 			attacking = true
 			stunned = true
 			sprite2d.play("charge_start")
@@ -135,7 +136,8 @@ func death():
 	$CollisionShape2D2.set_deferred("disabled", true)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	attackbox.set_deferred("disabled", true)
-	coindrops()
+	if attacking == true:
+		coindrops()
 	await get_tree().create_timer(2).timeout
 	for i in 10:
 		sprite2d.modulate.a -= 0.1

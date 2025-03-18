@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cc2v5cc53y7xh"]
+[gd_scene load_steps=123 format=3 uid="uid://cc2v5cc53y7xh"]
 
 [ext_resource type="Script" uid="uid://calpqk80k3vgb" path="res://scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://dmhn2llyu1qhd" path="res://Images/HUD/BHealth/BHealth1.png" id="2_1a2va"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bjvlmkpoxdgvn" path="res://Images/HUD/WHealth/Health3.png" id="10_yidpd"]
 [ext_resource type="Texture2D" uid="uid://skhqgrcvxacm" path="res://Images/HUD/WHealth/Health4.png" id="11_0iicw"]
 [ext_resource type="Texture2D" uid="uid://c17hk3c8q2uqi" path="res://Images/HUD/Header.png" id="19_pbtju"]
+[ext_resource type="Texture2D" uid="uid://b4i8v3sec6cwd" path="res://Images/HUD/Menu.png" id="20_yidpd"]
+[ext_resource type="Shader" uid="uid://rxx4t2fi07qq" path="res://scripts/transition.gdshader" id="21_0iicw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_43w4t"]
 animations = [{
@@ -601,12 +603,169 @@ animations = [{
 "speed": 50.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkcuu"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w24mk"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj888"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(68, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peteo"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(102, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v76oh"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(0, 34, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v201j"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(34, 34, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfp0x"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(68, 34, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d71yn"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(102, 34, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58tcp"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(0, 68, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0f21"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(34, 68, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km7qi"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(68, 68, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12civ"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(102, 68, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ccuq"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(0, 102, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8awe"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(34, 102, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwppo"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(68, 102, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1egt8"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(102, 102, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g58d"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(136, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh20n"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(136, 34, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isgyt"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(136, 68, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax8gd"]
+atlas = ExtResource("20_yidpd")
+region = Rect2(136, 102, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7fs7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkcuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w24mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj888")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peteo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v76oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v201j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfp0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d71yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58tcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0f21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km7qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12civ")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ccuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8awe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwppo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1egt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g58d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh20n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isgyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax8gd")
+}],
+"loop": false,
+"name": &"open",
+"speed": 50.0
+}]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yidpd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajim5"]
+shader = ExtResource("21_0iicw")
+shader_parameter/progress = 0.0
+shader_parameter/size = 40.0
+shader_parameter/fill = false
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_bjfho")
 
 [node name="Health" type="HBoxContainer" parent="."]
 offset_right = 374.0
 offset_bottom = 116.0
+scale = Vector2(0.75, 0.75)
 
 [node name="BarSprite" type="AnimatedSprite2D" parent="Health"]
 position = Vector2(41, 4)
@@ -637,45 +796,88 @@ animation = &"Health"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -139.34
-offset_top = 40.855
-offset_right = -99.3401
-offset_bottom = 96.855
+offset_left = -102.0
+offset_top = 22.0
+offset_right = -62.0001
+offset_bottom = 78.0
 grow_horizontal = 0
+scale = Vector2(0.75, 0.75)
 
-[node name="GemAmount" type="Label" parent="GemBox"]
-layout_mode = 2
+[node name="Gem" parent="GemBox" instance=ExtResource("3_bjfho")]
+position = Vector2(75.3401, 20.585)
+scale = Vector2(5.875, 5.875)
+
+[node name="Control" type="Control" parent="GemBox/Gem"]
+layout_mode = 3
+anchor_left = 0.187
+anchor_top = 0.562
+anchor_right = 0.77
+anchor_bottom = 0.655
+offset_left = -7.992
+offset_top = -7.992
+offset_right = 51.68
+offset_bottom = 1.52
+scale = Vector2(0.135, 0.135)
+
+[node name="GemAmount" type="Label" parent="GemBox/Gem/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.197
+anchor_top = -2.409
+anchor_right = -0.162
+anchor_bottom = 4.5
+offset_left = -7.57404
+offset_top = -0.0037632
+offset_right = 0.0109472
+offset_bottom = -0.00276566
 theme_override_fonts/font = ExtResource("3_6fbih")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 76
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="Gem" parent="GemBox/GemAmount" instance=ExtResource("3_bjfho")]
-position = Vector2(75.3401, 20.585)
-scale = Vector2(5.875, 5.875)
 
 [node name="CoinBox" type="HBoxContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -139.34
-offset_top = 141.07
-offset_right = -99.3401
-offset_bottom = 197.07
+offset_left = -102.0
+offset_top = 87.0
+offset_right = -70.0
+offset_bottom = 143.0
 grow_horizontal = 0
+scale = Vector2(0.75, 0.75)
 
-[node name="CoinAmount" type="Label" parent="CoinBox"]
-layout_mode = 2
+[node name="Coin" parent="CoinBox" instance=ExtResource("5_t1xeu")]
+position = Vector2(75.34, 20.145)
+scale = Vector2(5.875, 5.875)
+
+[node name="Control" type="Control" parent="CoinBox/Coin"]
+layout_mode = 3
+anchor_top = 0.6
+anchor_right = 0.931
+anchor_bottom = 0.748
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 54.69
+offset_bottom = 4.52
+scale = Vector2(0.135, 0.135)
+
+[node name="CoinAmount" type="Label" parent="CoinBox/Coin/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.197
+anchor_top = -2.409
+anchor_right = -0.162
+anchor_bottom = 4.5
+offset_left = -7.57404
+offset_top = -0.0037632
+offset_right = 0.0109472
+offset_bottom = -0.00276566
 theme_override_fonts/font = ExtResource("3_6fbih")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 76
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="Coin" parent="CoinBox/CoinAmount" instance=ExtResource("5_t1xeu")]
-position = Vector2(75.34, 20.145)
-scale = Vector2(5.875, 5.875)
 
 [node name="Talk" type="HBoxContainer" parent="."]
 anchors_preset = 7
@@ -688,6 +890,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.75, 0.75)
 
 [node name="TalkBox" type="AnimatedSprite2D" parent="Talk"]
 z_index = 4096
@@ -830,7 +1033,178 @@ scale = Vector2(0.640118, 0.640118)
 sprite_frames = SubResource("SpriteFrames_fkcuu")
 animation = &"open"
 
+[node name="Menu" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBox" type="AnimatedSprite2D" parent="Menu"]
+z_index = 4096
+z_as_relative = false
+position = Vector2(35, 0)
+scale = Vector2(15.4412, 15.4412)
+sprite_frames = SubResource("SpriteFrames_a7fs7")
+animation = &"open"
+
+[node name="OrgBox" type="Control" parent="Menu/MenuBox"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_right = 84.0
+offset_bottom = 67.0
+scale = Vector2(0.05, 0.05)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="Menu/MenuBox/OrgBox"]
+layout_mode = 2
+anchor_left = -0.215
+anchor_top = -1.643
+anchor_right = 4.204
+anchor_bottom = 0.267
+offset_left = -0.00499916
+offset_top = -0.0139923
+offset_right = 0.0280151
+offset_bottom = 0.0159969
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 51
+text = "Would you like to try again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="Label" parent="Menu/MenuBox/OrgBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_right = 0.994
+anchor_bottom = 1.0
+offset_left = -16.1144
+offset_top = -257.752
+offset_right = 305.606
+offset_bottom = -201.752
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="YesDead" type="Button" parent="Menu/MenuBox/OrgBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = -0.943
+anchor_right = 0.302
+anchor_bottom = -0.352
+offset_left = -30.141
+offset_top = 135.714
+offset_right = 128.562
+offset_bottom = 172.117
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7gr8i")
+icon = ExtResource("9_7gr8i")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonText" type="Label" parent="Menu/MenuBox/OrgBox/YesDead"]
+layout_mode = 2
+anchor_left = 0.034
+anchor_top = 0.096
+anchor_right = 0.97
+anchor_bottom = 0.787
+offset_left = -0.0100002
+offset_top = -0.0240002
+offset_right = -0.0499573
+offset_bottom = 11.022
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 41
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NoDead" type="Button" parent="Menu/MenuBox/OrgBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = -0.943
+anchor_right = 0.302
+anchor_bottom = -0.352
+offset_left = 203.001
+offset_top = 135.714
+offset_right = 361.704
+offset_bottom = 172.117
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7gr8i")
+icon = ExtResource("9_7gr8i")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonText" type="Label" parent="Menu/MenuBox/OrgBox/NoDead"]
+layout_mode = 2
+anchor_left = 0.034
+anchor_top = 0.096
+anchor_right = 0.97
+anchor_bottom = 0.787
+offset_left = -0.0100002
+offset_top = -0.0240002
+offset_right = -0.0499573
+offset_bottom = 11.022
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 41
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="Menu/MenuBox/OrgBox"]
+modulate = Color(0, 0, 0, 0.588235)
+z_index = -1
+position = Vector2(154.095, 20.0762)
+scale = Vector2(1572.42, 897.6)
+texture = SubResource("CanvasTexture_yidpd")
+
+[node name="Overlay" type="ColorRect" parent="Menu/MenuBox"]
+z_index = 4096
+z_as_relative = false
+material = SubResource("ShaderMaterial_ajim5")
+offset_left = -40.0
+offset_top = -21.0
+offset_right = 38.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="button_down" from="Talk/TalkBox/OrgBox/Yes" to="." method="_on_yes_button_down"]
 [connection signal="button_up" from="Talk/TalkBox/OrgBox/Yes" to="." method="_on_yes_button_up"]
 [connection signal="button_down" from="Talk/TalkBox/OrgBox/No" to="." method="_on_no_button_down"]
 [connection signal="button_up" from="Talk/TalkBox/OrgBox/No" to="." method="_on_no_button_up"]
+[connection signal="button_down" from="Menu/MenuBox/OrgBox/YesDead" to="." method="_on_yes_dead_button_down"]
+[connection signal="button_up" from="Menu/MenuBox/OrgBox/YesDead" to="." method="_on_yes_dead_button_up"]
+[connection signal="button_down" from="Menu/MenuBox/OrgBox/NoDead" to="." method="_on_no_dead_button_down"]
+[connection signal="button_up" from="Menu/MenuBox/OrgBox/NoDead" to="." method="_on_no_dead_button_up"]

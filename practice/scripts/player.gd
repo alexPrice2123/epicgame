@@ -94,6 +94,9 @@ func _input(_event: InputEvent) -> void:
 				await get_tree().create_timer(0.01).timeout
 	if Input.is_action_just_pressed("attack") && attacking == false:
 		attacking = true
+		$Sound.stream = load("res://Sounds/Sounds/Slash.wav")
+		$Sound.play()
+		$Sound.pitch_scale = randf_range(0.81,1.2)
 		if attackanim == 1:
 			sprite2d.play("%s_attack" % classe)
 			attackanim = 2
@@ -101,6 +104,7 @@ func _input(_event: InputEvent) -> void:
 			sprite2d.play("%s_attack2" % classe)
 			attackanim = 1
 		await get_tree().create_timer(0.5).timeout
+		$Sound.pitch_scale = 1
 		if stunned == false:
 			attackbox.disabled = false
 
@@ -123,10 +127,13 @@ func _input(_event: InputEvent) -> void:
 			camera.zoom.y = 0.75
 			camera.zoom.x = 0.75
 	if Input.is_action_just_pressed("quit"):
-		lives = 3
-		get_tree().get_root().get_node("World").save()
-		get_tree().quit()
+		quit()
 		
+func quit():
+	lives = 3
+	get_tree().get_root().get_node("World").save()
+	get_tree().quit()
+
 func movement():
 	var h_direction = Input.get_axis("move_left", "move_right")
 	velocity.x = speed * h_direction
@@ -140,8 +147,6 @@ func movement():
 	else:
 		if shouldland == true:
 			shouldland = false
-			$Sound.stream = load("res://Sounds/Sounds/step.wav")
-			$Sound.play()
 		if position.y < 900:
 			pos = position
 	if attacking == true:
@@ -183,7 +188,9 @@ func death():
 		lives = 3
 		get_tree().get_root().get_node("World").save()
 		await get_tree().create_timer(2).timeout
-		get_tree().reload_current_scene()
+		$Sound.stream = load("res://Sounds/Sounds/GameOver.wav")
+		$Sound.play()
+		$HUD.died()
 	else:
 		get_tree().get_root().get_node("World").save()
 		await get_tree().create_timer(2).timeout

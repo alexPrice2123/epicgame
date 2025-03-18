@@ -9,22 +9,33 @@ var plr = null
 func _ready() -> void:
 	$Talk/TalkBox.frame = 44
 	$Talk/TalkBox/Header.frame = 27
+	$Menu/MenuBox.frame = 19
 	$Talk/TalkBox/OrgBox.modulate.a = 0
+	$Menu/MenuBox/OrgBox.modulate.a = 0
 	$Talk/TalkBox/OrgBox/Yes.visible = false
 	$Talk/TalkBox/OrgBox/No.visible = false
+	$Menu/MenuBox/OrgBox/YesDead.visible = false
+	$Menu/MenuBox/OrgBox/NoDead.visible = false
 	plr = get_tree().get_root().get_node("World").get_node("Player")
-	
+	$Menu/MenuBox/Overlay.material.set_shader_parameter("fill", false)
+	var times = 0.01
+	for i in 100:
+		$Menu/MenuBox/Overlay.material.set_shader_parameter("progress", times)
+		times += 0.01
+		await get_tree().create_timer(0.01).timeout
+	$Menu/MenuBox/Overlay.material.set_shader_parameter("fill", true)
+	$Menu/MenuBox/Overlay.visible = false
 func damaged():
 	$Health/BarSprite.animation = ("%sHealth" % plr.classe)
 	$Health/BarSprite.frame = plr.health
 
 func gem():
 	gems +=1
-	$GemBox/GemAmount.text = str(gems)
+	$GemBox/Gem/Control/GemAmount.text = str(gems)
 
 func coin():
 	coins +=1
-	$CoinBox/CoinAmount.text = str(coins)
+	$CoinBox/Coin/Control/CoinAmount.text = str(coins)
 func lost_life():
 	lives = get_tree().get_root().get_node("World").get_node("Player").lives
 	if lives == 3:
@@ -101,3 +112,52 @@ func _on_no_button_up() -> void:
 	plr.get_node("Sound").stream = load("res://Sounds/Sounds/Cancel.wav")
 	plr.get_node("Sound").play()
 	closeUI()
+
+func died():
+	$Menu/MenuBox.play_backwards("open")
+	await get_tree().create_timer(0.3).timeout
+	$Menu/MenuBox/OrgBox/YesDead.visible = true
+	$Menu/MenuBox/OrgBox/NoDead.visible = true
+	for i in 10:
+		$Menu/MenuBox/OrgBox.modulate.a += 0.1
+		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
+		await get_tree().create_timer(0.01).timeout
+	for i in 100:
+		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
+		await get_tree().create_timer(0.01).timeout
+	get_tree().get_current_scene().get_node("Swamp").volume_db -= 300
+func _on_yes_dead_button_down() -> void:
+	var pressedbutton = load("res://Images/HUD/Button/Pressed.png")
+	$Menu/MenuBox/OrgBox/YesDead.icon = pressedbutton
+
+
+func _on_yes_dead_button_up() -> void:
+	var pressedbutton = load("res://Images/HUD/Button/NormalButton.png")
+	$Menu/MenuBox/OrgBox/YesDead.icon = pressedbutton
+	plr.get_node("Sound").stream = load("res://Sounds/Sounds/Confirm.wav")
+	plr.get_node("Sound").play()
+	$Menu/MenuBox/Overlay.visible = true
+	var times = 0.01
+	for i in 100:
+		$Menu/MenuBox/Overlay.material.set_shader_parameter("progress", times)
+		times += 0.01
+		await get_tree().create_timer(0.01).timeout
+	get_tree().reload_current_scene()
+
+func _on_no_dead_button_down() -> void:
+	var pressedbutton = load("res://Images/HUD/Button/Pressed.png")
+	$Menu/MenuBox/OrgBox/NoDead.icon = pressedbutton
+
+
+func _on_no_dead_button_up() -> void:
+	var pressedbutton = load("res://Images/HUD/Button/NormalButton.png")
+	$Menu/MenuBox/OrgBox/NoDead.icon = pressedbutton
+	plr.get_node("Sound").stream = load("res://Sounds/Sounds/Cancel.wav")
+	plr.get_node("Sound").play()
+	$Menu/MenuBox/Overlay.visible = true
+	var times = 0.01
+	for i in 100:
+		$Menu/MenuBox/Overlay.material.set_shader_parameter("progress", times)
+		times += 0.01
+		await get_tree().create_timer(0.01).timeout
+	plr.quit()
