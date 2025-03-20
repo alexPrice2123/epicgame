@@ -94,9 +94,6 @@ func _input(_event: InputEvent) -> void:
 				await get_tree().create_timer(0.01).timeout
 	if Input.is_action_just_pressed("attack") && attacking == false:
 		attacking = true
-		$Sound.stream = load("res://Sounds/Sounds/Slash.wav")
-		$Sound.play()
-		$Sound.pitch_scale = randf_range(0.81,1.2)
 		if attackanim == 1:
 			sprite2d.play("%s_attack" % classe)
 			attackanim = 2
@@ -104,28 +101,30 @@ func _input(_event: InputEvent) -> void:
 			sprite2d.play("%s_attack2" % classe)
 			attackanim = 1
 		await get_tree().create_timer(0.5).timeout
-		$Sound.pitch_scale = 1
 		if stunned == false:
+			$Sound.stream = load("res://Sounds/Sounds/Slash.wav")
+			$Sound.play()
+			$Sound.pitch_scale = randf_range(0.81,1.2)
 			attackbox.disabled = false
-
 		if classe == "brute":
 			await get_tree().create_timer(0.5).timeout
 		else:
 			await get_tree().create_timer(0.3).timeout
+		$Sound.pitch_scale = 1
 		attackbox.set_deferred("disabled", true)
 		attacking = false
 	if Input.is_action_just_pressed("scroll_in"):
 		camera.zoom.x += zoomfactor
 		camera.zoom.y += zoomfactor
-		if camera.zoom.y >= 3:
-			camera.zoom.y = 3
-			camera.zoom.x = 3
+		if camera.zoom.y >= 2:
+			camera.zoom.y = 2
+			camera.zoom.x = 2
 	if Input.is_action_just_pressed("scroll_out"):
 		camera.zoom.x -= zoomfactor
 		camera.zoom.y -= zoomfactor
-		if camera.zoom.y <= 0.75:
-			camera.zoom.y = 0.75
-			camera.zoom.x = 0.75
+		if camera.zoom.y <= 0.5:
+			camera.zoom.y = 0.5
+			camera.zoom.x = 0.5
 	if Input.is_action_just_pressed("quit"):
 		quit()
 		
@@ -184,7 +183,7 @@ func death():
 	sprite2d.play("%s_death" % classe)
 	lives -= 1
 	hud.lost_life()
-	if lives <= -1:
+	if lives <= 0:
 		lives = 3
 		get_tree().get_root().get_node("World").save()
 		await get_tree().create_timer(2).timeout

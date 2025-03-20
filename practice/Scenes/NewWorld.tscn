@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=4 uid="uid://dhnms44nr6egu"]
+[gd_scene load_steps=147 format=4 uid="uid://dhnms44nr6egu"]
 
 [ext_resource type="PackedScene" uid="uid://vgmnk2ppdy54" path="res://Scenes/Player.tscn" id="1_48i0q"]
 [ext_resource type="Script" uid="uid://ods454e3epdi" path="res://scripts/new_world.gd" id="1_nhwle"]
@@ -63,11 +63,12 @@
 [ext_resource type="Texture2D" uid="uid://7qbivjb7oawq" path="res://Images/tileset/swamp/Stones/1.png" id="50_qr7ga"]
 [ext_resource type="PackedScene" uid="uid://iostokmlvesd" path="res://Scenes/Skelibones.tscn" id="50_xett1"]
 [ext_resource type="PackedScene" uid="uid://cq33pdvmt76l1" path="res://Scenes/fly.tscn" id="63_w1lm7"]
+[ext_resource type="PackedScene" uid="uid://bbsxe81p51hqq" path="res://Scenes/healer.tscn" id="64_qr7ga"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gjfyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51u67"]
-size = Vector2(53549.6, 4133)
+size = Vector2(57821, 4133)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0np7"]
 size = Vector2(20, 214)
@@ -2408,7 +2409,7 @@ texture = ExtResource("4_p4clw")
 [node name="Sky" type="MeshInstance2D" parent="ParallaxBackground"]
 modulate = Color(0.184314, 0.239216, 0.27451, 1)
 z_index = -4096
-position = Vector2(18375, 1480)
+position = Vector2(19341, 2307)
 scale = Vector2(51785.5, 21132)
 mesh = SubResource("QuadMesh_gjfyq")
 
@@ -2482,7 +2483,7 @@ z_index = 1000
 position = Vector2(1464, 1173)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lava"]
-position = Vector2(24422.2, 1898)
+position = Vector2(22286.5, 1898)
 shape = SubResource("RectangleShape2D_51u67")
 
 [node name="TurnAround" type="Area2D" parent="."]
@@ -2606,6 +2607,41 @@ debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
 [node name="TurnAround32" type="CollisionShape2D" parent="TurnAround"]
 position = Vector2(27852, -469)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround33" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(29131, -482)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround34" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(29233, -410)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround35" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(30163, -405)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround36" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(30540, -407)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround37" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(31783, -421)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround38" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(31907, -502)
+shape = SubResource("RectangleShape2D_e0np7")
+debug_color = Color(0.594148, 0, 0.126282, 0.42)
+
+[node name="TurnAround39" type="CollisionShape2D" parent="TurnAround"]
+position = Vector2(33144, -497)
 shape = SubResource("RectangleShape2D_e0np7")
 debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
@@ -3434,8 +3470,8 @@ frame_progress = 0.37689
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Water/ParallaxLayer6"]
 modulate = Color(0.533333, 0.745098, 0.870588, 1)
-position = Vector2(22874.8, 2766)
-scale = Vector2(55302.4, 4278)
+position = Vector2(21458.1, 2766)
+scale = Vector2(58178.1, 4278)
 mesh = SubResource("QuadMesh_m8w4l")
 
 [node name="CampFire" type="AnimatedSprite2D" parent="."]
@@ -3478,3 +3514,18 @@ position = Vector2(24713, 665)
 
 [node name="Fly2" parent="." instance=ExtResource("63_w1lm7")]
 position = Vector2(26924, 473)
+
+[node name="Healer" parent="." instance=ExtResource("64_qr7ga")]
+position = Vector2(28934, 464)
+
+[node name="Healer5" parent="." instance=ExtResource("64_qr7ga")]
+position = Vector2(929, 858)
+
+[node name="Healer2" parent="." instance=ExtResource("64_qr7ga")]
+position = Vector2(29924, 538)
+
+[node name="Healer3" parent="." instance=ExtResource("64_qr7ga")]
+position = Vector2(31685, 531)
+
+[node name="Healer4" parent="." instance=ExtResource("64_qr7ga")]
+position = Vector2(33053, 445)
