@@ -2373,9 +2373,10 @@ autoplay = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
+offset = Vector2(0, 300)
+transform = Transform2D(1, 0, 0, 1, 0, 300)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1295, 451)
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1920, 1080)
 
@@ -2383,7 +2384,6 @@ motion_mirroring = Vector2(1920, 1080)
 texture = ExtResource("1_qwsj2")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1295, 451)
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(3840, 1080)
 
@@ -2391,7 +2391,6 @@ motion_mirroring = Vector2(3840, 1080)
 texture = ExtResource("2_5rrus")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1295, 451)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(5760, 1080)
 
@@ -2399,7 +2398,6 @@ motion_mirroring = Vector2(5760, 1080)
 texture = ExtResource("3_m8w4l")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1295, 451)
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(7680, 1080)
 
@@ -3517,9 +3515,6 @@ position = Vector2(26924, 473)
 
 [node name="Healer" parent="." instance=ExtResource("64_qr7ga")]
 position = Vector2(28934, 464)
-
-[node name="Healer5" parent="." instance=ExtResource("64_qr7ga")]
-position = Vector2(929, 858)
 
 [node name="Healer2" parent="." instance=ExtResource("64_qr7ga")]
 position = Vector2(29924, 538)
