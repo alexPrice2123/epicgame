@@ -344,6 +344,8 @@ animations = [{
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_mgtk3")
 animation = &"Talking"
+frame = 4
+frame_progress = 0.34255
 
 [node name="EyeLidL" type="AnimatedSprite2D" parent="."]
 z_index = 2

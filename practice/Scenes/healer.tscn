@@ -476,7 +476,7 @@ height = 77.0
 size = Vector2(46.1961, 10.9245)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sw4n"]
-size = Vector2(355.5, 12.5)
+size = Vector2(442, 12.5)
 
 [node name="Healer" type="CharacterBody2D"]
 position = Vector2(695, 342)
@@ -508,7 +508,7 @@ shape = SubResource("RectangleShape2D_2ycin")
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-166.75, -46.25)
+position = Vector2(-210, -46.25)
 shape = SubResource("RectangleShape2D_7sw4n")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 

@@ -14,7 +14,7 @@ var attackanim = 1
 var hit = null
 var movementnum = 0
 var direction = 1
-var attackspeed = 0.4
+var attackspeed = 1
 
 func _physics_process(_delta):
 	if sprite2d.animation == "death" or stunned == true:
@@ -66,7 +66,7 @@ func _on_vision_area_entered(body: Area2D) -> void:
 			velocity.x = 0
 			movementnum = -100
 			await get_tree().create_timer(1).timeout
-			if stunned == false:
+			if stunned == false && attacking == true:
 				var world = get_tree().get_root().get_node("World")
 				var obj = sap.instantiate()
 				if direction == 1:
@@ -88,7 +88,6 @@ func _on_vision_area_exited(body: Area2D) -> void:
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
 		movementnum = 0
-		await get_tree().create_timer(0.9).timeout
 		checkaround()
 		attacking = false
 		
@@ -104,10 +103,10 @@ func movement():
 		velocity.x = -300*direction
 		if direction < 0:
 			sprite2d.flip_h = true
-			visionbox.position.x = 55
+			visionbox.position.x = 229.5
 		else:
 			sprite2d.flip_h = false
-			visionbox.position.x = -31.5
+			visionbox.position.x = -210.0
 	move_and_slide()
 	if attacking == true:
 		return
