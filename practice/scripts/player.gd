@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var camera = $Camera2D
 @onready var hud = $HUD
 @onready var sprite2d = $Sprite2D2
+@export var blob = preload("res://Scenes/wooden_blob.tscn")
 @onready var attackbox = $PlayerHitBox/PlayerCollisionBox
 var idle = 0
 var stunned = false
@@ -14,6 +15,7 @@ var attacking = false
 var attackanim = 1
 var zoomfactor = 0.15
 var hit = null
+var blobSpawned = false
 var gems = 0
 var coins = 0
 var lives = 3
@@ -113,7 +115,7 @@ func _input(_event: InputEvent) -> void:
 		$Sound.pitch_scale = 1
 		attackbox.set_deferred("disabled", true)
 		attacking = false
-	if Input.is_action_just_pressed("scroll_in"):
+	if Input.is_action_just_pressed("scroll_in") && blobSpawned == false:
 		camera.zoom.x += zoomfactor
 		camera.zoom.y += zoomfactor
 		if camera.zoom.y >= 2:
@@ -221,3 +223,25 @@ func death():
 		$Sprite2D2.modulate = Color(1,1,1,1)
 		$OuchBox/CollisionShape2D.set_deferred("disabled", false)
 		
+		
+func summonBlob():
+	blobSpawned = true
+	while camera.zoom.y > 0.75:
+		camera.zoom.x -= 0.03
+		camera.zoom.y -= 0.03
+		await get_tree().create_timer(0.01).timeout
+	camera.zoom.x = 0.75
+	camera.zoom.y = 0.75
+	var world = get_tree().get_root().get_node("World")
+	var obj = blob.instantiate()
+	obj.position = Vector2(position.x, position.y-750)
+	world.add_child(obj)
+	for i in 25: 
+		camera.zoom.x -= 0.01
+		camera.zoom.y -= 0.01
+		if camera.zoom.y < 0.5:
+			camera.zoom.y = 0.5
+			camera.zoom.x = 0.5
+		camera.position.y -= 6
+		await get_tree().create_timer(0.01).timeout
+	print(camera.zoom.y)

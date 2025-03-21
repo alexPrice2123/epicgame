@@ -340,7 +340,7 @@ size = Vector2(60.7623, 8.87615)
 size = Vector2(59, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i6dj"]
-size = Vector2(57, 98)
+size = Vector2(57, 65)
 
 [node name="Mushroom" type="CharacterBody2D"]
 script = ExtResource("1_aktc8")
@@ -376,7 +376,7 @@ disabled = true
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-15.5, -27)
+position = Vector2(-15.5, -10.5)
 shape = SubResource("RectangleShape2D_2i6dj")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 

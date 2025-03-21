@@ -326,7 +326,7 @@ size = Vector2(60.7623, 6.82781)
 size = Vector2(59, 50.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gvq0"]
-size = Vector2(55, 98)
+size = Vector2(55, 50)
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_5gljc")
@@ -366,7 +366,7 @@ disabled = true
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-16.5, -27)
+position = Vector2(-16.5, -3)
 shape = SubResource("RectangleShape2D_4gvq0")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 

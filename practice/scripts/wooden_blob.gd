@@ -2,10 +2,10 @@ extends CharacterBody2D
 @export var speed = 750
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 2
+@export var health = 3
 @export var spawn_coin = preload("res://Scenes/coin.tscn")
-@onready var sprite2d = $AnimatedSprite2D
-@onready var attackbox = $HitBox/CollisionBox
+@export var sap = preload("res://Scenes/sap.tscn")
+@onready var sprite2d = $Sprite2D2
 @onready var visionbox = $Vision/CollisionShape2D
 var idle = 0
 var stunned = false
@@ -14,7 +14,7 @@ var attackanim = 1
 var hit = null
 var movementnum = 0
 var direction = 1
-var attackspeed = 0.4
+var attackspeed = 1
 
 func _physics_process(_delta):
 	if sprite2d.animation == "death" or stunned == true:
@@ -65,12 +65,17 @@ func _on_vision_area_entered(body: Area2D) -> void:
 			sprite2d.play("attack")
 			velocity.x = 0
 			movementnum = -100
+			await get_tree().create_timer(1).timeout
+			if stunned == false && attacking == true:
+				var world = get_tree().get_root().get_node("World")
+				var obj = sap.instantiate()
+				if direction == 1:
+					obj.position = Vector2(-30, -50)
+				else:
+					obj.position = Vector2(80, -50)
+				obj.speed *= direction
+				add_child(obj)
 			await get_tree().create_timer(0.4).timeout
-			if stunned == false:
-				attackbox.disabled = false
-			await get_tree().create_timer(0.4).timeout
-			attackbox.set_deferred("disabled", true)
-			await get_tree().create_timer(0.1).timeout
 			if sprite2d.animation == "death":
 				return
 			sprite2d.play("idle")
@@ -83,7 +88,6 @@ func _on_vision_area_exited(body: Area2D) -> void:
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
 		movementnum = 0
-		await get_tree().create_timer(0.9).timeout
 		checkaround()
 		attacking = false
 		
@@ -99,17 +103,11 @@ func movement():
 		velocity.x = -300*direction
 		if direction < 0:
 			sprite2d.flip_h = true
-			attackbox.position.x = 48
-			visionbox.position.x = 55
+			visionbox.position.x = 229.5
 		else:
 			sprite2d.flip_h = false
-			attackbox.position.x = -30
-			visionbox.position.x = -31.5
+			visionbox.position.x = -210.0
 	move_and_slide()
-	if !is_on_floor():
-		velocity.y += gravity
-		if velocity.y > 1500:
-			velocity.y = 1500
 	if attacking == true:
 		return
 	if velocity.x != 0 && is_on_floor():
@@ -119,7 +117,7 @@ func movement():
 func coindrops():
 	var world = get_tree().get_root().get_node("World")
 	var obj = spawn_coin.instantiate()
-	obj.position = Vector2(position.x, position.y)
+	obj.position = Vector2(position.x, position.y-110)
 	world.add_child(obj)
 	obj.z_index = z_index - 1
 	
@@ -128,7 +126,6 @@ func death():
 	sprite2d.play("death")
 	$CollisionShape2D2.set_deferred("disabled", true)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
-	attackbox.set_deferred("disabled", true)
 	coindrops()
 	await get_tree().create_timer(2).timeout
 	for i in 10:
@@ -140,3 +137,19 @@ func checkaround():
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(0.1).timeout
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
+	
+func heal():
+	health += 1
+	if health >= 6:
+		health = 5
+	else:
+		$Sprite2D2.play("boost")
+		stunned = true
+		attacking = false
+		$Vision/CollisionShape2D.set_deferred("disabled", true)
+		await get_tree().create_timer(0.7).timeout
+		if sprite2d.animation == "death":
+			return
+		$Vision/CollisionShape2D.set_deferred("disabled", false)
+		attacking = true
+		stunned = false
