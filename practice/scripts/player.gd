@@ -230,18 +230,17 @@ func summonBlob():
 		camera.zoom.x -= 0.03
 		camera.zoom.y -= 0.03
 		await get_tree().create_timer(0.01).timeout
-	camera.zoom.x = 0.75
-	camera.zoom.y = 0.75
 	var world = get_tree().get_root().get_node("World")
 	var obj = blob.instantiate()
-	obj.position = Vector2(position.x, position.y-750)
+	obj.position = Vector2(position.x, position.y-850)
 	world.add_child(obj)
+	world.get_node("TileHolder").get_node("Pillars").position.y = 0
 	for i in 25: 
-		camera.zoom.x -= 0.01
-		camera.zoom.y -= 0.01
-		if camera.zoom.y < 0.5:
-			camera.zoom.y = 0.5
-			camera.zoom.x = 0.5
-		camera.position.y -= 6
+		camera.zoom.x -= 0.02
+		camera.zoom.y -= 0.02
+		if camera.zoom.y < 0.4:
+			camera.zoom.y = 0.4
+			camera.zoom.x = 0.4
+		camera.position.y -= 6.5
 		await get_tree().create_timer(0.01).timeout
 	print(camera.zoom.y)

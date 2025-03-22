@@ -49,6 +49,7 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 			sprite2d.play("idle")
 		stunned = false
 	elif hit.begins_with("TurnAround") && stunned == false:
+		await get_tree().create_timer(5).timeout
 		velocity.x = 0
 		movementnum = 0
 		direction *= -1
@@ -110,8 +111,8 @@ func movement():
 	move_and_slide()
 	if attacking == true:
 		return
-	if velocity.x != 0 && is_on_floor():
-		sprite2d.play("walk")
+	if velocity.x != 0:
+		sprite2d.play("fly")
 	else:
 		sprite2d.play("idle")
 func coindrops():
