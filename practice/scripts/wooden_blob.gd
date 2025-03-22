@@ -36,7 +36,7 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 			$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
 			$Sound.play()
 			stunned = true
-			sprite2d.play("hurt")
+			sprite2d.play("hurt")                                                                                                                                                                                                                      
 			await get_tree().create_timer(0.2).timeout
 			death()
 		else:

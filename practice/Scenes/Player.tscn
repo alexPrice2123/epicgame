@@ -898,6 +898,14 @@ shape = SubResource("CapsuleShape2D_nn08x")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -83)
 zoom = Vector2(0.75, 0.75)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 
 [node name="OuchBox" type="Area2D" parent="."]
 priority = 10

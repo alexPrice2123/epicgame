@@ -22,6 +22,7 @@ var lives = 3
 var pos = null
 var jumpex = 0.02
 var shouldland = false
+var jumping = false
 
 func _physics_process(_delta):
 	if sprite2d.animation == ("%s_death" % classe):
@@ -66,6 +67,7 @@ func _on_ouch_box_area_exited(body: Area2D) -> void:
 		stunned = false
 	elif body.name.begins_with("Bones"):
 		$HUD.closeUI()
+		
 func _input(_event: InputEvent) -> void:
 	if sprite2d.animation == ("%s_death" % classe):
 		return
@@ -81,19 +83,9 @@ func _input(_event: InputEvent) -> void:
 		sprite2d.offset.x = 5
 		attackbox.position.x = 57.5
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = -jump_force
-			for i in 10:
-				$Sprite2D2.scale.y += jumpex*2
-				$Sprite2D2.scale.x -= jumpex
-				await get_tree().create_timer(0.01).timeout
-			for i in 10:
-				$Sprite2D2.scale.y -= jumpex*2
-				$Sprite2D2.scale.x += jumpex*2
-				await get_tree().create_timer(0.01).timeout
-			for i in 10:
-				$Sprite2D2.scale.x -= jumpex
-				await get_tree().create_timer(0.01).timeout
+		jumping = true
+	elif Input.is_action_just_released("jump"):
+		jumping = false
 	if Input.is_action_just_pressed("attack") && attacking == false:
 		attacking = true
 		if attackanim == 1:
@@ -121,7 +113,7 @@ func _input(_event: InputEvent) -> void:
 		if camera.zoom.y >= 2:
 			camera.zoom.y = 2
 			camera.zoom.x = 2
-	if Input.is_action_just_pressed("scroll_out"):
+	if Input.is_action_just_pressed("scroll_out") && blobSpawned == false:
 		camera.zoom.x -= zoomfactor
 		camera.zoom.y -= zoomfactor
 		if camera.zoom.y <= 0.5:
@@ -146,6 +138,19 @@ func movement():
 			if velocity.y > 1500:
 				velocity.y = 1500
 	else:
+		if is_on_floor() && jumping == true :
+			velocity.y = -jump_force
+			for i in 10:
+				$Sprite2D2.scale.y += jumpex*2
+				$Sprite2D2.scale.x -= jumpex
+				await get_tree().create_timer(0.01).timeout
+			for i in 10:
+				$Sprite2D2.scale.y -= jumpex*2
+				$Sprite2D2.scale.x += jumpex*2
+				await get_tree().create_timer(0.01).timeout
+			for i in 10:
+				$Sprite2D2.scale.x -= jumpex
+				await get_tree().create_timer(0.01).timeout
 		if shouldland == true:
 			shouldland = false
 		if position.y < 900:
@@ -243,4 +248,13 @@ func summonBlob():
 			camera.zoom.x = 0.4
 		camera.position.y -= 6.5
 		await get_tree().create_timer(0.01).timeout
-	print(camera.zoom.y)
+	get_tree().get_current_scene().get_node("MiniBoss").play()
+	for i in 10:
+		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
+		get_tree().get_current_scene().get_node("MiniBoss").volume_db += 0.4
+		await get_tree().create_timer(0.01).timeout
+	for i in 100:
+		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
+		get_tree().get_current_scene().get_node("MiniBoss").volume_db += 0.4
+		await get_tree().create_timer(0.01).timeout
+	get_tree().get_current_scene().get_node("Swamp").volume_db -= 300
