@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var speed = 750
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 5
+@export var health = 1
 @export var spawn_coin = preload("res://Scenes/followgem.tscn")
 @export var bat = preload("res://Scenes/bat.tscn")
 @export var fly = preload("res://Scenes/singlefly.tscn")
@@ -86,9 +86,11 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 	
 func _ready():
 	sprite2d.play_backwards("death")
-	$Sound.stream = load("res://Sounds/Sounds/SummonBlob.mp3")
+	$Sound.pitch_scale = 0.5
+	$Sound.stream = load("res://Sounds/Sounds/SummonBlob.wav")
 	$Sound.play()
 	await get_tree().create_timer(1.7).timeout
+	$Sound.pitch_scale = 1
 	sprite2d.play("idle")
 	
 func movement():
@@ -122,8 +124,11 @@ func death():
 	$CollisionShape2D2.set_deferred("disabled", true)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	coindrops()
-	$Sound.volume_db = 25
 	$Sound.stream = load("res://Sounds/Sounds/DieBlob.wav")
+	$Sound.play()
+	await get_tree().create_timer(0.7).timeout
+	$Sound.volume_db = 15
+	$Sound.stream = load("res://Sounds/Sounds/Plop.wav")
 	$Sound.play()
 	await get_tree().create_timer(2).timeout
 	var world = get_tree().get_root().get_node("World")

@@ -594,7 +594,7 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(4, 4.014)
 sprite_frames = SubResource("SpriteFrames_10m3s")
-animation = &"hurt"
+animation = &"death"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

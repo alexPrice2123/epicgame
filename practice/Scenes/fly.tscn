@@ -584,7 +584,7 @@ size = Vector2(75.3287, 4.57463)
 size = Vector2(59, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1f2g"]
-size = Vector2(703.5, 9.5)
+size = Vector2(426, 9.5)
 
 [node name="Fly" type="CharacterBody2D"]
 position = Vector2(695, 342)
@@ -625,7 +625,7 @@ disabled = true
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-340.75, -47.75)
+position = Vector2(-202, -47.75)
 shape = SubResource("RectangleShape2D_v1f2g")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
