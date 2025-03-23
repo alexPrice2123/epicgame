@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://dkqxb7m4ks8d8"]
+[gd_scene load_steps=89 format=3 uid="uid://dkqxb7m4ks8d8"]
 
 [ext_resource type="Script" uid="uid://bweuaf7yhxv64" path="res://scripts/wooden_blob.gd" id="1_wk58o"]
 [ext_resource type="Texture2D" uid="uid://cvc8ufj861mvj" path="res://Images/BlobGuy/Enemy3-Spawn.png" id="2_15bfq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjqxpln2kumgc" path="res://Images/BlobGuy/Enemy3-AttackSmashLoop.png" id="7_x47ig"]
 [ext_resource type="Texture2D" uid="uid://bvajit1hsxu0r" path="res://Images/BlobGuy/Enemy3-SmashEnd.png" id="8_a1eva"]
 [ext_resource type="Texture2D" uid="uid://cgs0igadexepp" path="res://Images/BlobGuy/Enemy3-AttackSmashStart.png" id="9_omij7"]
+[ext_resource type="AudioStream" uid="uid://c2bms300teoa3" path="res://Sounds/Sounds/DieBlob.wav" id="10_15bfq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bquvh"]
 atlas = ExtResource("2_15bfq")
@@ -593,9 +594,7 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(4, 4.014)
 sprite_frames = SubResource("SpriteFrames_10m3s")
-animation = &"death"
-frame = 16
-frame_progress = 1.0
+animation = &"smash_end"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -617,9 +616,12 @@ priority = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitBox"]
 position = Vector2(20.25, 57.75)
 shape = SubResource("RectangleShape2D_df6x3")
+disabled = true
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_15bfq")
+volume_db = 10.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

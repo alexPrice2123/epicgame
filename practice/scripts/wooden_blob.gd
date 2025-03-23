@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var speed = 750
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 3
+@export var health = 1
 @export var spawn_coin = preload("res://Scenes/coin.tscn")
 @export var bat = preload("res://Scenes/bat.tscn")
 @onready var sprite2d = $Sprite2D2
@@ -29,25 +29,8 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 	hit = body.name
 	if sprite2d.animation == "death":
 		return
-	if hit.begins_with("PlayerHitBox") && stunned == false:
-		health -= 1
-		if health <= 0:
-			$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
-			$Sound.play()
-			stunned = true
-			await get_tree().create_timer(0.2).timeout
-			death()
-		else:
-			$Sound.stream = load("res://Sounds/Sounds/Damage.wav")
-			$Sound.play()
-			sprite2d.play("hurt")
-			stunned = true
-		await get_tree().create_timer(0.5).timeout
-		if health > 0:
-			sprite2d.play("idle")
-		stunned = false
-	elif hit.begins_with("Drop") && stunned == false:
-		var roll = randi_range(1,5)
+	if hit.begins_with("Drop") && stunned == false:
+		var roll = randi_range(1,6)
 		if hit.begins_with("DropMust"):
 			roll = 1
 		if roll <= 2:
@@ -56,13 +39,20 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 			movementnum = -1000
 			$Sprite2D2.play("smash_start")
 			await get_tree().create_timer(1.5).timeout
+			$Sound.stream = load("res://Sounds/Sounds/Fall.wav")
+			$Sound.play()
 			$Sprite2D2.play("smash")
 			velocity.y = 750
 			move_and_slide()
 			while !is_on_floor():
 				await get_tree().create_timer(0.01).timeout
 			$Sprite2D2.play("smash_end")
-			await get_tree().create_timer(0.8).timeout
+			$Sound.stream = load("res://Sounds/Sounds/Plop.wav")
+			$Sound.play()
+			$BossHitBox/CollisionShape2D.set_deferred("disabled", false)
+			await get_tree().create_timer(0.4).timeout
+			$BossHitBox/CollisionShape2D.set_deferred("disabled", true)
+			await get_tree().create_timer(0.4).timeout
 			velocity.y = -500
 			$Sprite2D2.play("idle")
 			while position.y > -213.244262695312:
@@ -84,6 +74,8 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 	
 func _ready():
 	sprite2d.play_backwards("death")
+	$Sound.stream = load("res://Sounds/Sounds/SummonBlob.mp3")
+	$Sound.play()
 	await get_tree().create_timer(1.7).timeout
 	sprite2d.play("idle")
 	
@@ -138,11 +130,31 @@ func attack():
 		var world = get_tree().get_root().get_node("World")
 		var obj = bat.instantiate()
 		if direction == 1:
-			obj.position = Vector2(position.x-75, 0)
+			obj.position = Vector2(position.x-75, position.y)
 		else:
-			obj.position = Vector2(position.x+100, 0)
-		obj.speed *= direction
+			obj.position = Vector2(position.x+150, position.y)
+		$Sound.stream = load("res://Sounds/Sounds/Bat.wav")
+		$Sound.play()
 		world.add_child(obj)
 	await get_tree().create_timer(0.1).timeout
 	attacking = false
 	movementnum = 0
+
+func damaged():
+	health -= 1
+	if health <= 0:
+		$Sound.volume_db = 25
+		$Sound.stream = load("res://Sounds/Sounds/DieBlob.wav")
+		$Sound.play()
+		stunned = true
+		await get_tree().create_timer(0.2).timeout
+		death()
+	else:
+		$Sound.stream = load("res://Sounds/Sounds/Damage.wav")
+		$Sound.play()
+		sprite2d.play("hurt")
+		stunned = true
+	await get_tree().create_timer(0.5).timeout
+	if health > 0:
+		sprite2d.play("idle")
+	stunned = false

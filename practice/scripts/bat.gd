@@ -8,8 +8,6 @@ var target = null
 func _ready() -> void:
 	target = get_tree().current_scene.get_node("Player")
 	$Ball.play("Fly")
-	if speed < 0:
-		$Ball.flip_h = true
 
 func seek():
 	var steer = Vector2.ZERO
@@ -26,7 +24,6 @@ func _physics_process(delta):
 	else:
 		$Ball.flip_h = true
 	acceleration += seek()
-	print(velocity)
 	velocity += acceleration * delta
 	if abs(velocity.x) > speed:
 		velocity.x = speed * abs(velocity.x)/velocity.x
@@ -37,11 +34,25 @@ func _physics_process(delta):
 	position += velocity * delta
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	if area.name == "OuchBox":
+	if area.name == "OuchBox" && target == get_tree().current_scene.get_node("Player") && $Ball.animation == "Fly":
 		$Ball.play("Explosion")
+		$Sound.stream = load("res://Sounds/Sounds/Explode.wav")
+		$Sound.play()
 		await get_tree().create_timer(1).timeout
 		queue_free()
 	elif area.name == "PlayerHitBox":
-		get_parent().get_node("Sound").stream = load("res://Sounds/Sounds/Pop.wav")
-		get_parent().get_node("Sound").play()
+		$HitBox/CollisionShape2D.set_deferred("disabled", true)
+		target = get_tree().current_scene.get_node("WoodenBlob")
+		$Sound.stream = load("res://Sounds/Sounds/Pop.wav")
+		$Sound.play()
+		while position.distance_to(target.position) > 100:
+			await get_tree().create_timer(0.01).timeout
+		while target.attacking == true:
+			await get_tree().create_timer(0.01).timeout
+		$Ball.play("Explosion")
+		$Sound.stream = load("res://Sounds/Sounds/Explode.wav")
+		$Sound.play()
+		await get_tree().create_timer(0.5).timeout
+		target.damaged()
+		await get_tree().create_timer(0.5).timeout
 		queue_free()
