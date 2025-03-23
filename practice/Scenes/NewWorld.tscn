@@ -2439,7 +2439,7 @@ scale = Vector2(51785.5, 21132)
 mesh = SubResource("QuadMesh_gjfyq")
 
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
-position = Vector2(33583, 237)
+position = Vector2(211, 869)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]
