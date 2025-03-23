@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var gravity = 40
 @export var jump_force = 1000
 @export var health = 1
-@export var spawn_coin = preload("res://Scenes/coin.tscn")
+@export var spawn_coin = preload("res://Scenes/followgem.tscn")
 @export var bat = preload("res://Scenes/bat.tscn")
 @onready var sprite2d = $Sprite2D2
 var idle = 0
@@ -110,6 +110,9 @@ func death():
 	$CollisionShape2D2.set_deferred("disabled", true)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	coindrops()
+	$Sound.volume_db = 25
+	$Sound.stream = load("res://Sounds/Sounds/DieBlob.wav")
+	$Sound.play()
 	await get_tree().create_timer(2).timeout
 	for i in 10:
 		sprite2d.modulate.a -= 0.1
@@ -143,11 +146,11 @@ func attack():
 func damaged():
 	health -= 1
 	if health <= 0:
-		$Sound.volume_db = 25
-		$Sound.stream = load("res://Sounds/Sounds/DieBlob.wav")
+		$Sound.stream = load("res://Sounds/Sounds/Damage.wav")
 		$Sound.play()
 		stunned = true
-		await get_tree().create_timer(0.2).timeout
+		sprite2d.play("hurt")
+		await get_tree().create_timer(0.3).timeout
 		death()
 	else:
 		$Sound.stream = load("res://Sounds/Sounds/Damage.wav")

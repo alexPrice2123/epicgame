@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://caqd1ot6tgycf"]
+
+[ext_resource type="Texture2D" uid="uid://crsr3q1088xyw" path="res://Images/Collectables/Gem/Diamond.png" id="1_rxe3f"]
+[ext_resource type="Script" uid="uid://dtchctlcd0lbx" path="res://scripts/followgem.gd" id="1_w5j3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kntg"]
+atlas = ExtResource("1_rxe3f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqw70"]
+atlas = ExtResource("1_rxe3f")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffm5r"]
+atlas = ExtResource("1_rxe3f")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieo76"]
+atlas = ExtResource("1_rxe3f")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x41wi"]
+atlas = ExtResource("1_rxe3f")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttv4u"]
+atlas = ExtResource("1_rxe3f")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jl0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kntg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqw70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffm5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieo76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x41wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttv4u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5j3y"]
+radius = 22.0
+height = 76.0
+
+[node name="FollowGem" type="CharacterBody2D"]
+script = ExtResource("1_w5j3y")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_8jl0d")
+frame_progress = 0.356555
+
+[node name="Gem" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gem"]
+shape = SubResource("CapsuleShape2D_w5j3y")
+
+[connection signal="area_entered" from="Gem" to="." method="_on_gem_area_entered"]
