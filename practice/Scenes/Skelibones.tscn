@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://iostokmlvesd"]
+[gd_scene load_steps=14 format=3 uid="uid://iostokmlvesd"]
 
 [ext_resource type="Texture2D" uid="uid://de6qfswsiyw08" path="res://Images/Skelibones/Skeleton_03_Yellow_Idle.png" id="1_c7r4w"]
 [ext_resource type="Script" uid="uid://cpoatww1u4i86" path="res://scripts/skelibones.gd" id="1_e06kh"]
+[ext_resource type="Texture2D" uid="uid://clt8fkwoio60b" path="res://Images/Lights/64x64 textures (7).png" id="3_c7lfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e06kh"]
 atlas = ExtResource("1_c7r4w")
@@ -85,3 +86,9 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bones"]
 position = Vector2(-1, 6)
 shape = SubResource("CapsuleShape2D_pw5cu")
+
+[node name="PointLight2D" type="PointLight2D" parent="Bones"]
+position = Vector2(-1, 6)
+color = Color(0.976471, 0.678431, 0.203922, 1)
+texture = ExtResource("3_c7lfa")
+texture_scale = 1.76

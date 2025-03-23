@@ -59,31 +59,33 @@ func _on_vision_area_entered(body: Area2D) -> void:
 	hit = body.name
 	if hit == "OuchBox" && stunned == false:
 		attacking = true
-		while attacking == true:
-			if sprite2d.animation == "death":
-				return
-			sprite2d.play("attack")
-			velocity.x = 0
-			movementnum = -100
-			await get_tree().create_timer(1).timeout
-			if stunned == false && attacking == true:
-				var world = get_tree().get_root().get_node("World")
-				var obj = sap.instantiate()
-				if direction == 1:
-					obj.position = Vector2(-30, -50)
-				else:
-					obj.position = Vector2(80, -50)
-				obj.speed *= direction
-				add_child(obj)
-			await get_tree().create_timer(0.4).timeout
-			if sprite2d.animation == "death":
-				return
-			sprite2d.play("idle")
-			await get_tree().create_timer(attackspeed).timeout
-			
+		visionbox.scale.y = 25
+		if sprite2d.animation == "death":
+			return
+		sprite2d.play("attack")
+		velocity.x = 0
+		movementnum = -100
+		await get_tree().create_timer(1).timeout
+		if stunned == false && attacking == true:
+			var world = get_tree().get_root().get_node("World")
+			var obj = sap.instantiate()
+			if direction == 1:
+				obj.position = Vector2(-30, -50)
+			else:
+				obj.position = Vector2(80, -50)
+			obj.speed *= direction
+			add_child(obj)
+		await get_tree().create_timer(0.4).timeout
+		if sprite2d.animation == "death":
+			return
+		sprite2d.play("idle")
+		$Vision/CollisionShape2D.set_deferred("disabled", true)
+		await get_tree().create_timer(attackspeed).timeout
+		$Vision/CollisionShape2D.set_deferred("disabled", false)
 		
 func _on_vision_area_exited(body: Area2D) -> void:
 	hit = body.name
+	visionbox.scale.y = 1
 
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
@@ -143,13 +145,13 @@ func heal():
 	if health >= 6:
 		health = 5
 	else:
+		$Sound.stream = load("res://Sounds/Sounds/Potion.wav")
+		$Sound.play()
 		$Sprite2D2.play("boost")
 		stunned = true
 		attacking = false
-		$Vision/CollisionShape2D.set_deferred("disabled", true)
 		await get_tree().create_timer(0.7).timeout
 		if sprite2d.animation == "death":
 			return
-		$Vision/CollisionShape2D.set_deferred("disabled", false)
 		attacking = true
 		stunned = false

@@ -60,27 +60,29 @@ func _on_vision_area_entered(body: Area2D) -> void:
 	hit = body.name
 	if hit == "OuchBox" && stunned == false:
 		attacking = true
-		while attacking == true:
-			if sprite2d.animation == "death":
-				return
-			sprite2d.play("attack")
-			velocity.x = 0
-			movementnum = 0
-			if stunned == false:
-				attackbox.set_deferred("disabled", false)
-			for i in 4:
-				if i == 0 or i == 2 or i == 4:
-					attackbox.set_deferred("disabled", true)
-				else:
-					if sprite2d.animation == "attack":
-						attackbox.set_deferred("disabled", false)
-				await get_tree().create_timer(0.2).timeout
-			attackbox.set_deferred("disabled", true)
-			await get_tree().create_timer(0.5).timeout
-			if sprite2d.animation == "death":
-				return
-			sprite2d.play("idle")
-			await get_tree().create_timer(attackspeed).timeout
+		if sprite2d.animation == "death":
+			return
+		sprite2d.play("attack")
+		velocity.x = 0
+		movementnum = 0
+		if stunned == false:
+			attackbox.set_deferred("disabled", false)
+		for i in 4:
+			if i == 0 or i == 2 or i == 4:
+				attackbox.set_deferred("disabled", true)
+			else:
+				if sprite2d.animation == "attack":
+					attackbox.set_deferred("disabled", false)
+			await get_tree().create_timer(0.2).timeout
+		attackbox.set_deferred("disabled", true)
+		await get_tree().create_timer(0.5).timeout
+		if sprite2d.animation == "death":
+			return
+		sprite2d.play("idle")
+		attacking = false
+		$Vision/CollisionShape2D.set_deferred("disabled", true)
+		await get_tree().create_timer(attackspeed).timeout
+		$Vision/CollisionShape2D.set_deferred("disabled", false)
 			
 func _on_vision_area_exited(body: Area2D) -> void:
 	hit = body.name
