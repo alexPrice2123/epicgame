@@ -17,6 +17,12 @@ func seek():
 		return steer
 
 func _physics_process(delta):
+	if target == null:
+		$Ball.play("Explosion")
+		$Sound.stream = load("res://Sounds/Sounds/Explode.wav")
+		$Sound.play()
+		await get_tree().create_timer(1).timeout
+		queue_free()
 	if $Ball.animation != "Fly":
 		return
 	if target.position.x < position.x:

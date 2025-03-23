@@ -114,6 +114,8 @@ func death():
 	$Sound.stream = load("res://Sounds/Sounds/DieBlob.wav")
 	$Sound.play()
 	await get_tree().create_timer(2).timeout
+	var world = get_tree().get_root().get_node("World")
+	world.get_node("Player").deadBlob()
 	for i in 10:
 		sprite2d.modulate.a -= 0.1
 		await get_tree().create_timer(0.05).timeout

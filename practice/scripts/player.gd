@@ -282,3 +282,24 @@ func summonBlob():
 		get_tree().get_current_scene().get_node("MiniBoss").volume_db += 0.4
 		await get_tree().create_timer(0.01).timeout
 	get_tree().get_current_scene().get_node("Swamp").volume_db -= 300
+	
+func deadBlob():
+	var world = get_tree().get_root().get_node("World")
+	for i in 25: 
+		world.get_node("TileHolder").get_node("Pillars").position.y += 2
+		camera.zoom.x += 0.01
+		camera.zoom.y += 0.01
+		camera.position.y += 6.5
+		await get_tree().create_timer(0.01).timeout
+	blobSpawned = false
+	get_tree().get_current_scene().get_node("Swamp").volume_db = -69
+	for i in 10:
+		world.get_node("TileHolder").get_node("Pillars").position.y += 2
+		get_tree().get_current_scene().get_node("Swamp").volume_db += 0.4
+		get_tree().get_current_scene().get_node("MiniBoss").volume_db -= 0.4
+		await get_tree().create_timer(0.01).timeout
+	for i in 100:
+		world.get_node("TileHolder").get_node("Pillars").position.y += 2
+		get_tree().get_current_scene().get_node("Swamp").volume_db += 0.4
+		get_tree().get_current_scene().get_node("MiniBoss").volume_db -= 0.4
+		await get_tree().create_timer(0.01).timeout
