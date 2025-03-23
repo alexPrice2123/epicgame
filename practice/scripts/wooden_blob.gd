@@ -2,9 +2,10 @@ extends CharacterBody2D
 @export var speed = 750
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 1
+@export var health = 5
 @export var spawn_coin = preload("res://Scenes/followgem.tscn")
 @export var bat = preload("res://Scenes/bat.tscn")
+@export var fly = preload("res://Scenes/singlefly.tscn")
 @onready var sprite2d = $Sprite2D2
 var idle = 0
 var stunned = false
@@ -14,8 +15,19 @@ var hit = null
 var movementnum = 0
 var direction = 1
 var attackspeed = 1
+var dont = null
 
 func _physics_process(_delta):
+	if randi_range(1,100) == 1:
+		var world = get_tree().get_root().get_node("World")
+		var obj = fly.instantiate()
+		var rand = randi_range(1,4)
+		if rand == dont:
+			return
+		var spawn = ("Spawn%s" % str(rand))
+		obj.position = world.get_node("FlySpawner").position + world.get_node("FlySpawner").get_node(spawn).position
+		world.add_child(obj)
+		dont = rand
 	if sprite2d.animation == "death" or stunned == true:
 		return
 	movement()

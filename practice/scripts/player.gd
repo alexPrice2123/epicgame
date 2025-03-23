@@ -13,7 +13,7 @@ var idle = 0
 var stunned = false
 var attacking = false
 var attackanim = 1
-var zoomfactor = 0.15
+var zoomfactor = 0.05
 var hit = null
 var blobSpawned = false
 var gems = 0
@@ -74,6 +74,10 @@ func _on_ouch_box_area_exited(body: Area2D) -> void:
 func _input(_event: InputEvent) -> void:
 	if sprite2d.animation == ("%s_death" % classe):
 		return
+	if Input.is_action_just_pressed("jump"):
+		jumping = true
+	elif Input.is_action_just_released("jump"):
+		jumping = false
 	if classe == "brute":
 		if stunned == true:
 			return
@@ -85,10 +89,6 @@ func _input(_event: InputEvent) -> void:
 		sprite2d.flip_h = false
 		sprite2d.offset.x = 5
 		attackbox.position.x = 57.5
-	if Input.is_action_just_pressed("jump"):
-		jumping = true
-	elif Input.is_action_just_released("jump"):
-		jumping = false
 	if Input.is_action_just_pressed("attack") && attacking == false:
 		attacking = true
 		if attackanim == 1:

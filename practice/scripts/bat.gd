@@ -49,6 +49,12 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	elif area.name == "PlayerHitBox":
 		$HitBox/CollisionShape2D.set_deferred("disabled", true)
 		target = get_tree().current_scene.get_node("WoodenBlob")
+		if target == null:
+			$Ball.play("Explosion")
+			$Sound.stream = load("res://Sounds/Sounds/Explode.wav")
+			$Sound.play()
+			await get_tree().create_timer(1).timeout
+			queue_free()
 		$Sound.stream = load("res://Sounds/Sounds/Pop.wav")
 		$Sound.play()
 		while position.distance_to(target.position) > 100:
