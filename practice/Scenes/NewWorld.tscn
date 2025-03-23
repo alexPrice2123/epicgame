@@ -75,14 +75,14 @@ size = Vector2(57821, 4133)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0np7"]
 size = Vector2(20, 214)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bch76"]
-size = Vector2(27, 913)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1lm7"]
 size = Vector2(123.5, 126.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr7ga"]
 size = Vector2(72.75, 173.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytv4u"]
+size = Vector2(8, 1288.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ytv4u"]
 shader = ExtResource("9_5rrus")
@@ -363,7 +363,7 @@ texture = ExtResource("18_f3r5u")
 19:11/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_qptyk"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 navigation_layer_0/layers = 1
 sources/4 = SubResource("TileSetAtlasSource_70dgt")
 sources/0 = SubResource("TileSetAtlasSource_1umef")
@@ -2439,7 +2439,7 @@ scale = Vector2(51785.5, 21132)
 mesh = SubResource("QuadMesh_gjfyq")
 
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
-position = Vector2(33554, 261)
+position = Vector2(33591, 233)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]
@@ -2622,11 +2622,6 @@ position = Vector2(33144, -497)
 shape = SubResource("RectangleShape2D_e0np7")
 debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
-[node name="TurnAround41" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(35014, -1043)
-shape = SubResource("RectangleShape2D_bch76")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
 [node name="TurnAround7" type="CollisionShape2D" parent="TurnAround"]
 position = Vector2(7516, -141)
 shape = SubResource("RectangleShape2D_e0np7")
@@ -2690,6 +2685,39 @@ debug_color = Color(0, 0, 0.12549, 0.419608)
 position = Vector2(27780, -448.625)
 shape = SubResource("RectangleShape2D_qr7ga")
 debug_color = Color(0, 0, 0.12549, 0.419608)
+
+[node name="Drop" type="Area2D" parent="."]
+position = Vector2(42, 822)
+collision_mask = 3
+
+[node name="Drop2" type="CollisionShape2D" parent="Drop"]
+position = Vector2(34178, -1050)
+shape = SubResource("RectangleShape2D_ytv4u")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="Drop3" type="CollisionShape2D" parent="Drop"]
+position = Vector2(35009, -1050)
+shape = SubResource("RectangleShape2D_ytv4u")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="Drop4" type="CollisionShape2D" parent="Drop"]
+position = Vector2(35682, -1050)
+shape = SubResource("RectangleShape2D_ytv4u")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="DropMust" type="Area2D" parent="."]
+position = Vector2(42, 822)
+collision_mask = 3
+
+[node name="DropMust" type="CollisionShape2D" parent="DropMust"]
+position = Vector2(33543, -1049.88)
+shape = SubResource("RectangleShape2D_ytv4u")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="DropMust2" type="CollisionShape2D" parent="DropMust"]
+position = Vector2(36355, -1050)
+shape = SubResource("RectangleShape2D_ytv4u")
+debug_color = Color(0, 0, 1, 0.419608)
 
 [node name="TileHolder" type="Node2D" parent="."]
 scale = Vector2(5, 5)

@@ -43,8 +43,11 @@ func _ready():
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name
+	print(hit)
 	if hit == "HitBox":
 		damaged()
+	elif hit == "BossHitBox":
+		bossdamaged()
 	elif body.name.begins_with("Gem"):
 		gems += 1
 		hud.gem()
@@ -182,6 +185,26 @@ func damaged():
 		$Sound.play()
 		await get_tree().create_timer(0.2).timeout
 		death()
+func bossdamaged():
+	stunned = true
+	health -= 1
+	hud.damaged()
+	if health > 0:
+		sprite2d.frame = 0
+		sprite2d.play("%s_hurt" % classe)
+		$Sound.stream = load("res://Sounds/Sounds/Damage.wav")
+		$Sound.play()
+		await get_tree().create_timer(0.5).timeout
+		stunned = false
+	else:
+		sprite2d.play("%s_hurt" % classe)
+		$CollisionShape2D2.set_deferred("disabled", true)
+		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
+		attackbox.set_deferred("disabled", true)
+		$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
+		$Sound.play()
+		await get_tree().create_timer(0.2).timeout
+		death()
 func death():
 	stunned = true
 	$CollisionShape2D2.set_deferred("disabled", true)
@@ -238,7 +261,7 @@ func summonBlob():
 	var world = get_tree().get_root().get_node("World")
 	var obj = blob.instantiate()
 	obj.position = Vector2(position.x, position.y-850)
-	world.add_child(obj)
+	print(position.y-850)
 	world.get_node("TileHolder").get_node("Pillars").position.y = 0
 	for i in 25: 
 		camera.zoom.x -= 0.02
@@ -249,6 +272,7 @@ func summonBlob():
 		camera.position.y -= 6.5
 		await get_tree().create_timer(0.01).timeout
 	get_tree().get_current_scene().get_node("MiniBoss").play()
+	world.add_child(obj)
 	for i in 10:
 		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
 		get_tree().get_current_scene().get_node("MiniBoss").volume_db += 0.4

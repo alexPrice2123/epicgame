@@ -886,9 +886,7 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"warrior_attack"
-frame = 9
-frame_progress = 1.0
+animation = &"warrior_hurt"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -917,7 +915,6 @@ scale = Vector2(1.2014, -7.323)
 shape = SubResource("RectangleShape2D_gntrk")
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
-collision_layer = 15
 priority = 10
 
 [node name="PlayerCollisionBox" type="CollisionShape2D" parent="PlayerHitBox"]

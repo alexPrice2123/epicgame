@@ -573,17 +573,19 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m27a1"]
 radius = 54.5
-height = 138.0
+height = 155.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vmdy"]
-size = Vector2(94.8893, 19.2544)
+size = Vector2(20.8091, 19.2544)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df6x3"]
-size = Vector2(442, 12.5)
+size = Vector2(247.5, 44.5)
 
 [node name="WoodenBlob" type="CharacterBody2D"]
 position = Vector2(695, 342)
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_wk58o")
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
@@ -591,11 +593,13 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(4, 4.014)
 sprite_frames = SubResource("SpriteFrames_10m3s")
-animation = &"idle"
+animation = &"death"
+frame = 16
+frame_progress = 1.0
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(19.5, -16.5)
+position = Vector2(19.5, 2.5)
 shape = SubResource("CapsuleShape2D_m27a1")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -607,11 +611,11 @@ rotation = 3.14159
 scale = Vector2(1.2014, -7.323)
 shape = SubResource("RectangleShape2D_3vmdy")
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="BossHitBox" type="Area2D" parent="."]
 priority = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-2, -224.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitBox"]
+position = Vector2(20.25, 57.75)
 shape = SubResource("RectangleShape2D_df6x3")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
@@ -619,5 +623,5 @@ debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="area_entered" from="Vision" to="." method="_on_vision_area_entered"]
-[connection signal="area_exited" from="Vision" to="." method="_on_vision_area_exited"]
+[connection signal="area_entered" from="BossHitBox" to="." method="_on_vision_area_entered"]
+[connection signal="area_exited" from="BossHitBox" to="." method="_on_vision_area_exited"]

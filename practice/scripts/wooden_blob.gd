@@ -4,9 +4,8 @@ extends CharacterBody2D
 @export var jump_force = 1000
 @export var health = 3
 @export var spawn_coin = preload("res://Scenes/coin.tscn")
-@export var sap = preload("res://Scenes/sap.tscn")
+@export var bat = preload("res://Scenes/bat.tscn")
 @onready var sprite2d = $Sprite2D2
-@onready var visionbox = $Vision/CollisionShape2D
 var idle = 0
 var stunned = false
 var attacking = false
@@ -27,16 +26,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		stunned = true
 		death()
 func _on_area_2d_area_entered(body: Node2D) -> void:
+	hit = body.name
 	if sprite2d.animation == "death":
 		return
-	hit = body.name
 	if hit.begins_with("PlayerHitBox") && stunned == false:
 		health -= 1
 		if health <= 0:
 			$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
 			$Sound.play()
 			stunned = true
-			sprite2d.play("hurt")                                                                                                                                                                                                                      
 			await get_tree().create_timer(0.2).timeout
 			death()
 		else:
@@ -48,66 +46,58 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 		if health > 0:
 			sprite2d.play("idle")
 		stunned = false
-	elif hit.begins_with("TurnAround") && stunned == false:
-		await get_tree().create_timer(5).timeout
-		velocity.x = 0
-		movementnum = 0
-		direction *= -1
-	
-func _on_vision_area_entered(body: Area2D) -> void:
-	if sprite2d.animation == "death":
-		return
-	hit = body.name
-	if hit == "OuchBox" && stunned == false:
-		attacking = true
-		while attacking == true:
-			if sprite2d.animation == "death":
-				return
-			sprite2d.play("attack")
+	elif hit.begins_with("Drop") && stunned == false:
+		var roll = randi_range(1,5)
+		if hit.begins_with("DropMust"):
+			roll = 1
+		if roll <= 2:
+			attacking = true
 			velocity.x = 0
-			movementnum = -100
-			await get_tree().create_timer(1).timeout
-			if stunned == false && attacking == true:
-				var world = get_tree().get_root().get_node("World")
-				var obj = sap.instantiate()
-				if direction == 1:
-					obj.position = Vector2(-30, -50)
-				else:
-					obj.position = Vector2(80, -50)
-				obj.speed *= direction
-				add_child(obj)
-			await get_tree().create_timer(0.4).timeout
-			if sprite2d.animation == "death":
-				return
-			sprite2d.play("idle")
-			await get_tree().create_timer(attackspeed).timeout
-			
-		
-func _on_vision_area_exited(body: Area2D) -> void:
-	hit = body.name
-
-	if hit == "OuchBox" && stunned == false:
-		velocity.x = 0
-		movementnum = 0
-		checkaround()
-		attacking = false
-		
+			movementnum = -1000
+			$Sprite2D2.play("smash_start")
+			await get_tree().create_timer(1.5).timeout
+			$Sprite2D2.play("smash")
+			velocity.y = 750
+			move_and_slide()
+			while !is_on_floor():
+				await get_tree().create_timer(0.01).timeout
+			$Sprite2D2.play("smash_end")
+			await get_tree().create_timer(0.8).timeout
+			velocity.y = -500
+			$Sprite2D2.play("idle")
+			while position.y > -213.244262695312:
+				await get_tree().create_timer(0.01).timeout
+			velocity.y = 0
+			movementnum = 25
+			if roll == 1:
+				direction *= -1
+			attacking = false
+	elif hit.begins_with("TurnAround") && stunned == false:
+		await get_tree().create_timer(5.2).timeout
+		if sprite2d.animation == "fly":
+			velocity.x = 0
+			movementnum = 0
+			direction *= -1
+		else:
+			while sprite2d.animation != "idle":
+				await get_tree().create_timer(0.5).timeout
+	
 func _ready():
+	sprite2d.play_backwards("death")
+	await get_tree().create_timer(1.7).timeout
 	sprite2d.play("idle")
 	
 func movement():
 	velocity.x = 0
 	movementnum +=1
-	if movementnum >= 350:
-		checkaround()
+	if movementnum >= 250:
+		attack()
 	if movementnum >= 50:
 		velocity.x = -300*direction
 		if direction < 0:
 			sprite2d.flip_h = true
-			visionbox.position.x = 229.5
 		else:
 			sprite2d.flip_h = false
-			visionbox.position.x = -210.0
 	move_and_slide()
 	if attacking == true:
 		return
@@ -139,18 +129,20 @@ func checkaround():
 	await get_tree().create_timer(0.1).timeout
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
 	
-func heal():
-	health += 1
-	if health >= 6:
-		health = 5
-	else:
-		$Sprite2D2.play("boost")
-		stunned = true
-		attacking = false
-		$Vision/CollisionShape2D.set_deferred("disabled", true)
-		await get_tree().create_timer(0.7).timeout
-		if sprite2d.animation == "death":
-			return
-		$Vision/CollisionShape2D.set_deferred("disabled", false)
-		attacking = true
-		stunned = false
+func attack():
+	attacking = true
+	movementnum = -1000
+	$Sprite2D2.play("attack")
+	await get_tree().create_timer(1.2).timeout
+	if stunned == false && attacking == true:
+		var world = get_tree().get_root().get_node("World")
+		var obj = bat.instantiate()
+		if direction == 1:
+			obj.position = Vector2(position.x-75, 0)
+		else:
+			obj.position = Vector2(position.x+100, 0)
+		obj.speed *= direction
+		world.add_child(obj)
+	await get_tree().create_timer(0.1).timeout
+	attacking = false
+	movementnum = 0
