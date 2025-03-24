@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://ds6mda5w38t0r"]
+
+[ext_resource type="Texture2D" uid="uid://dtt66ywxef2ew" path="res://Images/Collectables/Potion/Bottle.png" id="1_nymo1"]
+[ext_resource type="Script" uid="uid://20k46ely4eel" path="res://scripts/potion.gd" id="2_xi5ht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xhxc"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc5rj"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02bfh"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0vx5"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrajh"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1jwi"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf53k"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onw0v"]
+atlas = ExtResource("1_nymo1")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmutu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xhxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc5rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02bfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0vx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrajh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1jwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf53k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onw0v")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d5p8s"]
+radius = 5.0
+height = 14.0
+
+[node name="Potion" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_xmutu")
+animation = &"spin"
+frame_progress = 0.722882
+script = ExtResource("2_xi5ht")
+
+[node name="Potion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Potion"]
+shape = SubResource("CapsuleShape2D_d5p8s")
+
+[connection signal="area_entered" from="Potion" to="." method="_on_area_2d_area_entered"]

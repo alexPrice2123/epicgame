@@ -119,7 +119,7 @@ func movement():
 	if attacking == true:
 		return
 	if velocity.x != 0 && is_on_floor():
-		sprite2d.play("walk")
+		sprite2d.play("idle")
 	else:
 		sprite2d.play("idle")
 		

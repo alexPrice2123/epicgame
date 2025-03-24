@@ -28,14 +28,14 @@ func _physics_process(_delta):
 	if sprite2d.animation == ("%s_death" % classe):
 		return
 	movement()
-	
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Lava"):
 		stunned = true
 		$Sound.stream = load("res://Sounds/Sounds/Dies.wav")
 		$Sound.play()
 		death()
-	
+
 func _ready():
 	sprite2d.play("%s_idle" % classe)
 	$HUD.damaged()
@@ -53,6 +53,15 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 		hud.gem()
 		$Sound.stream = load("res://Sounds/Sounds/Get_Gem.wav")
 		$Sound.play()
+	elif body.name.begins_with("Potion"):
+		health += 1
+		hud.damaged()
+		$Sound.stream = load("res://Sounds/Sounds/Potion.wav")
+		$Sound.play()
+		if health >= 3 && classe == "warrior":
+			health = 3
+		elif health >= 5 && classe == "brute":
+			health = 5
 	elif body.name.begins_with("Coin"):
 		coins += 1
 		hud.coin()
@@ -70,7 +79,7 @@ func _on_ouch_box_area_exited(body: Area2D) -> void:
 		stunned = false
 	elif body.name.begins_with("Bones"):
 		$HUD.closeUI()
-		
+
 func _input(_event: InputEvent) -> void:
 	if sprite2d.animation == ("%s_death" % classe):
 		return
@@ -124,7 +133,7 @@ func _input(_event: InputEvent) -> void:
 			camera.zoom.x = 0.5
 	if Input.is_action_just_pressed("quit"):
 		quit()
-		
+
 func quit():
 	lives = 3
 	get_tree().get_root().get_node("World").save()
@@ -166,7 +175,7 @@ func movement():
 		sprite2d.play("%s_walk" % classe)
 	else:
 		sprite2d.play("%s_idle" % classe)
-		
+
 func damaged():
 	stunned = true
 	health -= 1
@@ -185,6 +194,7 @@ func damaged():
 		$Sound.play()
 		await get_tree().create_timer(0.2).timeout
 		death()
+
 func bossdamaged():
 	stunned = true
 	health -= 1
@@ -205,6 +215,7 @@ func bossdamaged():
 		$Sound.play()
 		await get_tree().create_timer(0.2).timeout
 		death()
+
 func death():
 	stunned = true
 	$CollisionShape2D2.set_deferred("disabled", true)
@@ -250,8 +261,7 @@ func death():
 				$Sprite2D2.modulate = Color(1,1,1,1)
 		$Sprite2D2.modulate = Color(1,1,1,1)
 		$OuchBox/CollisionShape2D.set_deferred("disabled", false)
-		
-		
+
 func summonBlob():
 	blobSpawned = true
 	while camera.zoom.y > 0.75:
@@ -282,7 +292,7 @@ func summonBlob():
 		get_tree().get_current_scene().get_node("MiniBoss").volume_db += 0.4
 		await get_tree().create_timer(0.01).timeout
 	get_tree().get_current_scene().get_node("Swamp").volume_db -= 300
-	
+
 func deadBlob():
 	var world = get_tree().get_root().get_node("World")
 	for i in 25: 

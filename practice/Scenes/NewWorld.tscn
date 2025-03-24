@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=4 uid="uid://dhnms44nr6egu"]
+[gd_scene load_steps=155 format=4 uid="uid://dhnms44nr6egu"]
 
 [ext_resource type="PackedScene" uid="uid://vgmnk2ppdy54" path="res://Scenes/Player.tscn" id="1_48i0q"]
 [ext_resource type="Script" uid="uid://ods454e3epdi" path="res://scripts/new_world.gd" id="1_nhwle"]
@@ -66,8 +66,11 @@
 [ext_resource type="PackedScene" uid="uid://iostokmlvesd" path="res://Scenes/Skelibones.tscn" id="50_xett1"]
 [ext_resource type="PackedScene" uid="uid://cq33pdvmt76l1" path="res://Scenes/fly.tscn" id="63_w1lm7"]
 [ext_resource type="PackedScene" uid="uid://bbsxe81p51hqq" path="res://Scenes/healer.tscn" id="64_qr7ga"]
+[ext_resource type="PackedScene" uid="uid://ds6mda5w38t0r" path="res://Scenes/potion.tscn" id="67_8hf0j"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gjfyq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ytv4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51u67"]
 size = Vector2(57821, 4133)
@@ -2434,12 +2437,19 @@ texture = ExtResource("4_p4clw")
 [node name="Sky" type="MeshInstance2D" parent="ParallaxBackground"]
 modulate = Color(0.184314, 0.239216, 0.27451, 1)
 z_index = -4096
-position = Vector2(19333, 2083)
-scale = Vector2(51785.5, 21132)
+position = Vector2(18238, -1028)
+scale = Vector2(51785.5, 26160)
 mesh = SubResource("QuadMesh_gjfyq")
 
+[node name="Background" type="MeshInstance2D" parent="ParallaxBackground"]
+modulate = Color(0.517647, 0.662745, 0.545098, 1)
+z_index = -4096
+position = Vector2(19684, 770)
+scale = Vector2(48938.7, 2311)
+mesh = SubResource("QuadMesh_ytv4u")
+
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
-position = Vector2(32726, 26)
+position = Vector2(237, 871)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]
@@ -3627,3 +3637,57 @@ position = Vector2(-35, -338)
 
 [node name="Spawn4" type="Node2D" parent="FlySpawner"]
 position = Vector2(562, -338)
+
+[node name="Potion" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(2673, 778)
+
+[node name="Potion2" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(4575, 690)
+
+[node name="Potion3" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(6264, 922)
+
+[node name="Potion4" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(7912, 754)
+
+[node name="Potion5" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(10380, 838)
+
+[node name="Potion6" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(11721, 380)
+
+[node name="Potion7" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(13901, 728)
+
+[node name="Potion8" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(14814, 404)
+
+[node name="Potion9" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(16136, 730)
+
+[node name="Potion10" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(16454, 316)
+
+[node name="Potion11" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(16621, 313)
+
+[node name="Potion12" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(20931, 853)
+
+[node name="Potion13" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(23846, 475)
+
+[node name="Potion14" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(26462, 432)
+
+[node name="Potion15" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(29342, 498)
+
+[node name="Potion16" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(33564, 315)
+
+[node name="Potion17" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(34009, 425)
+
+[node name="Potion18" parent="." instance=ExtResource("67_8hf0j")]
+position = Vector2(38399, 590)

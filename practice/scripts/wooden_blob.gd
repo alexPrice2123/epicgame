@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var speed = 750
 @export var gravity = 40
 @export var jump_force = 1000
-@export var health = 1
+@export var health = 5
 @export var spawn_coin = preload("res://Scenes/followgem.tscn")
 @export var bat = preload("res://Scenes/bat.tscn")
 @export var fly = preload("res://Scenes/singlefly.tscn")
