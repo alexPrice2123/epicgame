@@ -162,3 +162,4 @@ func _on_no_dead_button_up() -> void:
 		times += 0.01
 		await get_tree().create_timer(0.01).timeout
 	plr.quit()
+	get_tree().change_scene_to_file("res://Scenes/Menu.tscn")

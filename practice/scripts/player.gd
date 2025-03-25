@@ -134,12 +134,12 @@ func _input(_event: InputEvent) -> void:
 			camera.zoom.y = 0.5
 			camera.zoom.x = 0.5
 	if Input.is_action_just_pressed("quit"):
-		quit()
+		#quit()
+		pass
 
 func quit():
 	lives = 3
 	get_tree().get_root().get_node("World").save()
-	get_tree().quit()
 
 func movement():
 	var h_direction = Input.get_axis("move_left", "move_right")
@@ -165,10 +165,10 @@ func movement():
 			for i in 10:
 				$Sprite2D2.scale.x -= jumpex
 				await get_tree().create_timer(0.01).timeout
-		if shouldland == true:
-			shouldland = false
-		if position.y < 900:
+		if position.y < 900 && velocity.y != 210:
 			pos = position
+			print(velocity.y)
+			print(pos)
 	if attacking == true:
 		return
 	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
@@ -220,6 +220,7 @@ func bossdamaged():
 
 func death():
 	stunned = true
+	jumping = false
 	$CollisionShape2D2.set_deferred("disabled", true)
 	$OuchBox/CollisionShape2D.set_deferred("disabled", true)
 	attackbox.set_deferred("disabled", true)

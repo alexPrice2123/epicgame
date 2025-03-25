@@ -26,7 +26,7 @@
 shader = ExtResource("4_wfhf6")
 shader_parameter/progress = 0.0
 shader_parameter/size = 40.0
-shader_parameter/fill = true
+shader_parameter/fill = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aobxe"]
 
@@ -111,12 +111,10 @@ script = ExtResource("1_ma218")
 
 [node name="Title" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dd46u")
-volume_db = -25.0
+volume_db = -55.0
 autoplay = true
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_dd46u")
-autoplay = true
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.588235)
@@ -137,7 +135,6 @@ offset_bottom = 72.0
 scale = Vector2(3, 3)
 
 [node name="Overlay" type="ColorRect" parent="HUD/Control"]
-visible = false
 z_index = 4096
 z_as_relative = false
 material = SubResource("ShaderMaterial_sjh0l")
@@ -266,7 +263,7 @@ z_index = 1
 position = Vector2(240, 302)
 scale = Vector2(7.09375, 7.09375)
 sprite_frames = SubResource("SpriteFrames_x0ao6")
-frame_progress = 0.721751
+frame_progress = 0.076329
 
 [node name="1" type="Sprite2D" parent="Sprites"]
 use_parent_material = true
