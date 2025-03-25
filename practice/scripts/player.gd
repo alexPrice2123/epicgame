@@ -25,6 +25,7 @@ var pos = null
 var jumpex = 0.02
 var shouldland = false
 var jumping = false
+var canattack = true
 
 func _physics_process(_delta):
 	if sprite2d.animation == ("%s_death" % classe):
@@ -100,15 +101,19 @@ func _input(_event: InputEvent) -> void:
 		sprite2d.flip_h = false
 		sprite2d.offset.x = 5
 		attackbox.position.x = 57.5
-	if Input.is_action_just_pressed("attack") && attacking == false:
+	if Input.is_action_just_pressed("attack") && canattack == true:
 		attacking = true
+		canattack = false
 		if attackanim == 1:
 			sprite2d.play("%s_attack" % classe)
 			attackanim = 2
 		else:
 			sprite2d.play("%s_attack2" % classe)
 			attackanim = 1
-		await get_tree().create_timer(0.5).timeout
+		if classe == "brute":
+			await get_tree().create_timer(0.3).timeout
+		else:
+			await get_tree().create_timer(0.2).timeout
 		if stunned == false:
 			$Sound.stream = load("res://Sounds/Sounds/Slash.wav")
 			$Sound.play()
@@ -121,6 +126,8 @@ func _input(_event: InputEvent) -> void:
 		$Sound.pitch_scale = 1
 		attackbox.set_deferred("disabled", true)
 		attacking = false
+		await get_tree().create_timer(0.2).timeout
+		canattack = true
 	if Input.is_action_just_pressed("scroll_in") && blobSpawned == false:
 		camera.zoom.x += zoomfactor
 		camera.zoom.y += zoomfactor
