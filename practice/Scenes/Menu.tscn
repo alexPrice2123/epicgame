@@ -1,0 +1,401 @@
+[gd_scene load_steps=36 format=3 uid="uid://dy8ecdpl3xfvd"]
+
+[ext_resource type="Script" uid="uid://b4hqic15l2bt0" path="res://scripts/menu.gd" id="1_ma218"]
+[ext_resource type="AudioStream" uid="uid://cvwkkeug2sd2m" path="res://Sounds/Music/Title.wav" id="2_dd46u"]
+[ext_resource type="FontFile" uid="uid://dsu8drq2spiv2" path="res://Images/HUD/Bitmgothic.otf" id="2_ma218"]
+[ext_resource type="Texture2D" uid="uid://dfutpujwn1dqn" path="res://Images/HUD/Button/NormalButton.png" id="3_idohh"]
+[ext_resource type="Shader" uid="uid://rxx4t2fi07qq" path="res://scripts/transition.gdshader" id="4_wfhf6"]
+[ext_resource type="Shader" uid="uid://dwan6wj5avvgw" path="res://scripts/Swamp.gdshader" id="5_wfhf6"]
+[ext_resource type="Texture2D" uid="uid://csd1sqpfqa32i" path="res://Images/Brute/Skeleton_02_Yellow_Idle.png" id="6_idohh"]
+[ext_resource type="Texture2D" uid="uid://bmjhxes6y2nex" path="res://Images/tileset/swamp/Bushes/1.png" id="7_3jcrr"]
+[ext_resource type="Texture2D" uid="uid://bulkrvs6rc84e" path="res://Images/tileset/swamp/Boxes/3.png" id="8_ab40c"]
+[ext_resource type="Texture2D" uid="uid://cep2eevv5jio6" path="res://Images/tileset/swamp/Grass/1.png" id="9_sjh0l"]
+[ext_resource type="Texture2D" uid="uid://brbc62cbphxpe" path="res://Images/tileset/swamp/Grass/2.png" id="10_qki4b"]
+[ext_resource type="Texture2D" uid="uid://batdtbhlov0se" path="res://Images/tileset/swamp/Grass/4.png" id="11_a8aa6"]
+[ext_resource type="Texture2D" uid="uid://b5pqy4qolrfie" path="res://Images/tileset/swamp/Grass/5.png" id="12_x0ao6"]
+[ext_resource type="Texture2D" uid="uid://c4jxlf50mviq2" path="res://Images/tileset/swamp/Grass/3.png" id="13_dsmso"]
+[ext_resource type="Texture2D" uid="uid://davu8mphea6g5" path="res://Images/tileset/swamp/Grass/6.png" id="14_t8p2w"]
+[ext_resource type="Texture2D" uid="uid://dvi4b33lx6eds" path="res://Images/paralax/j4.png" id="15_krje8"]
+[ext_resource type="Texture2D" uid="uid://dxqf4ddwubq0a" path="res://Images/paralax/j3.png" id="16_dd46u"]
+[ext_resource type="Texture2D" uid="uid://cp2fs1vgjw6um" path="res://Images/paralax/j2.png" id="17_n3nbb"]
+[ext_resource type="Texture2D" uid="uid://bfpuqxbr7nfrq" path="res://Images/paralax/j1.png" id="18_dm44m"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_krje8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjh0l"]
+shader = ExtResource("4_wfhf6")
+shader_parameter/progress = 0.0
+shader_parameter/size = 40.0
+shader_parameter/fill = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aobxe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd46u"]
+shader = ExtResource("5_wfhf6")
+shader_parameter/saturation = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aobxe"]
+shader = ExtResource("5_wfhf6")
+shader_parameter/saturation = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfhf6"]
+atlas = ExtResource("6_idohh")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jcrr"]
+atlas = ExtResource("6_idohh")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aobxe"]
+atlas = ExtResource("6_idohh")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab40c"]
+atlas = ExtResource("6_idohh")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjh0l"]
+atlas = ExtResource("6_idohh")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qki4b"]
+atlas = ExtResource("6_idohh")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byewe"]
+atlas = ExtResource("6_idohh")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8aa6"]
+atlas = ExtResource("6_idohh")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0ao6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfhf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jcrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aobxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab40c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjh0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qki4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byewe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8aa6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="QuadMesh" id="QuadMesh_du1yi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_c0stj"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_ma218")
+
+[node name="Title" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dd46u")
+volume_db = -25.0
+autoplay = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dd46u")
+autoplay = true
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.588235)
+z_index = -1
+position = Vector2(462.285, 60.2286)
+scale = Vector2(4717.26, 2692.8)
+texture = SubResource("CanvasTexture_krje8")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -48.0
+offset_top = -16.0
+offset_right = -33.0
+offset_bottom = 72.0
+scale = Vector2(3, 3)
+
+[node name="Overlay" type="ColorRect" parent="HUD/Control"]
+visible = false
+z_index = 4096
+z_as_relative = false
+material = SubResource("ShaderMaterial_sjh0l")
+layout_mode = 0
+offset_left = 14.0
+offset_top = 4.0
+offset_right = 406.0
+offset_bottom = 227.0
+color = Color(0, 0, 0, 1)
+
+[node name="Play" type="Button" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = -0.943
+anchor_right = 0.302
+anchor_bottom = -0.352
+offset_left = 237.822
+offset_top = 207.984
+offset_right = 396.525
+offset_bottom = 244.387
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aobxe")
+icon = ExtResource("3_idohh")
+flat = true
+expand_icon = true
+
+[node name="ButtonText" type="Label" parent="HUD/Control/Play"]
+layout_mode = 2
+anchor_left = 0.034
+anchor_top = 0.096
+anchor_right = 0.97
+anchor_bottom = 0.787
+offset_left = -0.0100002
+offset_top = -0.0240002
+offset_right = -0.0499573
+offset_bottom = 11.022
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_ma218")
+theme_override_font_sizes/font_size = 41
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Quit" type="Button" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 40.3946
+anchor_top = 2.72234
+anchor_right = 40.6236
+anchor_bottom = 3.31334
+offset_left = -367.252
+offset_top = -74.816
+offset_right = -208.549
+offset_bottom = -38.413
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aobxe")
+icon = ExtResource("3_idohh")
+flat = true
+expand_icon = true
+
+[node name="ButtonText" type="Label" parent="HUD/Control/Quit"]
+layout_mode = 2
+anchor_left = 0.034
+anchor_top = 0.096
+anchor_right = 0.97
+anchor_bottom = 0.787
+offset_left = -0.0100002
+offset_top = -0.0240002
+offset_right = -0.0499573
+offset_bottom = 11.022
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_ma218")
+theme_override_font_sizes/font_size = 41
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Title" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.096
+anchor_right = 0.97
+anchor_bottom = 0.787
+offset_left = 175.157
+offset_top = 13.8853
+offset_right = 372.117
+offset_bottom = 40.0773
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_ma218")
+theme_override_font_sizes/font_size = 41
+text = "The Fallen"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="6" type="Sprite2D" parent="HUD"]
+material = SubResource("ShaderMaterial_dd46u")
+position = Vector2(910, 611)
+scale = Vector2(6, 6)
+texture = ExtResource("12_x0ao6")
+
+[node name="9" type="Sprite2D" parent="HUD"]
+material = SubResource("ShaderMaterial_dd46u")
+position = Vector2(794, 595)
+scale = Vector2(6, 6)
+texture = ExtResource("9_sjh0l")
+flip_h = true
+
+[node name="Sprites" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_aobxe")
+
+[node name="Skeli" type="AnimatedSprite2D" parent="Sprites"]
+z_index = 1
+position = Vector2(240, 302)
+scale = Vector2(7.09375, 7.09375)
+sprite_frames = SubResource("SpriteFrames_x0ao6")
+frame_progress = 0.793303
+
+[node name="1" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(191, 598)
+scale = Vector2(11.1667, 11.1667)
+texture = ExtResource("7_3jcrr")
+
+[node name="3" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(411, 569)
+scale = Vector2(6.052, 6.052)
+texture = ExtResource("8_ab40c")
+
+[node name="2" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(330, 596)
+scale = Vector2(6, 6)
+texture = ExtResource("9_sjh0l")
+
+[node name="4" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(605, 602)
+scale = Vector2(6, 6)
+texture = ExtResource("10_qki4b")
+
+[node name="5" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(694, 614)
+scale = Vector2(6, 6)
+texture = ExtResource("11_a8aa6")
+
+[node name="7" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(1033, 601)
+scale = Vector2(6, 6)
+texture = ExtResource("13_dsmso")
+
+[node name="8" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(59, 623)
+scale = Vector2(6, 6)
+texture = ExtResource("14_t8p2w")
+
+[node name="10" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(219, 602)
+scale = Vector2(6, 6)
+texture = ExtResource("10_qki4b")
+flip_h = true
+
+[node name="11" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(499, 614)
+scale = Vector2(6, 6)
+texture = ExtResource("11_a8aa6")
+flip_h = true
+
+[node name="12" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(1113, 611)
+scale = Vector2(6, 6)
+texture = ExtResource("12_x0ao6")
+flip_h = true
+
+[node name="13" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(137, 602)
+scale = Vector2(6, 6)
+texture = ExtResource("13_dsmso")
+flip_h = true
+
+[node name="14" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(413, 623)
+scale = Vector2(6, 6)
+texture = ExtResource("14_t8p2w")
+flip_h = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+offset = Vector2(0, 300)
+transform = Transform2D(1, 0, 0, 1, 0, 300)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("15_krje8")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(3840, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("16_dd46u")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(5760, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("17_n3nbb")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(7680, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("18_dm44m")
+
+[node name="Sky" type="MeshInstance2D" parent="ParallaxBackground"]
+modulate = Color(0.184314, 0.239216, 0.27451, 1)
+z_index = -4096
+position = Vector2(18238, -1028)
+scale = Vector2(51785.5, 26160)
+mesh = SubResource("QuadMesh_du1yi")
+
+[node name="Background" type="MeshInstance2D" parent="ParallaxBackground"]
+modulate = Color(0.517647, 0.662745, 0.545098, 1)
+z_index = -4096
+position = Vector2(19657, 885)
+scale = Vector2(48938.7, 2080.5)
+mesh = SubResource("QuadMesh_c0stj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 324)
+
+[connection signal="button_down" from="HUD/Control/Play" to="." method="_on_play_button_down"]
+[connection signal="button_up" from="HUD/Control/Play" to="." method="_on_play_button_up"]
+[connection signal="button_down" from="HUD/Control/Quit" to="." method="_on_quit_button_down"]
+[connection signal="button_up" from="HUD/Control/Quit" to="." method="_on_quit_button_up"]
