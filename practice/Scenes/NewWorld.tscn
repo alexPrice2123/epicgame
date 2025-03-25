@@ -2444,12 +2444,12 @@ mesh = SubResource("QuadMesh_gjfyq")
 [node name="Background" type="MeshInstance2D" parent="ParallaxBackground"]
 modulate = Color(0.517647, 0.662745, 0.545098, 1)
 z_index = -4096
-position = Vector2(19684, 770)
-scale = Vector2(48938.7, 2311)
+position = Vector2(19684, 885.25)
+scale = Vector2(48938.7, 2080.5)
 mesh = SubResource("QuadMesh_ytv4u")
 
 [node name="Player" parent="." instance=ExtResource("1_48i0q")]
-position = Vector2(237, 871)
+position = Vector2(222, 871)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("4_e0np7")]

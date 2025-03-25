@@ -8,7 +8,9 @@ extends CharacterBody2D
 @onready var hud = $HUD
 @onready var sprite2d = $Sprite2D2
 @export var blob = preload("res://Scenes/wooden_blob.tscn")
+@export var cursor = preload("res://Images/hand.png")
 @onready var attackbox = $PlayerHitBox/PlayerCollisionBox
+
 var idle = 0
 var stunned = false
 var attacking = false
@@ -39,7 +41,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _ready():
 	sprite2d.play("%s_idle" % classe)
 	$HUD.damaged()
-	await get_tree().create_timer(0.1).timeout
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_POINTING_HAND, Vector2(0, 0))
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name

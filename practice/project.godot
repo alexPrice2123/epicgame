@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/mode=3
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://skqpr3tulffk"
 
 [input]
 
