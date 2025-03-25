@@ -266,7 +266,7 @@ z_index = 1
 position = Vector2(240, 302)
 scale = Vector2(7.09375, 7.09375)
 sprite_frames = SubResource("SpriteFrames_x0ao6")
-frame_progress = 0.793303
+frame_progress = 0.721751
 
 [node name="1" type="Sprite2D" parent="Sprites"]
 use_parent_material = true

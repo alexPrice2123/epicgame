@@ -24,6 +24,7 @@ func _on_play_button_up() -> void:
 	for i in 100:
 		$HUD/Control/Overlay.material.set_shader_parameter("progress", times)
 		times += 0.01
+		$Title.volume_db -= 0.3
 		await get_tree().create_timer(0.01).timeout
 	get_tree().change_scene_to_file("res://Scenes/Swamp.tscn")
 func _on_quit_button_down() -> void:
@@ -41,6 +42,7 @@ func _on_quit_button_up() -> void:
 	for i in 100:
 		$HUD/Control/Overlay.material.set_shader_parameter("progress", times)
 		times += 0.01
+		$Title.volume_db -= 0.3
 		await get_tree().create_timer(0.01).timeout
 	get_tree().quit()
 

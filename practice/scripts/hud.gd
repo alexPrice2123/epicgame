@@ -72,6 +72,7 @@ func closeUI():
 		$Talk/TalkBox/Header.play("open")
 		$Talk/TalkBox/OrgBox/Yes.visible = false
 		$Talk/TalkBox/OrgBox/No.visible = false
+		print($Talk/TalkBox/OrgBox/No.visible)
 
 
 func _on_yes_button_down() -> void:
