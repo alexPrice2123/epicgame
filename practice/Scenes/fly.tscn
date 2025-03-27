@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cq33pdvmt76l1"]
+[gd_scene load_steps=92 format=3 uid="uid://cq33pdvmt76l1"]
 
 [ext_resource type="Script" uid="uid://ckwk3h2e5nal" path="res://scripts/fly.gd" id="1_fojns"]
 [ext_resource type="Texture2D" uid="uid://bihceaqfc1usf" path="res://Images/Fly/Enemy1-AttackV2.png" id="2_01udg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dxgf2bs6q7br" path="res://Images/Fly/Enemy1-DieV2.png" id="6_d3slb"]
 [ext_resource type="Texture2D" uid="uid://i6x5nxss3jw" path="res://Images/Fly/Enemy1-Hit.png" id="8_lby2r"]
 [ext_resource type="Texture2D" uid="uid://da7dtbn6gn1fk" path="res://Images/Fly/Enemy1-FlyIdle.png" id="9_4msbd"]
+[ext_resource type="Script" uid="uid://btbffil68ua10" path="res://scripts/resize.gd" id="10_5x3xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1pdl"]
 atlas = ExtResource("2_01udg")
@@ -586,6 +587,10 @@ size = Vector2(59, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1f2g"]
 size = Vector2(426, 9.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5gnq"]
+resource_local_to_scene = true
+radius = 200.0
+
 [node name="Fly" type="CharacterBody2D"]
 position = Vector2(695, 342)
 scale = Vector2(2, 2)
@@ -625,11 +630,23 @@ disabled = true
 priority = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-202, -47.75)
+position = Vector2(-167.5, -47.5)
 shape = SubResource("RectangleShape2D_v1f2g")
 debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Range" type="Area2D" parent="."]
+top_level = true
+position = Vector2(695, 342)
+priority = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2(12.5, -2.99997)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_s5gnq")
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("10_5x3xq")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
@@ -637,3 +654,4 @@ debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 [connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Vision" to="." method="_on_vision_area_entered"]
 [connection signal="area_exited" from="Vision" to="." method="_on_vision_area_exited"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]

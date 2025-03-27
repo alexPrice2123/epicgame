@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var spawn_coin = preload("res://Scenes/coin.tscn")
 @onready var sprite2d = $Sprite2D2
 @onready var attackbox = $HitBox/CollisionBox
+@export var radius = 200
 @onready var visionbox = $Vision/CollisionShape2D
 var idle = 0
 var stunned = false
@@ -15,8 +16,10 @@ var hit = null
 var movementnum = 0
 var direction = 1
 var attackspeed = 0.4
+var startingpos = null
 
 func _physics_process(_delta):
+	$Range.global_position = startingpos
 	if sprite2d.animation == "death" or stunned == true:
 		return
 	movement()
@@ -49,15 +52,6 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 		if health > 0:
 			sprite2d.play("idle")
 		stunned = false
-	elif hit.begins_with("TurnAround") && stunned == false:
-		velocity.x = 0
-		movementnum = 0
-		if attacking == true:
-			direction = (direction/abs(direction))*-1
-			sprite2d.play("idle")
-			attacking = false
-		else:
-			direction *= -1
 	elif hit.begins_with("OuchBox") && stunned == false:
 		stunned = true
 		sprite2d.play("attack")
@@ -99,6 +93,7 @@ func _on_vision_area_entered(body: Area2D) -> void:
 		
 func _ready():
 	sprite2d.play("idle")
+	startingpos = position
 	
 func movement():
 	velocity.x = 0
@@ -110,11 +105,11 @@ func movement():
 		if direction < 0:
 			sprite2d.flip_h = true
 			attackbox.position.x = 39
-			visionbox.position.x = 352
+			visionbox.position.x = 187.0
 		else:
 			sprite2d.flip_h = false
 			attackbox.position.x = -30
-			visionbox.position.x = -340.75
+			visionbox.position.x = -167.5
 	move_and_slide()
 	if attacking == true:
 		return
@@ -148,3 +143,15 @@ func checkaround():
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(0.1).timeout
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
+
+func _on_range_area_exited(area: Area2D) -> void:
+	print(area.name)
+	if area.name == "Vision":
+		velocity.x = 0
+		movementnum = 0
+		if attacking == true:
+			direction = (direction/abs(direction))*-1
+			sprite2d.play("idle")
+			attacking = false
+		else:
+			direction *= -1

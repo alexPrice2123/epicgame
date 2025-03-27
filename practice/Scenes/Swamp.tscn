@@ -2446,7 +2446,7 @@ scale = Vector2(48938.7, 2080.5)
 mesh = SubResource("QuadMesh_ytv4u")
 
 [node name="Player" parent="." instance=ExtResource("8_30tlk")]
-position = Vector2(8479, 671)
+position = Vector2(22764, 607)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("9_uftww")]
@@ -3361,13 +3361,16 @@ shape = SubResource("RectangleShape2D_685xc")
 [node name="SpriteHolder" type="Node2D" parent="."]
 
 [node name="Fly" parent="SpriteHolder" instance=ExtResource("61_3pclv")]
-position = Vector2(24713, 665)
+position = Vector2(24375, 665)
+radius = 360
 
 [node name="Fly2" parent="SpriteHolder" instance=ExtResource("61_3pclv")]
-position = Vector2(26924, 473)
+position = Vector2(27219, 473)
+radius = 430
 
 [node name="Fly3" parent="SpriteHolder" instance=ExtResource("61_3pclv")]
-position = Vector2(32991, 465)
+position = Vector2(32538, 465)
+radius = 380
 
 [node name="Healer" parent="SpriteHolder" instance=ExtResource("62_lbwsy")]
 position = Vector2(28934, 464)
