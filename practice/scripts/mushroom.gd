@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var gravity = 40
 @export var jump_force = 1000
 @export var health = 2
+@export var radius = 200
 @export var spawn_coin = preload("res://Scenes/coin.tscn")
 @onready var sprite2d = $AnimatedSprite2D
 @onready var attackbox = $HitBox/CollisionBox
@@ -15,8 +16,10 @@ var hit = null
 var movementnum = 0
 var direction = 1
 var attackspeed = 0.4
+var startingpos = null
 
 func _physics_process(_delta):
+	$Range.global_position = startingpos
 	if sprite2d.animation == "death" or stunned == true:
 		return
 	movement()
@@ -48,10 +51,6 @@ func _on_area_2d_area_entered(body: Node2D) -> void:
 		if health > 0:
 			sprite2d.play("idle")
 		stunned = false
-	elif hit.begins_with("TurnAround") && stunned == false:
-		velocity.x = 0
-		movementnum = 0
-		direction *= -1
 	
 func _on_vision_area_entered(body: Area2D) -> void:
 	if sprite2d.animation == "death":
@@ -89,6 +88,7 @@ func _on_vision_area_exited(body: Area2D) -> void:
 		
 func _ready():
 	sprite2d.play("idle")
+	startingpos = position
 	
 func movement():
 	velocity.x = 0
@@ -140,3 +140,10 @@ func checkaround():
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(0.1).timeout
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
+
+func _on_range_area_exited(area: Area2D) -> void:
+	print(area.name)
+	if area.name == "Vision":
+		velocity.x = 0
+		movementnum = 0
+		direction *= -1

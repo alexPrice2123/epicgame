@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://o3tyqvikm716"]
+[gd_scene load_steps=54 format=3 uid="uid://o3tyqvikm716"]
 
 [ext_resource type="Script" uid="uid://c2vredmuo2uou" path="res://scripts/slime.gd" id="1_5gljc"]
 [ext_resource type="Texture2D" uid="uid://cyawgejk2g2fi" path="res://Images/Slime/Green_Slime-Attack_Ground.png" id="2_5gljc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bff114bbyx06e" path="res://Images/Slime/Green_Slime-Hit_Ground.png" id="4_e388w"]
 [ext_resource type="Texture2D" uid="uid://byss6w78wmr08" path="res://Images/Slime/Green_Slime-Idle.png" id="5_r4o34"]
 [ext_resource type="Texture2D" uid="uid://b70hvwrdwexrd" path="res://Images/Slime/Green_Slime-Run.png" id="6_y26kt"]
+[ext_resource type="Script" uid="uid://btbffil68ua10" path="res://scripts/resize.gd" id="7_vblni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbs7r"]
 atlas = ExtResource("2_5gljc")
@@ -322,6 +323,10 @@ height = 36.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
 size = Vector2(60.7623, 6.82781)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gljc"]
+resource_local_to_scene = true
+radius = 100.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
 size = Vector2(59, 50.5)
 
@@ -336,9 +341,7 @@ texture_filter = 1
 position = Vector2(1.99999, -47)
 scale = Vector2(2.03844, 2.04483)
 sprite_frames = SubResource("SpriteFrames_rpqav")
-animation = &"attack"
-frame = 8
-frame_progress = 0.497874
+animation = &"hurt"
 offset = Vector2(5, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -353,6 +356,17 @@ position = Vector2(12.5, -2.99997)
 rotation = 3.14159
 scale = Vector2(1.2014, -7.323)
 shape = SubResource("RectangleShape2D_gntrk")
+
+[node name="Range" type="Area2D" parent="."]
+top_level = true
+priority = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2(12.5, -2.99997)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_5gljc")
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("7_vblni")
 
 [node name="HitBox" type="Area2D" parent="."]
 priority = 10
@@ -374,6 +388,7 @@ debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Vision" to="." method="_on_vision_area_entered"]

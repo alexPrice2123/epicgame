@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=4 uid="uid://dhnms44nr6egu"]
+[gd_scene load_steps=154 format=4 uid="uid://dhnms44nr6egu"]
 
 [ext_resource type="Script" uid="uid://ods454e3epdi" path="res://scripts/new_world.gd" id="1_idmfb"]
 [ext_resource type="AudioStream" uid="uid://ce1axe5qqxuxc" path="res://Sounds/Music/Swamp.wav" id="2_id44a"]
@@ -74,9 +74,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51u67"]
 size = Vector2(57821, 4133)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0np7"]
-size = Vector2(20, 214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1lm7"]
 size = Vector2(123.5, 126.5)
@@ -2449,7 +2446,7 @@ scale = Vector2(48938.7, 2080.5)
 mesh = SubResource("QuadMesh_ytv4u")
 
 [node name="Player" parent="." instance=ExtResource("8_30tlk")]
-position = Vector2(222, 871)
+position = Vector2(8479, 671)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("9_uftww")]
@@ -2472,195 +2469,6 @@ position = Vector2(1464, 1173)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lava"]
 position = Vector2(22286.5, 1898)
 shape = SubResource("RectangleShape2D_51u67")
-
-[node name="TurnAround" type="Area2D" parent="."]
-position = Vector2(42, 822)
-collision_mask = 3
-
-[node name="TurnAround3" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(1831, -55)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround13" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(1061, -55)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround14" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(-15, -55)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround4" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(2484, -62)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround5" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(2733, -225)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround6" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(3753, -237)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround15" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(5312, -144)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround16" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(6019, -138)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround17" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(10653, -159)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround18" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(11155, -157)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround19" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(12649, -164)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround20" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(13532, -170)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround21" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(15137, -20)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround22" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(16833, -26)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround23" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(17695, -20)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround24" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(18955, -29)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround25" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(19356, -108)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround26" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(20430, -112)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround27" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(21182, -127)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround28" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(22412, -123)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround29" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(23759, -292)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround30" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(24928, -301)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround31" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(26521, -468)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround32" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(27852, -469)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround33" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(29131, -482)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround34" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(29233, -410)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround35" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(30163, -405)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround36" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(30540, -407)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround37" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(31783, -421)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround38" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(31907, -502)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround39" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(33144, -497)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround7" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(7516, -141)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround8" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(8634, -148)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround9" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(9351, -157)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround11" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(8776, 12)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround12" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(9206, 9)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
-
-[node name="TurnAround10" type="CollisionShape2D" parent="TurnAround"]
-position = Vector2(9846, -155)
-shape = SubResource("RectangleShape2D_e0np7")
-debug_color = Color(0.594148, 0, 0.126282, 0.42)
 
 [node name="Object" type="Area2D" parent="."]
 position = Vector2(42, 822)
@@ -3576,52 +3384,64 @@ position = Vector2(868, 776)
 scale = Vector2(4, 4)
 
 [node name="Mushroom" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
-position = Vector2(9772, 727)
+position = Vector2(9639, 737)
 scale = Vector2(2, 2)
+radius = 245
 
 [node name="Mushroom2" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
-position = Vector2(13458, 704)
+position = Vector2(13125, 726)
 scale = Vector2(2, 2)
+radius = 430
 
 [node name="Mushroom3" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
-position = Vector2(17906, 851)
+position = Vector2(18344, 859)
 scale = Vector2(2, 2)
+radius = 685
 
 [node name="Mushroom4" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
-position = Vector2(22319, 753)
+position = Vector2(21814, 769)
 scale = Vector2(2, 2)
+radius = 635
 
 [node name="Mushroom5" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
-position = Vector2(20348, 753)
+position = Vector2(19891, 785)
 scale = Vector2(2, 2)
+radius = 545
 
 [node name="Slime" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
-position = Vector2(2410, 824)
+position = Vector2(2191, 854)
 scale = Vector2(2, 2)
+radius = 305
 
 [node name="Slime4" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
-position = Vector2(5943, 747)
+position = Vector2(5693, 753)
 scale = Vector2(2, 2)
+radius = 360
 
 [node name="Slime5" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
-position = Vector2(11064, 719)
+position = Vector2(10923, 729)
 scale = Vector2(2, 2)
+radius = 255
 
 [node name="Slime2" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
-position = Vector2(3659, 654)
+position = Vector2(3280, 684)
 scale = Vector2(2, 2)
+radius = 510
 
 [node name="Slime3" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
-position = Vector2(8523, 723)
+position = Vector2(8114, 745)
 scale = Vector2(2, 2)
+radius = 550
 
 [node name="Bush" parent="SpriteHolder" instance=ExtResource("66_s2cbs")]
-position = Vector2(9037, 891)
+position = Vector2(9042, 899)
 scale = Vector2(2, 2)
+radius = 10
 
 [node name="Bush2" parent="SpriteHolder" instance=ExtResource("66_s2cbs")]
-position = Vector2(16703, 845)
+position = Vector2(16013, 869)
 scale = Vector2(2, 2)
+radius = 1045
 
 [node name="FlySpawner" type="Node2D" parent="."]
 position = Vector2(35470, 1493)

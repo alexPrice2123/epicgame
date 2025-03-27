@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var blob = preload("res://Scenes/wooden_blob.tscn")
 @export var cursor = preload("res://Images/hand.png")
 @onready var attackbox = $PlayerHitBox/PlayerCollisionBox
-
+var buffer = 0
 var idle = 0
 var stunned = false
 var attacking = false
@@ -46,7 +46,6 @@ func _ready():
 
 func _on_ouch_box_area_entered(body: Area2D) -> void:
 	hit = body.name
-	print(hit)
 	if hit == "HitBox":
 		damaged()
 	elif hit == "BossHitBox":
@@ -153,12 +152,28 @@ func movement():
 	velocity.x = speed * h_direction
 	move_and_slide()
 	if !is_on_floor():
+		buffer += 1
 		shouldland = true
 		if health > 0:
 			velocity.y += gravity
 			if velocity.y > 1500:
 				velocity.y = 1500
+		if buffer < 5 && buffer > -5 && jumping == true :
+			velocity.y = -jump_force
+			buffer = -150
+			for i in 10:
+				$Sprite2D2.scale.y += jumpex*2
+				$Sprite2D2.scale.x -= jumpex
+				await get_tree().create_timer(0.01).timeout
+			for i in 10:
+				$Sprite2D2.scale.y -= jumpex*2
+				$Sprite2D2.scale.x += jumpex*2
+				await get_tree().create_timer(0.01).timeout
+			for i in 10:
+				$Sprite2D2.scale.x -= jumpex
+				await get_tree().create_timer(0.01).timeout
 	else:
+		buffer = 0
 		if is_on_floor() && jumping == true :
 			velocity.y = -jump_force
 			for i in 10:
@@ -174,8 +189,6 @@ func movement():
 				await get_tree().create_timer(0.01).timeout
 		if position.y < 900 && velocity.y != 210:
 			pos = position
-			print(velocity.y)
-			print(pos)
 	if attacking == true:
 		return
 	if sprite2d.animation == ("%s_death" % classe) or stunned == true:
@@ -281,7 +294,6 @@ func summonBlob():
 	var world = get_tree().get_root().get_node("World")
 	var obj = blob.instantiate()
 	obj.position = Vector2(position.x, position.y-850)
-	print(position.y-850)
 	world.get_node("TileHolder").get_node("Pillars").position.y = 0
 	for i in 25: 
 		camera.zoom.x -= 0.02

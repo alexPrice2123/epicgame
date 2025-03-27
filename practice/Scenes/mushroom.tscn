@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://datr2ph6tyb58"]
+[gd_scene load_steps=56 format=3 uid="uid://datr2ph6tyb58"]
 
 [ext_resource type="Script" uid="uid://bym01pm2pkrot" path="res://scripts/mushroom.gd" id="1_aktc8"]
 [ext_resource type="Texture2D" uid="uid://cvjdjdl0xd4um" path="res://Images/Mushroom/Mushroom-Idle.png" id="2_0q7t7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlqu7iu8pc8je" path="res://Images/Mushroom/Mushroom-Die.png" id="3_g77dt"]
 [ext_resource type="Texture2D" uid="uid://cmxswfq3skf4t" path="res://Images/Mushroom/Mushroom-Hit.png" id="4_aktc8"]
 [ext_resource type="Texture2D" uid="uid://d0vh7ww4vfdf1" path="res://Images/Mushroom/Mushroom-Run.png" id="4_c6w58"]
+[ext_resource type="Script" uid="uid://btbffil68ua10" path="res://scripts/resize.gd" id="7_g77dt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8vh8"]
 atlas = ExtResource("2_aktc8")
@@ -342,6 +343,10 @@ size = Vector2(59, 65)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i6dj"]
 size = Vector2(57, 65)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qdqy"]
+resource_local_to_scene = true
+radius = 200.0
+
 [node name="Mushroom" type="CharacterBody2D"]
 script = ExtResource("1_aktc8")
 
@@ -382,9 +387,21 @@ debug_color = Color(0.560784, 0.560784, 0, 0.141176)
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 
+[node name="Range" type="Area2D" parent="."]
+top_level = true
+priority = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2(12.5, -2.99997)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_4qdqy")
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("7_g77dt")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Vision" to="." method="_on_vision_area_entered"]
 [connection signal="area_exited" from="Vision" to="." method="_on_vision_area_exited"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
