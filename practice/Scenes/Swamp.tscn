@@ -2446,7 +2446,7 @@ scale = Vector2(48938.7, 2080.5)
 mesh = SubResource("QuadMesh_ytv4u")
 
 [node name="Player" parent="." instance=ExtResource("8_30tlk")]
-position = Vector2(22764, 607)
+position = Vector2(196, 871)
 scale = Vector2(2, 2)
 
 [node name="HUD" parent="Player" instance=ExtResource("9_uftww")]
@@ -3362,24 +3362,27 @@ shape = SubResource("RectangleShape2D_685xc")
 
 [node name="Fly" parent="SpriteHolder" instance=ExtResource("61_3pclv")]
 position = Vector2(24375, 665)
-radius = 360
+radius = 305
 
 [node name="Fly2" parent="SpriteHolder" instance=ExtResource("61_3pclv")]
 position = Vector2(27219, 473)
-radius = 430
+radius = 380
 
 [node name="Fly3" parent="SpriteHolder" instance=ExtResource("61_3pclv")]
 position = Vector2(32538, 465)
-radius = 380
+radius = 320
 
 [node name="Healer" parent="SpriteHolder" instance=ExtResource("62_lbwsy")]
-position = Vector2(28934, 464)
+position = Vector2(28551, 455)
+radius = 475
 
 [node name="Healer2" parent="SpriteHolder" instance=ExtResource("62_lbwsy")]
-position = Vector2(29924, 538)
+position = Vector2(29698, 538)
+radius = 375
 
 [node name="Healer3" parent="SpriteHolder" instance=ExtResource("62_lbwsy")]
-position = Vector2(31685, 531)
+position = Vector2(31177, 531)
+radius = 475
 
 [node name="Skelibones" parent="SpriteHolder" instance=ExtResource("63_8vo2g")]
 z_index = -1
@@ -3389,62 +3392,62 @@ scale = Vector2(4, 4)
 [node name="Mushroom" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
 position = Vector2(9639, 737)
 scale = Vector2(2, 2)
-radius = 245
+radius = 185
 
 [node name="Mushroom2" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
 position = Vector2(13125, 726)
 scale = Vector2(2, 2)
-radius = 430
+radius = 335
 
 [node name="Mushroom3" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
 position = Vector2(18344, 859)
 scale = Vector2(2, 2)
-radius = 685
+radius = 585
 
 [node name="Mushroom4" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
 position = Vector2(21814, 769)
 scale = Vector2(2, 2)
-radius = 635
+radius = 555
 
 [node name="Mushroom5" parent="SpriteHolder" instance=ExtResource("64_yhe6n")]
 position = Vector2(19891, 785)
 scale = Vector2(2, 2)
-radius = 545
+radius = 480
 
 [node name="Slime" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
 position = Vector2(2191, 854)
 scale = Vector2(2, 2)
-radius = 305
+radius = 210
 
 [node name="Slime4" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
 position = Vector2(5693, 753)
 scale = Vector2(2, 2)
-radius = 360
+radius = 290
 
 [node name="Slime5" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
 position = Vector2(10923, 729)
 scale = Vector2(2, 2)
-radius = 255
+radius = 185
 
 [node name="Slime2" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
 position = Vector2(3280, 684)
 scale = Vector2(2, 2)
-radius = 510
+radius = 420
 
 [node name="Slime3" parent="SpriteHolder" instance=ExtResource("65_gyq4w")]
 position = Vector2(8114, 745)
 scale = Vector2(2, 2)
-radius = 550
+radius = 445
 
 [node name="Bush" parent="SpriteHolder" instance=ExtResource("66_s2cbs")]
 position = Vector2(9042, 899)
 scale = Vector2(2, 2)
-radius = 10
+radius = 65
 
 [node name="Bush2" parent="SpriteHolder" instance=ExtResource("66_s2cbs")]
 position = Vector2(16013, 869)
 scale = Vector2(2, 2)
-radius = 1045
+radius = 1010
 
 [node name="FlySpawner" type="Node2D" parent="."]
 position = Vector2(35470, 1493)
