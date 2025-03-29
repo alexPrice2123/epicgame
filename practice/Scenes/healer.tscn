@@ -486,6 +486,8 @@ size = Vector2(442, 12.5)
 [node name="Healer" type="CharacterBody2D"]
 position = Vector2(695, 342)
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_5w40g")
 
 [node name="Range" type="Area2D" parent="."]

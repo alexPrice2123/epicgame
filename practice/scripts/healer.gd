@@ -98,17 +98,14 @@ func _ready():
 func movement():
 	velocity.x = 0
 	movementnum +=1
-	if abs(startingpos.x-position.x) >= $Range/CollisionShape2D.shape.radius && attacking == false && stunned == false:
-		velocity.x = 0
-		movementnum = 50
+	if abs(startingpos.x-position.x) >= radius && attacking == false && stunned == false:
+		movementnum = 0
 		direction *= -1
-		stunned = true
-		sprite2d.play("idle")
-		$Vision/CollisionShape2D.set_deferred("disabled", true)
-		await get_tree().create_timer(1).timeout
-		$Vision/CollisionShape2D.set_deferred("disabled", false)
-		stunned = false
-	if movementnum >= 50:
+		while abs(startingpos.x-position.x) >= radius:
+			velocity.x = -100*direction
+			move_and_slide()
+			await get_tree().create_timer(0.01).timeout
+	if movementnum >= 50 && abs(startingpos.x-position.x) < radius:
 		velocity.x = -300*direction
 		if direction < 0:
 			sprite2d.flip_h = true

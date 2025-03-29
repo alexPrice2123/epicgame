@@ -14,6 +14,8 @@ func _ready() -> void:
 		await get_tree().create_timer(0.01).timeout
 	$HUD/Control/Overlay.visible = false
 	$HUD/Control/Overlay.material.set_shader_parameter("fill", true)
+	$HUD/Control/Play.disabled = false
+	$HUD/Control/Quit.disabled = false
 	while true:
 		position.x -= 2
 		await get_tree().create_timer(0.01).timeout
@@ -29,6 +31,8 @@ func _on_play_button_up() -> void:
 	$Sound.stream = load("res://Sounds/Sounds/Confirm.wav")
 	$Sound.play()
 	$HUD/Control/Overlay.visible = true
+	$HUD/Control/Play.disabled = true
+	$HUD/Control/Quit.disabled = true
 	var times = 0.01
 	for i in 100:
 		$HUD/Control/Overlay.material.set_shader_parameter("progress", times)
@@ -48,6 +52,8 @@ func _on_quit_button_up() -> void:
 	$Sound.stream = load("res://Sounds/Sounds/Cancel.wav")
 	$Sound.play()
 	$HUD/Control/Overlay.visible = true
+	$HUD/Control/Play.disabled = true
+	$HUD/Control/Quit.disabled = true
 	var times = 0.01
 	for i in 100:
 		$HUD/Control/Overlay.material.set_shader_parameter("progress", times)

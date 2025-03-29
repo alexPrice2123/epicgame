@@ -348,6 +348,8 @@ resource_local_to_scene = true
 radius = 200.0
 
 [node name="Mushroom" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_aktc8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
