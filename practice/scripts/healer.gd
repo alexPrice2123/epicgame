@@ -87,7 +87,7 @@ func _on_vision_area_exited(body: Area2D) -> void:
 	visionbox.scale.y = 1
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
-		movementnum = 50
+		movementnum = 0
 		checkaround()
 		attacking = false
 		

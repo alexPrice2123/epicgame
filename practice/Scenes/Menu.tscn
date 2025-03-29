@@ -225,6 +225,46 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Mute" type="Button" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 40.3946
+anchor_top = 2.72234
+anchor_right = 40.6236
+anchor_bottom = 3.31334
+offset_left = -367.252
+offset_top = -74.816
+offset_right = -208.549
+offset_bottom = -38.413
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aobxe")
+disabled = true
+icon = ExtResource("3_idohh")
+flat = true
+expand_icon = true
+
+[node name="ButtonText" type="Label" parent="HUD/Control/Mute"]
+layout_mode = 2
+anchor_left = 0.034
+anchor_top = 0.096
+anchor_right = 0.97
+anchor_bottom = 0.787
+offset_left = -0.0100002
+offset_top = -0.0240002
+offset_right = -0.0499573
+offset_bottom = 11.022
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_ma218")
+theme_override_font_sizes/font_size = 41
+text = "Mute"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Title" type="Label" parent="HUD/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -400,3 +440,5 @@ position = Vector2(579, 324)
 [connection signal="button_up" from="HUD/Control/Play" to="." method="_on_play_button_up"]
 [connection signal="button_down" from="HUD/Control/Quit" to="." method="_on_quit_button_down"]
 [connection signal="button_up" from="HUD/Control/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_down" from="HUD/Control/Mute" to="." method="_on_mute_button_down"]
+[connection signal="button_up" from="HUD/Control/Mute" to="." method="_on_mute_button_up"]

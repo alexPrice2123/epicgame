@@ -87,7 +87,7 @@ func _on_vision_area_exited(body: Area2D) -> void:
 	hit = body.name
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
-		movementnum = 50
+		movementnum = 0
 		await get_tree().create_timer(1.8).timeout
 		checkaround()
 		attacking = false

@@ -76,7 +76,7 @@ func _on_vision_area_entered(body: Area2D) -> void:
 		if sprite2d.animation == "death":
 			return
 		sprite2d.play("idle")
-		movementnum = 50
+		movementnum = 0
 		attacking = false
 		$Vision/CollisionShape2D.set_deferred("disabled", true)
 		await get_tree().create_timer(attackspeed).timeout
@@ -86,7 +86,7 @@ func _on_vision_area_exited(body: Area2D) -> void:
 	hit = body.name
 	if hit == "OuchBox" && stunned == false:
 		velocity.x = 0
-		movementnum = 50
+		movementnum = 0
 		checkaround()
 		
 func _ready():
