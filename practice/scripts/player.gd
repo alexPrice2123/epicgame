@@ -50,6 +50,8 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 		damaged()
 	elif hit == "BossHitBox":
 		bossdamaged()
+	elif hit == "SignFirst":
+		hud.tutOpen()
 	elif body.name.begins_with("Gem"):
 		gems += 1
 		hud.gem()
@@ -81,6 +83,8 @@ func _on_ouch_box_area_exited(body: Area2D) -> void:
 		stunned = false
 	elif body.name.begins_with("Bones"):
 		$HUD.closeUI()
+	elif hit == "SignFirst":
+		hud.tutClose()
 
 func _input(_event: InputEvent) -> void:
 	if sprite2d.animation == ("%s_death" % classe):

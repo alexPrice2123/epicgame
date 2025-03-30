@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://cc2v5cc53y7xh"]
+[gd_scene load_steps=124 format=3 uid="uid://cc2v5cc53y7xh"]
 
 [ext_resource type="Script" uid="uid://calpqk80k3vgb" path="res://scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://dmhn2llyu1qhd" path="res://Images/HUD/BHealth/BHealth1.png" id="2_1a2va"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c17hk3c8q2uqi" path="res://Images/HUD/Header.png" id="19_pbtju"]
 [ext_resource type="Texture2D" uid="uid://b4i8v3sec6cwd" path="res://Images/HUD/Menu.png" id="20_yidpd"]
 [ext_resource type="Shader" uid="uid://rxx4t2fi07qq" path="res://scripts/transition.gdshader" id="21_0iicw"]
+[ext_resource type="FontFile" uid="uid://cv5wqbaw7muqq" path="res://Images/HUD/Minecraftia-Regular.ttf" id="21_ajim5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_43w4t"]
 animations = [{
@@ -757,7 +758,7 @@ animations = [{
 shader = ExtResource("21_0iicw")
 shader_parameter/progress = 0.0
 shader_parameter/size = 40.0
-shader_parameter/fill = false
+shader_parameter/fill = true
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_bjfho")
@@ -927,8 +928,8 @@ offset_bottom = 0.5
 theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
 theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_6fbih")
-theme_override_font_sizes/font_size = 51
+theme_override_fonts/font = ExtResource("21_ajim5")
+theme_override_font_sizes/font_size = 40
 text = "Hey there fello travaler! Would you like to change your class to Warrior?"
 autowrap_mode = 2
 
@@ -1032,6 +1033,191 @@ position = Vector2(0.529114, -19.0837)
 scale = Vector2(0.640118, 0.640118)
 sprite_frames = SubResource("SpriteFrames_fkcuu")
 animation = &"open"
+
+[node name="HTP" type="AnimatedSprite2D" parent="Talk"]
+z_index = 4096
+z_as_relative = false
+position = Vector2(43.667, -125.666)
+scale = Vector2(9.15688, 9.15688)
+sprite_frames = SubResource("SpriteFrames_a7fs7")
+animation = &"open"
+
+[node name="OrgBox" type="Control" parent="Talk/HTP"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_right = 84.0
+offset_bottom = 67.0
+scale = Vector2(0.05, 0.05)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="Talk/HTP/OrgBox"]
+layout_mode = 2
+anchor_left = -0.217305
+anchor_top = -2.20569
+anchor_right = 4.20169
+anchor_bottom = 4.06252
+offset_left = -0.00499916
+offset_top = -0.0139923
+offset_right = 0.0280151
+offset_bottom = 0.0159969
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("21_ajim5")
+theme_override_font_sizes/font_size = 40
+text = "Kill monsters to get coins
+
+Discover new enemies and kill bosses"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Talk/HTP/OrgBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_right = 0.994
+anchor_bottom = 1.0
+offset_left = -16.1144
+offset_top = -257.752
+offset_right = 305.606
+offset_bottom = -201.752
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 60
+text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Tips" type="AnimatedSprite2D" parent="Talk"]
+z_index = 4096
+z_as_relative = false
+position = Vector2(357, -125.666)
+scale = Vector2(9.15688, 9.15688)
+sprite_frames = SubResource("SpriteFrames_a7fs7")
+animation = &"open"
+
+[node name="OrgBox" type="Control" parent="Talk/Tips"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_right = 84.0
+offset_bottom = 67.0
+scale = Vector2(0.05, 0.05)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="Talk/Tips/OrgBox"]
+layout_mode = 2
+anchor_left = -0.193812
+anchor_top = -2.04268
+anchor_right = 4.22519
+anchor_bottom = 2.82255
+offset_left = -0.00499916
+offset_top = -0.0139923
+offset_right = 0.0280151
+offset_bottom = 0.0159969
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("21_ajim5")
+theme_override_font_sizes/font_size = 40
+text = "Find secret gems
+
+Avoid being hit by jumping behind enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Talk/Tips/OrgBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_right = 0.994
+anchor_bottom = 1.0
+offset_left = -16.1144
+offset_top = -257.752
+offset_right = 305.606
+offset_bottom = -201.752
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 60
+text = "Tips"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="AnimatedSprite2D" parent="Talk"]
+z_index = 4096
+z_as_relative = false
+position = Vector2(-269.666, -125.666)
+scale = Vector2(9.15688, 9.15688)
+sprite_frames = SubResource("SpriteFrames_a7fs7")
+animation = &"open"
+
+[node name="OrgBox" type="Control" parent="Talk/Controls"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_right = 84.0
+offset_bottom = 67.0
+scale = Vector2(0.05, 0.05)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="Talk/Controls/OrgBox"]
+layout_mode = 2
+anchor_left = -0.215
+anchor_top = -1.64158
+anchor_right = 4.204
+anchor_bottom = 2.6117
+offset_left = -0.00499916
+offset_top = -0.0139923
+offset_right = 0.0280151
+offset_bottom = 0.0159969
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("21_ajim5")
+theme_override_font_sizes/font_size = 40
+text = "A & D to move
+
+Space to jump
+
+Click to attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Talk/Controls/OrgBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_right = 0.994
+anchor_bottom = 1.0
+offset_left = -16.1144
+offset_top = -257.752
+offset_right = 305.606
+offset_bottom = -201.752
+theme_override_colors/font_color = Color(0.145098, 0.117647, 0.0862745, 1)
+theme_override_colors/font_outline_color = Color(0.996078, 0.945098, 0.819608, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_6fbih")
+theme_override_font_sizes/font_size = 60
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="HBoxContainer" parent="."]
 anchors_preset = 8
