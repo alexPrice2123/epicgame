@@ -52,6 +52,12 @@ func _on_ouch_box_area_entered(body: Area2D) -> void:
 		bossdamaged()
 	elif hit == "SignFirst":
 		hud.tutOpen()
+	elif hit == "DemoEnd":
+		hud.END()
+		$CollisionShape2D2.set_deferred("disabled", true)
+		$OuchBox/CollisionShape2D.set_deferred("disabled", true)
+		attackbox.set_deferred("disabled", true)
+		sprite2d.play("%s_death" % classe)
 	elif body.name.begins_with("Gem"):
 		gems += 1
 		hud.gem()

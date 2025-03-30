@@ -5,7 +5,6 @@ var coins = 0
 var lives = 3
 var open = false
 var plr = null
-
 func _ready() -> void:
 	$Talk/TalkBox.frame = 44
 	$Talk/TalkBox/Header.frame = 27
@@ -16,15 +15,12 @@ func _ready() -> void:
 	$Talk/TalkBox/OrgBox/No.visible = false
 	$Menu/MenuBox/OrgBox/YesDead.visible = false
 	$Menu/MenuBox/OrgBox/NoDead.visible = false
+	$Talk/HTP/OrgBox.modulate.a = 0
+	$Talk/Tips/OrgBox.modulate.a = 0
+	$Talk/Controls/OrgBox.modulate.a = 0
 	$Talk/HTP.frame = 19
 	$Talk/Tips.frame = 19
 	$Talk/Controls.frame = 19
-	$Talk/HTP.visible = false
-	$Talk/Tips.visible = false
-	$Talk/Controls.visible = false
-	$Talk/HTP/OrgBox.visible = false
-	$Talk/Tips/OrgBox.visible = false
-	$Talk/Controls/OrgBox.visible = false
 	plr = get_tree().get_root().get_node("World").get_node("Player")
 	$Menu/MenuBox/Overlay.material.set_shader_parameter("fill", false)
 	var times = 0.01
@@ -173,18 +169,6 @@ func _on_no_dead_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Menu.tscn")
 
 func tutOpen():
-	$Talk/HTP.frame = 19
-	$Talk/Tips.frame = 19
-	$Talk/Controls.frame = 19
-	$Talk/HTP.visible = true
-	$Talk/Tips.visible = true
-	$Talk/Controls.visible = true
-	$Talk/HTP/OrgBox.modulate.a = 0
-	$Talk/Tips/OrgBox.modulate.a = 0
-	$Talk/Controls/OrgBox.modulate.a = 0
-	$Talk/HTP/OrgBox.visible = true
-	$Talk/Tips/OrgBox.visible = true
-	$Talk/Controls/OrgBox.visible = true
 	$Talk/HTP.play_backwards()
 	$Talk/Tips.play_backwards()
 	$Talk/Controls.play_backwards()
@@ -194,24 +178,38 @@ func tutOpen():
 		$Talk/Tips/OrgBox.modulate.a += 0.1
 		$Talk/Controls/OrgBox.modulate.a += 0.1
 		await get_tree().create_timer(0.01).timeout
-
+func END():
+	$Menu/MenuBox/Overlay.visible = true
+	$Menu/MenuBox/Overlay.material.set_shader_parameter("fill", true)
+	var times = 0.01
+	$DemoEnd.visible = true
+	for i in 100:
+		$Menu/MenuBox/Overlay.material.set_shader_parameter("progress", times)
+		times += 0.01
+		await get_tree().create_timer(0.01).timeout
+	for i in 10:
+		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
+		await get_tree().create_timer(0.01).timeout
+	for i in 10:
+		$DemoEnd.modulate.a += 0.1
+		await get_tree().create_timer(0.01).timeout
+	for i in 100:
+		get_tree().get_current_scene().get_node("Swamp").volume_db -= 0.4
+		await get_tree().create_timer(0.01).timeout
+	get_tree().get_current_scene().get_node("Swamp").volume_db -= 300
+	await get_tree().create_timer(10).timeout
+	for i in 10:
+		$DemoEnd.modulate.a -= 0.1
+		await get_tree().create_timer(0.01).timeout
+	plr.quit()
+	get_tree().change_scene_to_file("res://Scenes/Menu.tscn")
 func tutClose():
 	for i in 10:
 		$Talk/HTP/OrgBox.modulate.a -= 0.1
 		$Talk/Tips/OrgBox.modulate.a -= 0.1
 		$Talk/Controls/OrgBox.modulate.a -= 0.1
 		await get_tree().create_timer(0.01).timeout
-	$Talk/HTP/OrgBox.visible = false
-	$Talk/Tips/OrgBox.visible = false
-	$Talk/Controls/OrgBox.visible = false
 	await get_tree().create_timer(0.1).timeout
 	$Talk/HTP.play()
 	$Talk/Tips.play()
 	$Talk/Controls.play()
-	await get_tree().create_timer(1).timeout
-	$Talk/HTP.frame = 19
-	$Talk/Tips.frame = 19
-	$Talk/Controls.frame = 19
-	$Talk/HTP.visible = false
-	$Talk/Tips.visible = false
-	$Talk/Controls.visible = false
