@@ -1175,10 +1175,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Text" type="Label" parent="Talk/Controls/OrgBox"]
 layout_mode = 2
-anchor_left = -0.215
-anchor_top = -1.64158
-anchor_right = 4.204
-anchor_bottom = 2.6117
+anchor_left = -0.817151
+anchor_top = -2.11919
+anchor_right = 4.73088
+anchor_bottom = 3.92513
 offset_left = -0.00499916
 offset_top = -0.0139923
 offset_right = 0.0280151
@@ -1192,7 +1192,7 @@ text = "A & D to move
 
 Space to jump
 
-Click to attack"
+Left Click / P to attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
